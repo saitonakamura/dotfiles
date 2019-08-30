@@ -1,0 +1,5 @@
+**/*
+!.gitignore
+!AppData/Local/nvim/init.vim
+!AppData/Local/nvim/ginit.vim
+!AppData/Local/nvim/autoload/plug.vim
