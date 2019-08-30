@@ -4,13 +4,14 @@ set smartcase
 set nu
 syntax on
 
-call plug#begin('~/.config/nvim/plugged')
+call plug#begin('~/AppData/Local/nvim/plugged')
 
 Plug 'w0rp/ale'
 Plug 'nightsense/cosmic_latte'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdtree'
+Plug 'dzeban/vim-log-syntax'
 
 call plug#end()
 
