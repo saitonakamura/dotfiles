@@ -17,3 +17,7 @@
 !/AppData/Local/nvim/autoload/
 /AppData/Local/nvim/autoload/*
 !/AppData/Local/nvim/autoload/plug.vim
+
+!/.config/
+/.config/*
+!/.config/nvim
