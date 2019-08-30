@@ -1,7 +1,5 @@
 # Ignore everything
 /*
-# Allow directories 
-#!*/
 
 # Whitelist
 !.gitignore
