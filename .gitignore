@@ -6,8 +6,10 @@
 
 !/AppData/
 /AppData/*
+
 !/AppData/Local/
 /AppData/Local/*
+
 !/AppData/Local/nvim/
 /AppData/Local/nvim/*
 !/AppData/Local/nvim/init.vim
@@ -15,6 +17,16 @@
 !/AppData/Local/nvim/autoload/
 /AppData/Local/nvim/autoload/*
 !/AppData/Local/nvim/autoload/plug.vim
+
+!/AppData/Roaming/
+/AppData/Roaming/*
+
+!/AppData/Roaming/Code/
+/AppData/Roaming/Code/*
+!/AppData/Roaming/Code/User/
+/AppData/Roaming/Code/User/*
+!/AppData/Roaming/Code/User/settings.json
+
 
 !/.config/
 /.config/*
