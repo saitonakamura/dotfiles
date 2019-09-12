@@ -18,7 +18,7 @@
   "javascript.validate.enable": false,
   "html.suggest.angular1": false,
   "html.suggest.ionic": false,
-  "window.zoomLevel": 1,
+  "window.zoomLevel": 0,
   "powershell.powerShellExePath": "C:\\Program Files\\PowerShell\\6\\pwsh.exe",
   "workbench.iconTheme": "vscode-icons",
   "[typescriptreact]": {

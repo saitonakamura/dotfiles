@@ -1,1 +1,2 @@
-"Guifont Consolas:h12:l
+Guifont Fira Code:h11:b:l
+call GuiWindowMaximized(1)
