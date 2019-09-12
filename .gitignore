@@ -37,3 +37,7 @@
 !/Documents/PowerShell/
 /Documents/PowerShell/*
 !/Documents/PowerShell/Microsoft.PowerShell_profile.ps1
+
+!/scripts/
+/scripts/*
+!/scripts/install-software.ps1
