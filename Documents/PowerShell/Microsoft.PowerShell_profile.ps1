@@ -31,7 +31,7 @@ Function AssociateFileExtensions
     )
     if (-not (Test-Path $OpenAppPath))
     {
-	   throw "$OpenAppPath does not exist."
+        throw "$OpenAppPath does not exist."
     }
     foreach ($extension in $FileExtensions)
     {
