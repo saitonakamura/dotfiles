@@ -7,6 +7,8 @@ if ($host.Name -eq 'ConsoleHost')
 
 New-Alias -Name "ss" Select-String
 Remove-Alias -Name nv -Force
+Remove-Alias -Name gip -Force
+New-Alias -Name "gip" Get-ItemProperty
 
 function Refresh-PathEnv() {
   $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
