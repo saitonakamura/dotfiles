@@ -4,3 +4,5 @@
 & choco install vscode -y
 
 & choco install neovim -y
+
+& choco install firacode -y
