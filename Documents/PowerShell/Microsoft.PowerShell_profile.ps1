@@ -2,7 +2,7 @@
 
 if ($host.Name -eq 'ConsoleHost')
 {
-#    Import-Module PSReadLine
+#  Import-Module PSReadLine
 }
 
 New-Alias -Name "ss" Select-String
@@ -24,21 +24,31 @@ New-Alias -Name "time" Measure-Command
 
 Function AssociateFileExtensions
 {
-    Param
-    (
-        [Parameter(Mandatory=$true)]
-        [String[]] $FileExtensions,
-        [Parameter(Mandatory=$true)]
-        [String] $OpenAppPath
-    )
-    if (-not (Test-Path $OpenAppPath))
-    {
-        throw "$OpenAppPath does not exist."
+  Param
+  (
+    [Parameter(Mandatory=$true)]
+    [String[]] $FileExtensions,
+    [Parameter(Mandatory=$true)]
+    [String] $OpenAppPath,
+    [String] $FileTypeName
+  )
+
+  if (-not (Test-Path $OpenAppPath))
+  {
+    throw "$OpenAppPath does not exist."
+  }
+
+  foreach ($extension in $FileExtensions)
+  {
+    $fileType = (cmd /c "assoc $extension")
+    $fileType = $fileType.Split("=")
+
+    if ($fileType.Length -gt 1) {
+      $fileType = $fileType[-1]
+    } else {
+      $fileType = if ($FileTypeName -ne "") { $FileTypeName } else { $extension -Replace "\.","" }
+      cmd /c "assoc $extension=$fileType"
     }
-    foreach ($extension in $FileExtensions)
-    {
-        $fileType = (cmd /c "assoc $extension")
-        $fileType = $fileType.Split("=")[-1]
-        cmd /c "ftype $fileType=""$OpenAppPath"" ""%1"""
-    }
+    cmd /c "ftype $fileType=""$OpenAppPath"" ""%1"""
+  }
 }
