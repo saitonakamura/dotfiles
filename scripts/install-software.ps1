@@ -12,6 +12,8 @@ $enablePSRemoting = if ($PSRemoting -eq true) { "ENABLE_PSREMOTING=1" } else { "
 
 & choco install neovim -y
 
+& choco install firacode -y
+
 if ($DotNet -eq true) {
   & choco install jetbrains-rider -y
 }
