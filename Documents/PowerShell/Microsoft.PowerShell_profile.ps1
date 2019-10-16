@@ -41,7 +41,7 @@ Function AssociateFileExtensions
   foreach ($extension in $FileExtensions)
   {
     $fileType = (cmd /c "assoc $extension")
-    $fileType = $fileType.Split("=")
+    $fileType = (if ($fileType -ne $null) { $fileType } else { "" }).Split("=")
 
     if ($fileType.Length -gt 1) {
       $fileType = $fileType[-1]
