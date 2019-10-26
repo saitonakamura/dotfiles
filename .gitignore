@@ -16,7 +16,15 @@
 !/AppData/Local/nvim/ginit.vim
 !/AppData/Local/nvim/autoload/
 /AppData/Local/nvim/autoload/*
-!/AppData/Local/nvim/autoload/plug.vim
+/AppData/Local/nvim/autoload/plug.vim
+
+!/AppData/Local/Packages/
+/AppData/Local/Packages/*
+!/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/
+/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/*
+!/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/
+/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/*
+!/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/profiles.json
 
 !/AppData/Roaming/
 /AppData/Roaming/*
@@ -42,3 +50,4 @@
 /scripts/*
 !/scripts/install-software.ps1
 !/scripts/file-assoc.ps1
+

@@ -1,13 +1,13 @@
 "cd ~
 let g:ale_completion_enabled = 1
 set ignorecase
-set smartcase
+"set smartcase
 set nu
 syntax on
 
 call plug#begin('~/AppData/Local/nvim/plugged')
 
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 Plug 'nightsense/cosmic_latte'
 Plug 'vim-scripts/oceanlight'
 Plug 'vim-airline/vim-airline'
@@ -15,6 +15,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdtree'
 Plug 'dzeban/vim-log-syntax'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
@@ -50,8 +52,8 @@ endif
 "autocmd StdinReadPre * let s:std_in=1
 "autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | exe 'NERDTree' '~' | wincmd p | ene | exe 'cd ~' | endif
+"autocmd StdinReadPre * let s:std_in=1
+"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | exe 'NERDTree' '~' | wincmd p | ene | exe 'cd ~' | endif
 
 let NERDTreeShowHidden=1
 
@@ -59,8 +61,13 @@ map <C-n> :NERDTreeToggle<CR>
 map <S-n> :NERDTreeFocus<CR>
 map <C-f> :ALEFix<CR>
 map <C-s> :w<CR>
+map <C-z> :u<CR>
 
 function! FormatBufferAsJson()
     :set filetype=json
     :ALEFix
 endfunction
+
+:command! CopyExpandCurrentFilePath let @+ = expand("%:p")
+:command! CopyCurrentFilePath let @+ = expand("%")
+:command! ReloadConfig :so $MYVIMRC
