@@ -71,3 +71,13 @@ endfunction
 :command! CopyExpandCurrentFilePath let @+ = expand("%:p")
 :command! CopyCurrentFilePath let @+ = expand("%")
 :command! ReloadConfig :so $MYVIMRC
+
+" TABS ========================================================
+
+:set tabstop=4
+:set expandtab
+:set softtabstop
+
+autocmd Filetype json setlocal tabstop=2
+autocmd Filetype json setlocal expandtab
+autocmd Filetype json setlocal softtabstop
