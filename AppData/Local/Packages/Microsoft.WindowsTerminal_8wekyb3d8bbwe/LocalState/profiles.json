@@ -8,8 +8,18 @@
     "launchMode": "maximized",
     "keybindings": [
       { "command": "nextTab", "keys": ["ctrl+pgdn"] },
-      { "command": "prevTab", "keys": ["ctrl+pgup"] }
-    ],
+      { "command": "prevTab", "keys": ["ctrl+pgup"] },
+      { "command": "splitVertical", "keys": ["shift+ctrl+alt+right"] },
+      { "command": "splitHorizontal", "keys": ["shift+ctrl+alt+down"] },
+      { "command": "resizePaneLeft", "keys": ["shift+alt+left"] },
+      { "command": "resizePaneRight", "keys": ["shift+alt+right"] },
+      { "command": "resizePaneDown", "keys": ["shift+alt+down"] },
+      { "command": "resizePaneUp", "keys": ["shift+alt+up"] },
+      { "command": "moveFocusLeft", "keys": ["ctrl+alt+left"] },
+      { "command": "moveFocusRight", "keys": ["ctrl+alt+right"] },
+      { "command": "moveFocusDown", "keys": ["ctrl+alt+down"] },
+      { "command": "moveFocusUp", "keys": ["ctrl+alt+up"] }
+   ],
     "requestedTheme": "system",
     "showTabsInTitlebar": true,
     "showTerminalTitleInTitlebar": true,
