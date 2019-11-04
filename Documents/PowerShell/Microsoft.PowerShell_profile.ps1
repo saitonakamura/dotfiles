@@ -1,8 +1,11 @@
 #Import-Module posh-git
+Import-Module ColorMode
+#Import-Module PSFzf
 
 if ($host.Name -eq 'ConsoleHost')
 {
-#  Import-Module PSReadLine
+  #Import-Module PSReadLine
+  #Set-PSReadLineOption -EditMode Vi
 }
 
 New-Alias -Name "ss" Select-String
@@ -41,7 +44,7 @@ Function AssociateFileExtensions
   foreach ($extension in $FileExtensions)
   {
     $fileType = (cmd /c "assoc $extension")
-    $fileType = (if ($fileType -ne $null) { $fileType } else { "" }).Split("=")
+    $fileType = $(if ($fileType -ne $null) { $fileType } else { "" }).Split("=")
 
     if ($fileType.Length -gt 1) {
       $fileType = $fileType[-1]
@@ -52,3 +55,5 @@ Function AssociateFileExtensions
     cmd /c "ftype $fileType=""$OpenAppPath"" ""%1"""
   }
 }
+
+$env:FZF_DEFAULT_COMMAND="fd --type f"

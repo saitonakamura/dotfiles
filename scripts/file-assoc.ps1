@@ -1,3 +1,4 @@
 $nvimPath = get-command nvim-qt.exe | % Source
-AssociateFileExtensions -FileExtensions ".log",".json" -OpenAppPath $nvimPath
+$nvimFiles = @(".log", ".json", ".csproj", ".txt", ".md", ".gitignore")
+AssociateFileExtensions -FileExtensions $nvimFiles -OpenAppPath $nvimPath
 
