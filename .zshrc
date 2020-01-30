@@ -104,7 +104,7 @@ alias zshreloadconfig="source ~/.zshrc"
 alias fd=fdfind
 
 nf() {
- fd --hidden --type f --exclude ".git" . "${1-.}" | fzf --preview "bat --style=numbers --color=always {} | head -100" 
+  nvim $(fd --hidden --type f --exclude ".git" . "${1-.}" | fzf --preview "bat --style=numbers --color=always {} | head -100")
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
