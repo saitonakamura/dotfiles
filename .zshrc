@@ -76,6 +76,7 @@ source $ZSH/oh-my-zsh.sh
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
+
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
@@ -88,6 +89,7 @@ fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
+export FZF_DEFAULT_COMMAND='fd --hidden'
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -99,5 +101,10 @@ fi
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias zshconfig="nvim ~/.zshrc"
 alias zshreloadconfig="source ~/.zshrc"
+alias fd=fdfind
+
+nf() {
+ fd --hidden --type f --exclude ".git" . "${1-.}" | fzf --preview "bat --style=numbers --color=always {} | head -100" 
+}
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
