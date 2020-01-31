@@ -21,7 +21,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'joshdick/onedark.vim'
 Plug 'tpope/vim-fugitive'
 
-if system == 'Macos' || system == 'Linux'
+if system == 'Macos'
   Plug '/usr/local/opt/fzf'
 else
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -31,11 +31,47 @@ Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
-set nu
+set number
+set clipboard=unnamed
+set termguicolors
 syntax on
+set expandtab
+set softtabstop=2
+set shiftwidth=2
+set nowrap
+set winblend=10
 set ignorecase
+let mapleader = ','
 set background=dark
-colorscheme onedark
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
-let g:airline_theme='deus'
+try
+  colorscheme onedark
+catch
+  colorscheme slate
+endtry
+
+try
+  let g:airline#extensions#tabline#enabled = 1
+  let g:airline_powerline_fonts = 1
+  let g:airline_theme='deus'
+  let g:airline#extensions#tabline#buffer_nr_show = 1
+catch
+  echo 'Airline is not installed, give :PlugInstall a try'
+endtry
+
+" Map Ctrl+s to save
+map <C-s> :write<CR>
+
+" Buffers
+map <leader>b] :bnext<CR>
+map <leader>b[ :bprevious<CR>
+map <silent> <leader>bd :bdelete<CR>
+map <silent> <leader>nb :Buffers<CR>
+
+map <silent> <leader>c :Commands<CR>
+" map <silent> <leader>nd :Cd<CR>
+map <silent> <leader>nf :FZF<CR>
+
+map <leader>[ <C-O>
+noremap <leader>] <C-I>
+
+command! ReloadConfig :source $MYVIMRC

@@ -1,13 +1,15 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+username=`id -un`
 # Path to your oh-my-zsh installation.
-export ZSH="/home/saito/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+DEFAULT_USER="$username"
 ZSH_THEME="agnoster"
 
 # Set list of themes to pick from when loading at random
@@ -103,6 +105,32 @@ alias zshconfig="nvim ~/.zshrc"
 alias zshreloadconfig="source ~/.zshrc"
 alias fd=fdfind
 
+unalias nd 2>/dev/null
+nd() {
+  cd $(fd --type d | fzf --preview "exa --long --header --color=always {} | head -100")
+}
+
+alias rgc='rg --no-heading --column'
+
+alias cfp='fd --type f --hidden | fzf --preview "bat --style=numbers --color=always {} | head -500" | pbcopy'
+
+alias cdp='fd --type d --hidden | fzf --preview "exa --long --header --color=always | head -100" | pbcopy'
+
+unalias gsb 2>/dev/null
+gsb() {
+  local branches branch branchForSwitch
+  branches=$(git branch --all | grep -v HEAD) &&
+  branch=$(echo "$branches" | fzf) &&
+  branchForSwitch=$(echo $branch | sed "s/.* //" | sed "s#remotes/[^/]*/##") &&
+  git switch $branchForSwitch
+}
+
+unalias ld 2>/dev/null
+ld() {
+  exa --long --header --all "$@"
+}
+
+unalias nf 2>/dev/null
 nf() {
   nvim $(fd --hidden --type f --exclude ".git" . "${1-.}" | fzf --preview "bat --style=numbers --color=always {} | head -100")
 }
