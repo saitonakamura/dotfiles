@@ -39,7 +39,12 @@ set expandtab
 set softtabstop=2
 set shiftwidth=2
 set nowrap
-set winblend=10
+
+try
+  set winblend=10
+catch
+endtry
+
 set ignorecase
 let mapleader = ','
 set background=dark
