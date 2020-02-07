@@ -70,14 +70,25 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+  git
+  zsh-syntax-highlighting
+  zsh-autosuggestions
+  ssh-agent
+)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
+system='unknown'
 
+#if [ "$(uname)" == 'Darwin' ]; then
+#  system='Macos'
+#else
+#  system='Linux'
+#fi
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -93,6 +104,10 @@ fi
 # export ARCHFLAGS="-arch x86_64"
 export FZF_DEFAULT_COMMAND='fd --hidden'
 
+export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
+
+export NVM_DIR="$HOME/.nvm"
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -101,20 +116,47 @@ export FZF_DEFAULT_COMMAND='fd --hidden'
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# SETUP
+
 alias zshconfig="nvim ~/.zshrc"
 alias zshreloadconfig="source ~/.zshrc"
-alias fd=fdfind
+
+if ! [ hash fd 2>/dev/null ]; then
+  alias fd=fdfind
+fi
+
+copy-and-link-dotfile() {
+  cp "$1" "$2" &&
+  ln -sfn "$2" "$1"
+}
+
+# SHOWING
+
+unalias ld 2>/dev/null
+ld() {
+  if hash exa 2>/dev/null; then
+    exa --long --header --all "$@"
+  else
+    ls -a -l -G -F "$@"
+  fi
+}
+
+# NAVIGATION
 
 unalias nd 2>/dev/null
 nd() {
-  cd $(fd --type d | fzf --preview "exa --long --header --color=always {} | head -100")
+  if hash exa 2>/dev/null; then
+    cd $(fd --type d | fzf --preview "exa --long --header --color=always {} | head -100")
+  else
+    cd $(fd --type d | fzf --preview "ls -a -l -G -F {} | head -100")
+  fi
 }
 
-alias rgc='rg --no-heading --column'
-
-alias cfp='fd --type f --hidden | fzf --preview "bat --style=numbers --color=always {} | head -500" | pbcopy'
-
-alias cdp='fd --type d --hidden | fzf --preview "exa --long --header --color=always | head -100" | pbcopy'
+unalias nf 2>/dev/null
+nf() {
+  nvim $(fd --hidden --type f --exclude ".git" . "${1-.}" | fzf --preview "bat --style=numbers --color=always {} | head -100")
+}
 
 unalias gsb 2>/dev/null
 gsb() {
@@ -125,14 +167,16 @@ gsb() {
   git switch $branchForSwitch
 }
 
-unalias ld 2>/dev/null
-ld() {
-  exa --long --header --all "$@"
-}
+# SEARCHING
 
-unalias nf 2>/dev/null
-nf() {
-  nvim $(fd --hidden --type f --exclude ".git" . "${1-.}" | fzf --preview "bat --style=numbers --color=always {} | head -100")
-}
+alias rgc='rg --no-heading --column'
+
+# COPYING
+
+alias cfp='fd --type f --hidden | fzf --preview "bat --style=numbers --color=always {} | head -500" | pbcopy'
+
+alias cdp='fd --type d --hidden | fzf --preview "exa --long --header --color=always | head -100" | pbcopy'
+
+# POSTSETUP
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
