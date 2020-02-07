@@ -81,6 +81,12 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+# HELPERS
+
+command_exists () {
+  type "$1" &> /dev/null ;
+}
+
 # export MANPATH="/usr/local/man:$MANPATH"
 system='unknown'
 
@@ -122,7 +128,8 @@ export NVM_DIR="$HOME/.nvm"
 alias zshconfig="nvim ~/.zshrc"
 alias zshreloadconfig="source ~/.zshrc"
 
-if ! [ hash fd 2>/dev/null ]; then
+if command_exists fd ; then
+else
   alias fd=fdfind
 fi
 
@@ -135,21 +142,26 @@ copy-and-link-dotfile() {
 
 unalias ld 2>/dev/null
 ld() {
-  if hash exa 2>/dev/null; then
+  if command_exists exa ; then
     exa --long --header --all "$@"
   else
     ls -a -l -G -F "$@"
   fi
 }
 
+unalias lf 2>/dev/null
+lf() {
+  fd --hidden --type f --exclude ".git" . "${1-.}" | fzf --preview "bat --style=numbers --color=always {} | head -100"
+}
+
 # NAVIGATION
 
 unalias nd 2>/dev/null
 nd() {
-  if hash exa 2>/dev/null; then
-    cd $(fd --type d | fzf --preview "exa --long --header --color=always {} | head -100")
+  if command_exists exa ; then
+    cd $(fd --type d --hidden | fzf --preview "exa --long --header --color=always {} | head -100")
   else
-    cd $(fd --type d | fzf --preview "ls -a -l -G -F {} | head -100")
+    cd $(fd --type d --hidden | fzf --preview "ls -a -l -G -F {} | head -100")
   fi
 }
 
