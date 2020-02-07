@@ -133,8 +133,10 @@ else
   alias fd=fdfind
 fi
 
-copy-and-link-dotfile() {
+turn-into-dotfile() {
+  cp "$1" "$1.back" &&
   cp "$1" "$2" &&
+  rm "$1" &&
   ln -sfn "$2" "$1"
 }
 
@@ -159,9 +161,9 @@ lf() {
 unalias nd 2>/dev/null
 nd() {
   if command_exists exa ; then
-    cd $(fd --type d --hidden | fzf --preview "exa --long --header --color=always {} | head -100")
+    cd "$(fd --type d --hidden | fzf --preview "exa --long --header --color=always {} | head -100")"
   else
-    cd $(fd --type d --hidden | fzf --preview "ls -a -l -G -F {} | head -100")
+    cd "$(fd --type d --hidden | fzf --preview "ls -a -l -G -F {} | head -100")"
   fi
 }
 

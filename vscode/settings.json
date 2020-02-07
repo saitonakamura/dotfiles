@@ -1,0 +1,215 @@
+{
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "workbench.iconTheme": "vscode-icons",
+    "editor.fontFamily": "'FiraCode-Retina', Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontLigatures": true,
+    "window.zoomLevel": 1,
+    "workbench.editor.showTabs": false,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "git.autofetch": true,
+    "vim.leader": ",",
+    "vim.useSystemClipboard": true,
+    "vim.normalModeKeyBindingsNonRecursive": [
+        // Go to
+        {
+            "before": [
+                "<leader>",
+                "g",
+                "r"
+            ],
+            "commands": [
+                "editor.action.goToReferences"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "g",
+                "d"
+            ],
+            "commands": [
+                "editor.action.revealDefinition"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "g",
+                "p"
+            ],
+            "commands": [
+                "editor.action.peekDefinition"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "g",
+                "t"
+            ],
+            "commands": [
+                "editor.action.goToTypeDefinition"
+            ]
+        },
+        // Show
+        {
+            "before": [
+                "<leader>",
+                "s",
+                "r"
+            ],
+            "commands": [
+                "editor.action.findReferences"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "b",
+                "d"
+            ],
+            "commands": [
+                "workbench.action.closeActiveEditor"
+            ]
+        },
+        // Misc
+        {
+            "before": [
+                "<leader>",
+                "w"
+            ],
+            "commands": [
+                "workbench.action.files.save"
+            ]
+        },
+        // Navigate to
+        {
+            "before": [
+                "<leader>",
+                "n",
+                "o"
+            ],
+            "commands": [
+                "workbench.files.action.focusOpenEditorsView"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "f"
+            ],
+            "commands": [
+                "workbench.action.quickOpen"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "c"
+            ],
+            "commands": [
+                "workbench.action.showCommands"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "s"
+            ],
+            "commands": [
+                "workbench.action.gotoSymbol"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "n",
+                "s"
+            ],
+            "commands": [
+                "workbench.action.showAllSymbols"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "n",
+                "e"
+            ],
+            "commands": [
+                "workbench.action.focusActiveEditorGroup"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "n",
+                "t"
+            ],
+            "commands": [
+                "workbench.action.terminal.focus"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "t",
+                "]"
+            ],
+            "commands": [
+                "workbench.action.terminal.focusNext"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "t",
+                "["
+            ],
+            "commands": [
+                "workbench.action.terminal.focusPrevious"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "]"
+            ],
+            "commands": [
+                "workbench.action.navigateForward"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "["
+            ],
+            "commands": [
+                "workbench.action.navigateBack"
+            ]
+        },
+        // Actions
+        {
+            "before": [
+                "<leader>",
+                "a",
+                "f"
+            ],
+            "commands": [
+                "editor.action.formatDocument"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "a",
+                "c",
+                "p"
+            ],
+            "commands": [
+                "copyRelativeFilePath"
+            ]
+        }
+    ]
+}
