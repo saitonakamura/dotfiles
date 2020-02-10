@@ -205,6 +205,7 @@ command! -nargs=* -complete=dir Cd call fzf#run(fzf#wrap(
 map <silent> <leader>c :Commands<CR>
 map <silent> <leader>nd :Cd<CR>
 map <silent> <leader>nf :FZF<CR>
+map <silent> <leader>f :FZF<CR>
 
 map <leader>[ <C-O>
 noremap <leader>] <C-I>
