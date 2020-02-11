@@ -210,6 +210,9 @@ map <silent> <leader>f :FZF<CR>
 map <leader>[ <C-O>
 noremap <leader>] <C-I>
 
+command! CopyCurrentFilePath let @+ = expand("%:p")
+map <silent> <leader>acp :CopyCurrentFilePath<CR>
+
 command! ReloadConfig :source $MYVIMRC
 
 function! CocInstallMine()
