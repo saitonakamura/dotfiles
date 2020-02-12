@@ -22,6 +22,8 @@ Plug 'joshdick/onedark.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'janko/vim-test'
+Plug 'tpope/vim-commentary'
 
 if system == 'Macos'
   Plug '/usr/local/opt/fzf'
