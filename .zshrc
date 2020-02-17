@@ -144,6 +144,14 @@ turn-into-dotfile() {
   ln -sfn "$2" "$1"
 }
 
+list-dirs() {
+  fd --hidden --type d --exclude ".git" . "${1-.}"
+}
+
+list-files() {
+  fd --hidden --type f --exclude ".git" . "${1-.}"
+}
+
 # SHOWING
 
 unalias ld 2>/dev/null
@@ -157,7 +165,7 @@ ld() {
 
 unalias lf 2>/dev/null
 lf() {
-  fd --hidden --type f --exclude ".git" . "${1-.}" | fzf --preview "bat --style=numbers --color=always {} | head -100"
+  list-files "$@" | fzf --preview "bat --style=numbers --color=always {} | head -100"
 }
 
 # NAVIGATION
@@ -165,15 +173,15 @@ lf() {
 unalias nd 2>/dev/null
 nd() {
   if command_exists exa ; then
-    cd "$(fd --type d --hidden | fzf --preview "exa --long --header --color=always {} | head -100")"
+    cd "$(list-dirs "$@" | fzf --preview "exa --long --header --color=always {} | head -100")"
   else
-    cd "$(fd --type d --hidden | fzf --preview "ls -a -l -G -F {} | head -100")"
+    cd "$(list-dirs "$@" | fzf --preview "ls -a -l -G -F {} | head -100")"
   fi
 }
 
 unalias nf 2>/dev/null
 nf() {
-  nvim $(fd --hidden --type f --exclude ".git" . "${1-.}" | fzf --preview "bat --style=numbers --color=always {} | head -100")
+  nvim "$(list-files "$@" | fzf --preview "bat --style=numbers --color=always {} | head -100")"
 }
 
 unalias gsb 2>/dev/null

@@ -147,8 +147,8 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " Remap for format selected region
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader>af  <Plug>(coc-format-selected)
+nmap <leader>af  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
@@ -208,6 +208,7 @@ map <silent> <leader>c :Commands<CR>
 map <silent> <leader>nd :Cd<CR>
 map <silent> <leader>nf :FZF<CR>
 map <silent> <leader>f :FZF<CR>
+map <silent> <leader>m :Maps<CR>
 
 map <leader>[ <C-O>
 noremap <leader>] <C-I>
@@ -224,4 +225,5 @@ function! CocInstallMine()
     \ coc-css
     \ coc-vimlsp
     \ coc-eslint
+    \ coc-prettier
 endfunction
