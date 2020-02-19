@@ -165,7 +165,7 @@ ld() {
 
 unalias lf 2>/dev/null
 lf() {
-  list-files "$@" | fzf --preview "bat --style=numbers --color=always {} | head -100"
+  list-files "$@" | fzf --preview "bat --style=numbers --color=always {} | head -500"
 }
 
 # NAVIGATION
@@ -181,7 +181,7 @@ nd() {
 
 unalias nf 2>/dev/null
 nf() {
-  nvim "$(list-files "$@" | fzf --preview "bat --style=numbers --color=always {} | head -100")"
+  nvim "$(list-files "$@" | fzf --preview "bat --style=numbers --color=always {} | head -500")"
 }
 
 unalias gsb 2>/dev/null

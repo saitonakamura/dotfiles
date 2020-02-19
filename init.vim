@@ -24,6 +24,8 @@ Plug 'scrooloose/nerdtree'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'janko/vim-test'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
 
 if system == 'Macos'
   Plug '/usr/local/opt/fzf'
@@ -145,6 +147,7 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
+nmap <leader>ar <Plug>(coc-rename)
 
 " Remap for format selected region
 xmap <leader>af  <Plug>(coc-format-selected)
@@ -197,6 +200,7 @@ map <silent><leader>w :write<CR>
 map <leader>b] :bnext<CR>
 map <leader>b[ :bprevious<CR>
 map <silent> <leader>bd :bdelete<CR>
+map <silent> <leader>bD :bdelete!<CR>
 map <silent> <leader>nb :Buffers<CR>
 
 command! -nargs=* -complete=dir Cd call fzf#run(fzf#wrap(
@@ -212,6 +216,9 @@ map <silent> <leader>m :Maps<CR>
 
 map <leader>[ <C-O>
 noremap <leader>] <C-I>
+
+nmap <silent> <leader>tt :TestNearest<CR>
+nmap <silent> <leader>tf :TestFile<CR>
 
 command! CopyCurrentFilePath let @+ = expand("%:p")
 map <silent> <leader>acp :CopyCurrentFilePath<CR>
