@@ -114,7 +114,11 @@ fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
-export FZF_DEFAULT_COMMAND='fd --hidden'
+if command_exists fd ; then
+  export FZF_DEFAULT_COMMAND='fd --hidden --exclude ".git"'
+else
+  export FZF_DEFAULT_COMMAND='fdfind --hidden --exclude ".git"'
+fi
 
 export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
 
