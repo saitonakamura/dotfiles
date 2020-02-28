@@ -2,33 +2,44 @@ set commentary
 set ignorecase
 set showmode
 set hlsearch
+set clipboard=unnamed
 
 let mapleader = ','
 
+" NAVIGATION
 nmap <leader>[ :action Back<CR>
 nmap <leader>] :action Forward<CR>
 nmap <leader>b[ :action PreviousEditorTab<CR>
 nmap <leader>b[ :action NextEditorTab<CR>
 nmap <silent>bd :action CloseActiveTab<CR>
-nmap <leader>d[ :action GoToPreviousError<CR>
-nmap <leader>d] :action GoToNextError<CR>
+nmap <leader>d[ :action GotoPreviousError<CR>
+nmap <leader>d] :action GotoNextError<CR>
+nmap <leader>nc :action GotoTerminal<CR>
 
-nmap <silent> <leader>gd :action GoToDeclaration<CR>
-nmap <silent> <leader>gt :action GoToTypeDeclaration<CR>
-nmap <silent> <leader>gi :action GoToImplementation<CR>
+" GOTO
+nmap <silent> <leader>gd :action GotoDeclaration<CR>
+nmap <silent> <leader>gt :action GotoTypeDeclaration<CR>
+nmap <silent> <leader>gi :action GotoImplementation<CR>
 nmap <silent> <leader>gr :action ShowUsages<CR>
-nmap <silent> <leader>gs :action GoToSymbol<CR>
+nmap <silent> <leader>gs :action GotoSymbol<CR>
+
+" nmap <silent> <leader>c :action ?
+nmap <silent> <leader>f :action GotoFile<CR>
+nmap <silent> <leader>e :action SearchEverywhere<CR>
 
 " nmap <silent> <leader>k :action ?
 
+" FORMAT FIXES REFACTORINGS
 nmap <silent> <leader>ar :action RenameElement<CR>
-nmap <silent> <leader>am :action RefactoringMenu<CR>
+nmap <silent> <leader>am :action QuickActionPopup<CR>
 nmap <silent> <leader>af :action ReformatCode<CR>
 " nmap <silent> <leader>al :action
 
-" nmap <silent> <leader>c :action ?
-nmap <silent> <leader>f :action GoToFile<CR>
-
+" FILES
 nmap <silent> <leader>w :action SaveDocument<CR>
 nmap <silent> <leader>W :action SaveAll<CR>
+
+" TESTS
+nmap <silent> <leader>tt :action RunContextGroup<CR>
+nmap <silent> <leader>tf :action RerunTest<CR>
 

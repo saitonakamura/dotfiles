@@ -189,6 +189,9 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " use `:OR` for organize import of current buffer
 command! -nargs=0 OrganizeImports   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
+command! -bang -nargs=* RipGrep :call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case --sort=path".<q-args>, 1, <bang>0)
+nmap <silent> <leader>ng :RipGrep
+
 " Add status line support, for integration with other plugin, checkout `:h coc-status`
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
@@ -223,7 +226,12 @@ nmap <silent> <leader>tf :TestFile<CR>
 command! CopyCurrentFilePath let @+ = expand("%:p")
 map <silent> <leader>acp :CopyCurrentFilePath<CR>
 
+nmap <leader>nt[ :tabprevious<CR>
+nmap <leader>nt] :tabnext<CR>
+
 command! ReloadConfig :source $MYVIMRC
+
+command! GoToCurrentFileDir :edit %:p:h
 
 function! CocInstallMine()
   :CocInstall
