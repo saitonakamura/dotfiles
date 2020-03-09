@@ -1,4 +1,5 @@
 set commentary
+set surround
 set ignorecase
 set showmode
 set hlsearch
@@ -14,32 +15,56 @@ nmap <leader>b[ :action NextEditorTab<CR>
 nmap <silent>bd :action CloseActiveTab<CR>
 nmap <leader>d[ :action GotoPreviousError<CR>
 nmap <leader>d] :action GotoNextError<CR>
-nmap <leader>nc :action GotoTerminal<CR>
+
+nmap <leader>nt :action ActivateTerminalToolWindow<CR>
+nmap <leader>np :action SelectInProjectView<CR>
 
 " GOTO
 nmap <silent> <leader>gd :action GotoDeclaration<CR>
 nmap <silent> <leader>gt :action GotoTypeDeclaration<CR>
 nmap <silent> <leader>gi :action GotoImplementation<CR>
-nmap <silent> <leader>gr :action ShowUsages<CR>
+nmap <silent> <leader>gr :action FindUsages<CR>
 nmap <silent> <leader>gs :action GotoSymbol<CR>
 
-" nmap <silent> <leader>c :action ?
+nmap <silent> <leader>c :action GotoAction<CR>
 nmap <silent> <leader>f :action GotoFile<CR>
 nmap <silent> <leader>e :action SearchEverywhere<CR>
 
-" nmap <silent> <leader>k :action ?
+" PREVIEW
+nmap <silent> <leader>k :action QuickJavaDoc<CR>
+nmap <silent> <leader>pd :action QuickImplementations<CR>
+nmap <silent> <leader>pr :action ShowUsages<CR>
 
 " FORMAT FIXES REFACTORINGS
 nmap <silent> <leader>ar :action RenameElement<CR>
-nmap <silent> <leader>am :action QuickActionPopup<CR>
+nmap <silent> <leader>am :action ShowIntentionActions<CR>
 nmap <silent> <leader>af :action ReformatCode<CR>
+nmap <silent> <leader>ap :action ReformatWithPrettierAction<CR>
 " nmap <silent> <leader>al :action
+
+nmap <silent> <leader>rr :action RenameElement<CR>
+nmap <silent> <leader>rm :action Move<CR>
+nmap <silent> <leader>rv :action IntroduceVariable<CR>
+nmap <silent> <leader>ri :action Inline<CR>
+nmap <silent> <leader>rf :action ExtractMethod<CR>
+nmap <silent> <leader>rp :action IntroduceParameter<CR>
 
 " FILES
 nmap <silent> <leader>w :action SaveDocument<CR>
 nmap <silent> <leader>W :action SaveAll<CR>
 
 " TESTS
-nmap <silent> <leader>tt :action RunContextGroup<CR>
-nmap <silent> <leader>tf :action RerunTest<CR>
+nmap <silent> <leader>tt :action RunClass<CR>
+nmap <silent> <leader>td :action DebugClass<CR>
+nmap <silent> <leader>tr :action RerunTest<CR>
 
+" GIT
+nmap <silent> <leader>vs :action Git.Branches<CR>
+nmap <silent> <leader>vS :action Git.CreateNewBranch<CR>
+nmap <silent> <leader>vc :action CheckinProject<CR>
+nmap <silent> <leader>vp :action Vcs.Push<CR>
+nmap <silent> <leader>vP :action Vcs.Force.Push<CR>
+nmap <silent> <leader>vb :action Annotate<CR>
+
+" HELP
+nmap <silent> <leader>h :actionlist
