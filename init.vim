@@ -60,7 +60,7 @@ catch
 endtry
 
 set ignorecase
-let mapleader = ','
+let mapleader = ' '
 
 let g:NERDTreeShowHidden = 1
 

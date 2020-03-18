@@ -5,19 +5,28 @@ set showmode
 set hlsearch
 set clipboard=unnamed
 
-let mapleader = ','
+let mapleader = ' '
 
 " NAVIGATION
-nmap <leader>[ :action Back<CR>
-nmap <leader>] :action Forward<CR>
-nmap <leader>b[ :action PreviousEditorTab<CR>
-nmap <leader>b[ :action NextEditorTab<CR>
-nmap <silent>bd :action CloseActiveTab<CR>
+nnoremap <leader>[ :action Back<CR>
+nnoremap <C-o> :action Back<CR>
+nnoremap g<C-o> <C-o>
+nnoremap <leader>] :action Forward<CR>
+nnoremap <C-i> :action Forward<CR>
+nnoremap g<C-i> <C-i>
+
+nmap <leader>b[ :action PreviousTab<CR>
+nmap <leader>b] :action NextTab<CR>
+nmap <silent> <leader>bd :action CloseActiveTab<CR>
+nmap <silent> <C-w>q :action CloseActiveTab<CR>
+nmap <silent> <leader>bm :action EditorTasdabPopupMenu<CR>
+
 nmap <leader>d[ :action GotoPreviousError<CR>
 nmap <leader>d] :action GotoNextError<CR>
 
-nmap <leader>nt :action ActivateTerminalToolWindow<CR>
-nmap <leader>np :action SelectInProjectView<CR>
+nmap <silent> <leader>nt :action ActivateTerminalToolWindow<CR>
+nmap <silent> <leader>np :action SelectInProjectView<CR>
+nnoremap <silent> <leader>nb :action RecentFiles<CR>
 
 " GOTO
 nmap <silent> <leader>gd :action GotoDeclaration<CR>
@@ -25,6 +34,7 @@ nmap <silent> <leader>gt :action GotoTypeDeclaration<CR>
 nmap <silent> <leader>gi :action GotoImplementation<CR>
 nmap <silent> <leader>gr :action FindUsages<CR>
 nmap <silent> <leader>gs :action GotoSymbol<CR>
+nmap <silent> <leader>gu :action GotoTest<CR>
 
 nmap <silent> <leader>c :action GotoAction<CR>
 nmap <silent> <leader>f :action GotoFile<CR>
@@ -34,6 +44,8 @@ nmap <silent> <leader>e :action SearchEverywhere<CR>
 nmap <silent> <leader>k :action QuickJavaDoc<CR>
 nmap <silent> <leader>pd :action QuickImplementations<CR>
 nmap <silent> <leader>pr :action ShowUsages<CR>
+nnoremap <silent> <leader>pb :action RecentLocations<CR>
+nnoremap <silent> <leader>ps :action FileStructurePopup<CR>
 
 " FORMAT FIXES REFACTORINGS
 nmap <silent> <leader>ar :action RenameElement<CR>
@@ -65,6 +77,19 @@ nmap <silent> <leader>vc :action CheckinProject<CR>
 nmap <silent> <leader>vp :action Vcs.Push<CR>
 nmap <silent> <leader>vP :action Vcs.Force.Push<CR>
 nmap <silent> <leader>vb :action Annotate<CR>
+nmap <silent> <leader>vl :action Git.Pull<CR>
 
 " HELP
-nmap <silent> <leader>h :actionlist
+nmap <silent> <leader>h :actionlist<space>
+
+" ETC
+nnoremap <leader>/ :nohlsearch<CR>
+nnoremap / :action Find<CR>
+nnoremap g/ /
+
+" DEBUG
+nnoremap <silent> <leader>db :action ToggleLineBreakPoint<CR>
+nnoremap <silent> <leader>do :action StepOver<CR>
+nnoremap <silent> <leader>di :action StepInto<CR>
+nnoremap <silent> <leader>ds :action SmartStepInto<CR>
+nnoremap <silent> <leader>du :action StepOut<CR>
