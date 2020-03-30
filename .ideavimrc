@@ -15,30 +15,30 @@ nnoremap <leader>] :action Forward<CR>
 nnoremap <C-i> :action Forward<CR>
 nnoremap g<C-i> <C-i>
 
-nmap <leader>b[ :action PreviousTab<CR>
-nmap <leader>b] :action NextTab<CR>
-nmap <silent> <leader>bd :action CloseActiveTab<CR>
-nmap <silent> <C-w>q :action CloseActiveTab<CR>
-nmap <silent> <leader>bm :action EditorTasdabPopupMenu<CR>
+nnoremap <leader>b[ :action PreviousTab<CR>
+nnoremap <leader>b] :action NextTab<CR>
+nnoremap <silent> <leader>bd :action CloseActiveTab<CR>
+nnoremap <silent> <C-w>q :action CloseActiveTab<CR>
+nnoremap <silent> <leader>bm :action EditorTabsPopupMenu<CR>
 
-nmap <leader>d[ :action GotoPreviousError<CR>
-nmap <leader>d] :action GotoNextError<CR>
+nnoremap <leader>d[ :action GotoPreviousError<CR>
+nnoremap <leader>d] :action GotoNextError<CR>
 
-nmap <silent> <leader>nt :action ActivateTerminalToolWindow<CR>
-nmap <silent> <leader>np :action SelectInProjectView<CR>
+nnoremap <silent> <leader>nt :action ActivateTerminalToolWindow<CR>
+nnoremap <silent> <leader>np :action SelectInProjectView<CR>
 nnoremap <silent> <leader>nb :action RecentFiles<CR>
 
 " GOTO
-nmap <silent> <leader>gd :action GotoDeclaration<CR>
-nmap <silent> <leader>gt :action GotoTypeDeclaration<CR>
-nmap <silent> <leader>gi :action GotoImplementation<CR>
-nmap <silent> <leader>gr :action FindUsages<CR>
-nmap <silent> <leader>gs :action GotoSymbol<CR>
-nmap <silent> <leader>gu :action GotoTest<CR>
+nnoremap <silent> <leader>gd :action GotoDeclaration<CR>
+nnoremap <silent> <leader>gt :action GotoTypeDeclaration<CR>
+nnoremap <silent> <leader>gi :action GotoImplementation<CR>
+nnoremap <silent> <leader>gr :action FindUsages<CR>
+nnoremap <silent> <leader>gs :action GotoSymbol<CR>
+nnoremap <silent> <leader>gu :action GotoTest<CR>
 
-nmap <silent> <leader>c :action GotoAction<CR>
-nmap <silent> <leader>f :action GotoFile<CR>
-nmap <silent> <leader>e :action SearchEverywhere<CR>
+nnoremap <silent> <leader>c :action GotoAction<CR>
+nnoremap <silent> <leader>f :action GotoFile<CR>
+nnoremap <silent> <leader>e :action SearchEverywhere<CR>
 
 " PREVIEW
 nmap <silent> <leader>k :action QuickJavaDoc<CR>
@@ -49,9 +49,11 @@ nnoremap <silent> <leader>ps :action FileStructurePopup<CR>
 
 " FORMAT FIXES REFACTORINGS
 nmap <silent> <leader>ar :action RenameElement<CR>
-nmap <silent> <leader>am :action ShowIntentionActions<CR>
+nnoremap <silent> <leader>am :action ShowIntentionActions<CR>
+vnoremap <silent> <leader>am :action ShowIntentionActions<CR>
 nmap <silent> <leader>af :action ReformatCode<CR>
 nmap <silent> <leader>ap :action ReformatWithPrettierAction<CR>
+vmap <silent> <leader>ap :action ReformatWithPrettierAction<CR>
 " nmap <silent> <leader>al :action
 
 nmap <silent> <leader>rr :action RenameElement<CR>
@@ -78,6 +80,7 @@ nmap <silent> <leader>vp :action Vcs.Push<CR>
 nmap <silent> <leader>vP :action Vcs.Force.Push<CR>
 nmap <silent> <leader>vb :action Annotate<CR>
 nmap <silent> <leader>vl :action Git.Pull<CR>
+nmap <silent> <leader>vf :action Git.Fetch<CR>
 
 " HELP
 nmap <silent> <leader>h :actionlist<space>
