@@ -86,14 +86,14 @@ endtry
 " if hidden is not set, TextEdit might fail.
 set hidden
 
+" \ 'typescript': ['typescript-language-server', '--stdio'],
 let g:LanguageClient_serverCommands = {
-  " \ 'typescript': ['/usr/local/bin/typescript-language-server', '--stdio'],
-  \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
-  \ 'typescript': ['/usr/local/bin/javascript-typescript-stdio'],
+  \ 'javascript': ['javascript-typescript-stdio'],
+  \ 'typescript': ['javascript-typescript-stdio'],
   \ 'reason': ['~/lsp/reason-language-server/reason-language-server'],
-  \ 'vim': ['/usr/local/bin/vim-language-server', '--stdio'],
-  \ 'css': ['/usr/local/bin/vscode-css-languageserver-bin', '--stdio'],
-  \ 'dockerfile': ['/usr/local/bin/dockerfile-language-server-nodejs', '--stdio'],
+  \ 'vim': ['vim-language-server', '--stdio'],
+  \ 'css': ['vscode-css-languageserver-bin', '--stdio'],
+  \ 'dockerfile': ['dockerfile-language-server-nodejs', '--stdio'],
   \ }
 
 " Some servers have issues with backup files, see #649
