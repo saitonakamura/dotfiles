@@ -87,10 +87,12 @@ endtry
 set hidden
 
 " \ 'typescript': ['typescript-language-server', '--stdio'],
+" \ 'reason': ['~/lsp/reason-language-server/reason-language-server'],
 let g:LanguageClient_serverCommands = {
   \ 'javascript': ['javascript-typescript-stdio'],
   \ 'typescript': ['javascript-typescript-stdio'],
-  \ 'reason': ['~/lsp/reason-language-server/reason-language-server'],
+  \ 'reason': ['ocaml-language-server', '--stdio'],
+  \ 'ocaml': ['ocaml-language-server', '--stdio'],
   \ 'vim': ['vim-language-server', '--stdio'],
   \ 'css': ['vscode-css-languageserver-bin', '--stdio'],
   \ 'dockerfile': ['dockerfile-language-server-nodejs', '--stdio'],
@@ -302,12 +304,13 @@ nnoremap <silent> <leader>tf :TestFile<CR>
 " GIT
 " nnoremap <silent> <leader>vs :action Git.Branches<CR>
 " nnoremap <silent> <leader>vS :action Git.CreateNewBranch<CR>
-nnoremap <silent> <leader>vc :GCommit<CR>
-nnoremap <silent> <leader>vp :GPush<CR>
-" nnoremap <silent> <leader>vP :GPush!<CR>
-nnoremap <silent> <leader>vb :GBlame<CR>
-nnoremap <silent> <leader>vl :GPull<CR>
-nnoremap <silent> <leader>vf :GFetch<CR>
+nnoremap <silent> <leader>vc :Gcommit<CR>
+nnoremap <silent> <leader>vs :G<CR>
+nnoremap <silent> <leader>vp :Gpush<CR>
+" nnoremap <silent> <leader>vP :Gpush!<CR>
+nnoremap <silent> <leader>vb :Gblame<CR>
+nnoremap <silent> <leader>vl :Gpull<CR>
+nnoremap <silent> <leader>vf :Gfetch<CR>
 
 " HELP
 " nmap <silent> <leader>h :actionlist<space>
