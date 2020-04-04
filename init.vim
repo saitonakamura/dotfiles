@@ -19,6 +19,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'joshdick/onedark.vim'
+Plug 'sonph/onehalf'
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -42,12 +43,68 @@ Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
+" Use `:Format` to format current buffer
+" command! -nargs=0 Format :call CocAction('format')
+
+" Use `:Fold` to fold current buffer
+" command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" use `:OR` for organize import of current buffer
+" command! -nargs=0 OrganizeImports   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" command! -bang -nargs=* RipGrep :call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case --sort=path".<q-args>, 1, <bang>0)
+" nmap <silent> <leader>ng :RipGrep
+
+" Add status line support, for integration with other plugin, checkout `:h coc-status`
+" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" command! -nargs=* -complete=dir Cd call fzf#run(fzf#wrap(
+"   \ {'source': 'fd --type d . /',
+"   \  'sink': 'cd'}))
+command! CopyCurrentFilePath let @+ = expand("%:p")
+
+command! ReloadConfig :source $MYVIMRC
+
+command! GoToCurrentFileDir :edit %:p:h
+
+" function! CocInstallMine()
+"   :CocInstall
+"     \ coc-json
+"     \ coc-tsserver
+"     \ coc-css
+"     \ coc-vimlsp
+"     \ coc-eslint
+"     \ coc-prettier
+" endfunction
+
+function SetLightTheme()
+  set background=light
+  colorscheme zellner
+  let g:airline_theme='light'
+  AirlineTheme light
+endfunction
+
+function SetDarkTheme()
+  set background=dark
+  " colorscheme onehalflight
+  colorscheme onedark
+  " let g:airline_theme='onehalfdark'
+  let g:airline_theme='deus'
+  AirlineTheme deus
+endfunction
+
+command! SetLightTheme :call SetLightTheme()
+command! SetDarkTheme :call SetDarkTheme()
+
 set termguicolors
 syntax on
 
 set background=dark
 try
+  " colorscheme onehalflight
   colorscheme onedark
+  " let g:airline_theme='onehalfdark'
+  let g:airline_theme='deus'
 catch
   colorscheme slate
 endtry
@@ -86,15 +143,27 @@ endtry
 " if hidden is not set, TextEdit might fail.
 set hidden
 
-" \ 'typescript': ['typescript-language-server', '--stdio'],
-" \ 'reason': ['~/lsp/reason-language-server/reason-language-server'],
+
+  " \ 'javascript': ['typescript-language-server', '--stdio'],
+  " \ 'javascriptreact': ['typescript-language-server', '--stdio'],
+  " \ 'typescript': ['typescript-language-server', '--stdio'],
+  " \ 'typescriptreact': ['typescript-language-server', '--stdio'],
+
+  " \ 'javascript': ['javascript-typescript-stdio'],
+  " \ 'typescript': ['javascript-typescript-stdio'],
+  " \ 'javascript': ['typescript-language-server', '--stdio'],
+  " \ 'typescript': ['typescript-language-server', '--stdio'],
+  " \ 'reason': ['~/lsp/reason-language-server/reason-language-server'],
 let g:LanguageClient_serverCommands = {
   \ 'javascript': ['javascript-typescript-stdio'],
+  \ 'javascriptreact': ['javascript-typescript-stdio'],
   \ 'typescript': ['javascript-typescript-stdio'],
+  \ 'typescriptreact': ['javascript-typescript-stdio'],
   \ 'reason': ['ocaml-language-server', '--stdio'],
   \ 'ocaml': ['ocaml-language-server', '--stdio'],
   \ 'vim': ['vim-language-server', '--stdio'],
-  \ 'css': ['vscode-css-languageserver-bin', '--stdio'],
+  \ 'css': ['css-languageserver', '--stdio'],
+  \ 'scss': ['css-languageserver', '--stdio'],
   \ 'dockerfile': ['dockerfile-language-server-nodejs', '--stdio'],
   \ }
 
@@ -197,39 +266,6 @@ set signcolumn=yes
 "nmap <silent> <TAB> <Plug>(coc-range-select)
 "xmap <silent> <TAB> <Plug>(coc-range-select)
 
-" Use `:Format` to format current buffer
-" command! -nargs=0 Format :call CocAction('format')
-
-" Use `:Fold` to fold current buffer
-" command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
-" use `:OR` for organize import of current buffer
-" command! -nargs=0 OrganizeImports   :call     CocAction('runCommand', 'editor.action.organizeImport')
-
-" command! -bang -nargs=* RipGrep :call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case --sort=path".<q-args>, 1, <bang>0)
-" nmap <silent> <leader>ng :RipGrep
-
-" Add status line support, for integration with other plugin, checkout `:h coc-status`
-" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
-" command! -nargs=* -complete=dir Cd call fzf#run(fzf#wrap(
-"   \ {'source': 'fd --type d . /',
-"   \  'sink': 'cd'}))
-command! CopyCurrentFilePath let @+ = expand("%:p")
-
-command! ReloadConfig :source $MYVIMRC
-
-command! GoToCurrentFileDir :edit %:p:h
-
-" function! CocInstallMine()
-"   :CocInstall
-"     \ coc-json
-"     \ coc-tsserver
-"     \ coc-css
-"     \ coc-vimlsp
-"     \ coc-eslint
-"     \ coc-prettier
-" endfunction
 
 " NAVIGATION
 nnoremap <leader>[ <C-o>
