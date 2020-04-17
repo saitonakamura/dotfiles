@@ -8,169 +8,10 @@
     "workbench.editor.showTabs": false,
     "diffEditor.ignoreTrimWhitespace": false,
     "git.autofetch": true,
-    "vim.leader": ",",
+    "vim.leader": " ",
     "vim.useSystemClipboard": true,
     "vim.normalModeKeyBindingsNonRecursive": [
-        // Go to
-        {
-            "before": [
-                "<leader>",
-                "g",
-                "r"
-            ],
-            "commands": [
-                "editor.action.goToReferences"
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "g",
-                "d"
-            ],
-            "commands": [
-                "editor.action.revealDefinition"
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "g",
-                "p"
-            ],
-            "commands": [
-                "editor.action.peekDefinition"
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "g",
-                "t"
-            ],
-            "commands": [
-                "editor.action.goToTypeDefinition"
-            ]
-        },
-        // Show
-        {
-            "before": [
-                "<leader>",
-                "s",
-                "r"
-            ],
-            "commands": [
-                "editor.action.findReferences"
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "b",
-                "d"
-            ],
-            "commands": [
-                "workbench.action.closeActiveEditor"
-            ]
-        },
-        // Misc
-        {
-            "before": [
-                "<leader>",
-                "w"
-            ],
-            "commands": [
-                "workbench.action.files.save"
-            ]
-        },
         // Navigate to
-        {
-            "before": [
-                "<leader>",
-                "n",
-                "o"
-            ],
-            "commands": [
-                "workbench.files.action.focusOpenEditorsView"
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "f"
-            ],
-            "commands": [
-                "workbench.action.quickOpen"
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "c"
-            ],
-            "commands": [
-                "workbench.action.showCommands"
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "s"
-            ],
-            "commands": [
-                "workbench.action.gotoSymbol"
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "n",
-                "s"
-            ],
-            "commands": [
-                "workbench.action.showAllSymbols"
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "n",
-                "e"
-            ],
-            "commands": [
-                "workbench.action.focusActiveEditorGroup"
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "n",
-                "t"
-            ],
-            "commands": [
-                "workbench.action.terminal.focus"
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "t",
-                "]"
-            ],
-            "commands": [
-                "workbench.action.terminal.focusNext"
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "t",
-                "["
-            ],
-            "commands": [
-                "workbench.action.terminal.focusPrevious"
-            ]
-        },
         {
             "before": [
                 "<leader>",
@@ -189,7 +30,226 @@
                 "workbench.action.navigateBack"
             ]
         },
-        // Actions
+        {
+            "before": [
+                "<leader>",
+                "b",
+                "]"
+            ],
+            "commands": [
+                "workbench.action.previousEditor"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "b",
+                "["
+            ],
+            "commands": [
+                "workbench.action.nextEditor"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "b",
+                "d"
+            ],
+            "commands": [
+                "workbench.action.closeActiveEditor"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "d",
+                "]"
+            ],
+            "commands": [
+                "editor.action.marker.previous"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "d",
+                "["
+            ],
+            "commands": [
+                "editor.action.marker.next"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "n",
+                "t"
+            ],
+            "commands": [
+                "workbench.action.terminal.focus"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "n",
+                "p"
+            ],
+            "commands": [
+                "workbench.files.action.focusFilesExplorer"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "n",
+                "b"
+            ],
+            "commands": [
+                "workbench.files.action.focusOpenEditorsView"
+            ]
+        },
+        // GOTO
+        {
+            "before": [
+                "<leader>",
+                "g",
+                "d"
+            ],
+            "commands": [
+                "editor.action.revealDefinition"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "g",
+                "t"
+            ],
+            "commands": [
+                "editor.action.goToTypeDefinition"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "g",
+                "i"
+            ],
+            "commands": [
+                "editor.action.goToImplementation"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "g",
+                "r"
+            ],
+            "commands": [
+                "editor.action.goToReferences"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "g",
+                "s"
+            ],
+            "commands": [
+                "editor.action.gotoSymbol"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "c"
+            ],
+            "commands": [
+                "workbench.action.showCommands"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "f"
+            ],
+            "commands": [
+                "workbench.action.quickOpen"
+            ]
+        },
+        // {
+        //     "before": [
+        //         "<leader>",
+        //         "n",
+        //         "e"
+        //     ],
+        //     "commands": [
+        //         "workbench.action.focusActiveEditorGroup"
+        //     ]
+        // },
+        // PREVIEW
+        {
+            "before": [
+                "<leader>",
+                "k"
+            ],
+            "commands": [
+                "workbench.action.showHover"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "p",
+                "d"
+            ],
+            "commands": [
+                "editor.action.peekDefinition"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "p",
+                "r"
+            ],
+            "commands": [
+                "editor.action.findReferences"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "p",
+                "s"
+            ],
+            "commands": [
+                "workbench.action.showAllSymbols"
+            ]
+        },
+        // FORMAT FIXES REFACTORINGS
+        {
+            "before": [
+                "<leader>",
+                "a",
+                "r"
+            ],
+            "commands": [
+                "editor.action.rename"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "a",
+                "m"
+            ],
+            "commands": [
+                "editor.action.quickFix"
+            ]
+        },
         {
             "before": [
                 "<leader>",
@@ -203,6 +263,91 @@
         {
             "before": [
                 "<leader>",
+                "r",
+                "r"
+            ],
+            "commands": [
+                "editor.action.rename"
+            ]
+        },
+        // FILES
+        {
+            "before": [
+                "<leader>",
+                "w"
+            ],
+            "commands": [
+                "workbench.action.files.save"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "W"
+            ],
+            "commands": [
+                "workbench.action.files.saveAll"
+            ]
+        },
+        // TESTS
+        // GIT
+        {
+            "before": [
+                "<leader>",
+                "vs"
+            ],
+            "commands": [
+                "git.checkout"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "vS"
+            ],
+            "commands": [
+                "git.branch"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "vg"
+            ],
+            "commands": [
+                "workbench.view.scm"
+            ]
+        },
+        // ETC
+        {
+            "before": [
+                "<leader>",
+                "/",
+            ],
+            "commands": [
+                ":nohlsearch"
+            ]
+        },
+        {
+            "before": [
+                "/",
+            ],
+            "commands": [
+                "actions.find"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "/"
+            ],
+            "commands": [
+                "/"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
                 "a",
                 "c",
                 "p"
@@ -210,6 +355,30 @@
             "commands": [
                 "copyRelativeFilePath"
             ]
-        }
-    ]
+        },
+    ],
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.tabSize": 2
+    },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.tabSize": 2
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.tabSize": 2
+    },
+    "[javascriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.tabSize": 2
+    },
+    "[css]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.tabSize": 2
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.tabSize": 2
+    }
 }

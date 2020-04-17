@@ -158,8 +158,8 @@ list-files() {
 
 # SHOWING
 
-unalias ld 2>/dev/null
-ld() {
+unalias pd 2>/dev/null
+pd() {
   if command_exists exa ; then
     exa --long --header --all "$@"
   else
@@ -167,8 +167,8 @@ ld() {
   fi
 }
 
-unalias lf 2>/dev/null
-lf() {
+unalias pf 2>/dev/null
+pf() {
   list-files "$@" | fzf --preview "bat --style=numbers --color=always {} | head -500"
 }
 

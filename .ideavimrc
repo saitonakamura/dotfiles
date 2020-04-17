@@ -91,7 +91,7 @@ nnoremap / :action Find<CR>
 nnoremap g/ /
 
 " DEBUG
-nnoremap <silent> <leader>db :action ToggleLineBreakPoint<CR>
+nnoremap <silent> <leader>db :action ToggleLineBreakpoint<CR>
 nnoremap <silent> <leader>do :action StepOver<CR>
 nnoremap <silent> <leader>di :action StepInto<CR>
 nnoremap <silent> <leader>ds :action SmartStepInto<CR>

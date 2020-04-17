@@ -144,27 +144,28 @@ endtry
 set hidden
 
 
+  " \ 'javascript': ['javascript-typescript-stdio'],
+  " \ 'javascriptreact': ['javascript-typescript-stdio'],
+  " \ 'typescript': ['javascript-typescript-stdio'],
+  " \ 'typescriptreact': ['javascript-typescript-stdio'],
+
   " \ 'javascript': ['typescript-language-server', '--stdio'],
   " \ 'javascriptreact': ['typescript-language-server', '--stdio'],
   " \ 'typescript': ['typescript-language-server', '--stdio'],
   " \ 'typescriptreact': ['typescript-language-server', '--stdio'],
-
-  " \ 'javascript': ['javascript-typescript-stdio'],
-  " \ 'typescript': ['javascript-typescript-stdio'],
-  " \ 'javascript': ['typescript-language-server', '--stdio'],
-  " \ 'typescript': ['typescript-language-server', '--stdio'],
+  
   " \ 'reason': ['~/lsp/reason-language-server/reason-language-server'],
 let g:LanguageClient_serverCommands = {
-  \ 'javascript': ['javascript-typescript-stdio'],
-  \ 'javascriptreact': ['javascript-typescript-stdio'],
-  \ 'typescript': ['javascript-typescript-stdio'],
-  \ 'typescriptreact': ['javascript-typescript-stdio'],
+  \ 'javascript': ['typescript-language-server', '--stdio'],
+  \ 'javascriptreact': ['typescript-language-server', '--stdio'],
+  \ 'typescript': ['typescript-language-server', '--stdio'],
+  \ 'typescriptreact': ['typescript-language-server', '--stdio'],
   \ 'reason': ['ocaml-language-server', '--stdio'],
   \ 'ocaml': ['ocaml-language-server', '--stdio'],
   \ 'vim': ['vim-language-server', '--stdio'],
   \ 'css': ['css-languageserver', '--stdio'],
   \ 'scss': ['css-languageserver', '--stdio'],
-  \ 'dockerfile': ['dockerfile-language-server-nodejs', '--stdio'],
+  \ 'dockerfile': ['dockerfile-langserver', '--stdio'],
   \ }
 
 " Some servers have issues with backup files, see #649
