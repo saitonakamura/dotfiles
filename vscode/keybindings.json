@@ -26,7 +26,27 @@
         "when": "terminalFocus"
     },
     {
+        "key": "shift+ctrl+up",
+        "command": "workbench.action.toggleMaximizedPanel",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "shift+ctrl+down",
+        "command": "workbench.action.toggleMaximizedPanel",
+        "when": "terminalFocus"
+    },
+    {
         "key": "cmd+, n e",
         "command": "workbench.files.action.focusOpenEditorsView"
+    },
+    {
+        "key": "shift+ctrl+space",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "shift+cmd+space",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "terminalFocus"
     }
 ]
