@@ -12,6 +12,8 @@ function Open-File-Fzf([string] $Path = ".", [string] $Editor = "nvim-qt.exe") {
 
 Set-Alias -Name nf -Value Open-File-Fzf -Force
 
+Set-Alias -Name pd -Value Get-ChildItem -Force
+
 # Git
 
 # Set-Alias -Name gd -Value "git diff"

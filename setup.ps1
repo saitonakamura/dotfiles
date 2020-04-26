@@ -20,3 +20,12 @@ New-Item -Item SymbolicLink -Force `
 New-Item -Item SymbolicLink -Force `
     -Target (Resolve-Path ".\Powershell_profile.ps1") `
     -Path "$profile"
+
+
+New-Item -Item SymbolicLink -Force `
+    -Target (Resolve-Path ".\vscode\settings.json") `
+    -Path "~\AppData\Roaming\Code\User\settings.json"
+
+New-Item -Item SymbolicLink -Force `
+    -Target (Resolve-Path ".\vscode\keybindings.json") `
+    -Path "~\AppData\Roaming\Code\User\keybindings.json"

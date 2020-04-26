@@ -1,13 +1,16 @@
 {
     "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "workbench.iconTheme": "vscode-icons",
-    "editor.fontFamily": "'FiraCode-Retina', Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontFamily": "'Fira Code', 'FiraCode-Retina', Menlo, Monaco, 'Courier New', monospace",
     "editor.fontLigatures": true,
-    "window.zoomLevel": 1,
+    "workbench.iconTheme": "vscode-icons",
     "workbench.editor.showTabs": false,
+    "workbench.preferredDarkColorTheme": "Default Dark+",
+    "workbench.preferredLightColorTheme": "Default Light+",
+    "window.zoomLevel": 0,
+    "window.autoDetectColorScheme": true,
     "diffEditor.ignoreTrimWhitespace": false,
     "git.autofetch": true,
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "vim.leader": " ",
     "vim.useSystemClipboard": true,
     "vim.normalModeKeyBindingsNonRecursive": [
@@ -380,5 +383,6 @@
     "[json]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode",
         "editor.tabSize": 2
-    }
+    },
+    "workbench.colorTheme": "Default Light+"
 }
