@@ -1,6 +1,6 @@
 {
     "editor.suggestSelection": "first",
-    "editor.fontFamily": "'Fira Code', 'FiraCode-Retina', Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontFamily": "'FiraCode Retina', 'Fira Code', Menlo, Monaco, 'Courier New', monospace",
     "editor.fontLigatures": true,
     "workbench.iconTheme": "vscode-icons",
     "workbench.editor.showTabs": false,
@@ -199,7 +199,7 @@
                 "k"
             ],
             "commands": [
-                "workbench.action.showHover"
+                "editor.action.showHover"
             ]
         },
         {
@@ -384,5 +384,7 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode",
         "editor.tabSize": 2
     },
+    "terminal.integrated.fontFamily": "Source Code Pro for Powerline",
+    "editor.find.addExtraSpaceOnTop": false,
     "workbench.colorTheme": "Default Light+"
 }
