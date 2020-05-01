@@ -1,0 +1,9 @@
+code --install-extension dbaeumer.vscode-eslint
+code --install-extension esbenp.prettier-vscode
+code --install-extension visualstudioexptteam.vscodeintellicode
+code --install-extension visualstudioexptteam.vscodeintellicode
+code --install-extension eamodio.gitlens
+code --install-extension ms-vscode.powershell
+code --install-extension vscodevim.vim
+code --install-extension wix.vscode-import-cost
+code --install-extension ms-dotnettools.csharp
