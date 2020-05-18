@@ -70,7 +70,7 @@
                 "]"
             ],
             "commands": [
-                "editor.action.marker.previous"
+                "editor.action.marker.next"
             ]
         },
         {
@@ -80,7 +80,7 @@
                 "["
             ],
             "commands": [
-                "editor.action.marker.next"
+                "editor.action.marker.previous"
             ]
         },
         {
@@ -161,7 +161,7 @@
                 "s"
             ],
             "commands": [
-                "editor.action.gotoSymbol"
+                "workbench.action.gotoSymbol"
             ]
         },
         {
@@ -386,5 +386,8 @@
     },
     "terminal.integrated.fontFamily": "Source Code Pro for Powerline",
     "editor.find.addExtraSpaceOnTop": false,
-    "workbench.colorTheme": "Default Light+"
+    "workbench.colorTheme": "Default Light+",
+    "[jsonc]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
 }
