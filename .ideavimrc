@@ -27,6 +27,10 @@ nnoremap <leader>d] :action GotoNextError<CR>
 nnoremap <silent> <leader>nt :action ActivateTerminalToolWindow<CR>
 nnoremap <silent> <leader>np :action SelectInProjectView<CR>
 nnoremap <silent> <leader>nb :action RecentFiles<CR>
+nnoremap <silent> <leader>nc :action ActivatenpmToolWindow<CR>
+nnoremap <silent> <leader>nu :action ActivateRunToolWindow<CR>
+nnoremap <silent> <leader>nf :action FindInPath<CR>
+nnoremap <silent> <leader>nr :action ReplaceInPath<CR>
 
 " GOTO
 nnoremap <silent> <leader>gd :action GotoDeclaration<CR>
@@ -39,6 +43,7 @@ nnoremap <silent> <leader>gu :action GotoTest<CR>
 nnoremap <silent> <leader>c :action GotoAction<CR>
 nnoremap <silent> <leader>f :action GotoFile<CR>
 nnoremap <silent> <leader>e :action SearchEverywhere<CR>
+nnoremap <silent> <leader>r :action RunAnything<CR>
 
 " PREVIEW
 nmap <silent> <leader>k :action QuickJavaDoc<CR>

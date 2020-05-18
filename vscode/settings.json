@@ -2,15 +2,17 @@
     "editor.suggestSelection": "first",
     "editor.fontFamily": "'FiraCode Retina', 'Fira Code', Menlo, Monaco, 'Courier New', monospace",
     "editor.fontLigatures": true,
+    "editor.find.addExtraSpaceOnTop": false,
     "workbench.iconTheme": "vscode-icons",
     "workbench.editor.showTabs": false,
     "workbench.preferredDarkColorTheme": "Default Dark+",
     "workbench.preferredLightColorTheme": "Default Light+",
-    "window.zoomLevel": 0,
+    "window.zoomLevel": 1,
     "window.autoDetectColorScheme": true,
     "diffEditor.ignoreTrimWhitespace": false,
     "git.autofetch": true,
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "terminal.integrated.fontFamily": "Source Code Pro for Powerline",
     "vim.leader": " ",
     "vim.useSystemClipboard": true,
     "vim.normalModeKeyBindingsNonRecursive": [
@@ -384,10 +386,11 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode",
         "editor.tabSize": 2
     },
-    "terminal.integrated.fontFamily": "Source Code Pro for Powerline",
-    "editor.find.addExtraSpaceOnTop": false,
-    "workbench.colorTheme": "Default Light+",
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
     "[jsonc]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
-    }
+    },
+    "workbench.colorTheme": "Default Light+"
 }
