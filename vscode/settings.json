@@ -82,7 +82,7 @@
                 "["
             ],
             "commands": [
-                "editor.action.marker.previous"
+                "editor.action.marker.prev"
             ]
         },
         {
