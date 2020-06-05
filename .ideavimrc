@@ -17,8 +17,8 @@ nnoremap g<C-i> <C-i>
 
 nnoremap <leader>b[ :action PreviousTab<CR>
 nnoremap <leader>b] :action NextTab<CR>
-nnoremap <silent> <leader>bd :action CloseActiveTab<CR>
-nnoremap <silent> <C-w>q :action CloseActiveTab<CR>
+nnoremap <silent> <leader>bd :action CloseContent<CR>
+nnoremap <silent> <C-w>q :action CloseContent<CR>
 nnoremap <silent> <leader>bm :action EditorTabsPopupMenu<CR>
 
 nnoremap <leader>d[ :action GotoPreviousError<CR>
@@ -31,6 +31,9 @@ nnoremap <silent> <leader>nc :action ActivatenpmToolWindow<CR>
 nnoremap <silent> <leader>nu :action ActivateRunToolWindow<CR>
 nnoremap <silent> <leader>nf :action FindInPath<CR>
 nnoremap <silent> <leader>nr :action ReplaceInPath<CR>
+
+nnoremap <silent> <leader>qs :action HideSideWindows<CR>
+nnoremap <silent> <leader>qt :action HideActiveToolWindow<CR>
 
 " GOTO
 nnoremap <silent> <leader>gd :action GotoDeclaration<CR>
@@ -94,6 +97,8 @@ nmap <silent> <leader>h :actionlist<space>
 nnoremap <leader>/ :nohlsearch<CR>
 nnoremap / :action Find<CR>
 nnoremap g/ /
+nnoremap <leader>o o<Esc>
+nnoremap <leader>O O<Esc>
 
 " DEBUG
 nnoremap <silent> <leader>db :action ToggleLineBreakpoint<CR>

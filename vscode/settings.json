@@ -361,6 +361,14 @@
                 "copyRelativeFilePath"
             ]
         },
+        {
+            "before": ["<leader>", "o"],
+            "after": ["o", "<Esc>"]
+        },
+        {
+            "before": ["<leader>", "O"],
+            "after": ["O", "<Esc>"]
+        }
     ],
     "[typescript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode",
