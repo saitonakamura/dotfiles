@@ -7,12 +7,17 @@
     "workbench.editor.showTabs": false,
     "workbench.preferredDarkColorTheme": "Default Dark+",
     "workbench.preferredLightColorTheme": "Default Light+",
-    "window.zoomLevel": 1,
+    "workbench.settings.editor": "json",
+    "window.zoomLevel": 0,
     "window.autoDetectColorScheme": true,
     "diffEditor.ignoreTrimWhitespace": false,
     "git.autofetch": true,
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "terminal.integrated.fontFamily": "Source Code Pro for Powerline",
+    "terminal.integrated.fontFamily": "Cascadia Code PL",
+    "terminal.integrated.shell.windows": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+    "terminal.external.windowsExec": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+    "terminal.integrated.automationShell.windows": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
     "vim.leader": " ",
     "vim.useSystemClipboard": true,
     "vim.normalModeKeyBindingsNonRecursive": [
@@ -293,6 +298,17 @@
             "commands": [
                 "workbench.action.files.saveAll"
             ]
+        },
+        // DEBUG
+        {
+            "before": [
+                "<leader>",
+                "db"
+            ],
+            "commands": [
+                "editor.debug.action.toggleBreakpoint"
+            ],
+            "when": "editorTextFocus"
         },
         // TESTS
         // GIT
