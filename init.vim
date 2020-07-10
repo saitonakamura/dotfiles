@@ -32,6 +32,7 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ }
 Plug 'reasonml-editor/vim-reason-plus'
+Plug 'vim-scripts/ReplaceWithRegister'
 
 if system == 'Macos'
   Plug '/usr/local/opt/fzf'
@@ -109,12 +110,14 @@ catch
   colorscheme slate
 endtry
 
-set number
+set number relativenumber
 set clipboard=unnamed
 set expandtab
 set softtabstop=2
 set shiftwidth=2
 set nowrap
+set wildmode=longest:full
+set autoread
 
 try
   set winblend=10

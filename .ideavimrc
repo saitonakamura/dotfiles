@@ -1,9 +1,15 @@
+" Plugins
 set commentary
 set surround
+set ReplaceWithRegister
+
 set ignorecase
 set showmode
 set hlsearch
 set clipboard=unnamed
+set number relativenumber
+set wildmode=longest:full
+set autoread
 
 let mapleader = ' '
 
@@ -31,6 +37,7 @@ nnoremap <silent> <leader>nc :action ActivatenpmToolWindow<CR>
 nnoremap <silent> <leader>nu :action ActivateRunToolWindow<CR>
 nnoremap <silent> <leader>nf :action FindInPath<CR>
 nnoremap <silent> <leader>nr :action ReplaceInPath<CR>
+nnoremap <silent> <leader>ng :action FindInPath<CR>
 
 nnoremap <silent> <leader>qs :action HideSideWindows<CR>
 nnoremap <silent> <leader>qt :action HideActiveToolWindow<CR>
