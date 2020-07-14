@@ -37,8 +37,9 @@ Plug 'vim-scripts/ReplaceWithRegister'
 if system == 'Macos'
   Plug '/usr/local/opt/fzf'
 else
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 endif
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
 Plug 'junegunn/fzf.vim'
 
