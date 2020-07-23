@@ -13,13 +13,14 @@
     "diffEditor.ignoreTrimWhitespace": false,
     "git.autofetch": true,
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "terminal.integrated.fontFamily": "Source Code Pro for Powerline",
     "terminal.integrated.fontFamily": "Cascadia Code PL",
     "terminal.integrated.shell.windows": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
     "terminal.external.windowsExec": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
     "terminal.integrated.automationShell.windows": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
     "vim.leader": " ",
     "vim.useSystemClipboard": true,
+    "vim.replaceWithRegister": true,
+    "vim.surround": true,
     "vim.normalModeKeyBindingsNonRecursive": [
         // Navigate to
         {
