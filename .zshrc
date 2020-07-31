@@ -18,6 +18,14 @@ fi
 
 export PATH="/usr/local/opt/node@12/bin:$PATH"
 
+theme=`defaults read -g AppleInterfaceStyle` &>/dev/null
+
+if [ theme = 'Dark' ] ; then
+  theme='dark'
+else
+  theme='light'
+fi
+
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
@@ -70,6 +78,16 @@ export PATH="/usr/local/opt/node@12/bin:$PATH"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
+
+if [ theme = 'dark' ] ; then
+  # echo -ne '^[]1337;SetColors=preset=OneHalfDark^G'
+else
+  # echo -ne '^[]1337;SetColors=preset=OneHalfLight^G'
+fi
+
+BAT_THEME=$([ theme = 'dark' ] && echo "OneHalfDark" || echo "OneHalfLight" )
+
+bat_force_colors="--color=always --theme=$BAT_THEME"
 
 zsh-install-custom-plugins() {
   git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
@@ -175,7 +193,7 @@ pd() {
 
 unalias pf 2>/dev/null
 pf() {
-  list-files "$@" | fzf --preview "bat --style=numbers --color=always {} | head -500"
+  list-files "$@" | fzf --preview "bat --style=numbers $bat_force_colors | head -500"
 }
 
 # NAVIGATION
@@ -183,7 +201,7 @@ pf() {
 unalias nd 2>/dev/null
 nd() {
   if command_exists exa ; then
-    cd "$(list-dirs "$@" | fzf --preview "exa --long --header --color=always {} | head -100")"
+    cd "$(list-dirs "$@" | fzf --preview "exa --long --header $bat_force_colors {} | head -100")"
   else
     cd "$(list-dirs "$@" | fzf --preview "ls -a -l -G -F {} | head -100")"
   fi
@@ -191,7 +209,7 @@ nd() {
 
 unalias nf 2>/dev/null
 nf() {
-  nvim "$(list-files "$@" | fzf --preview "bat --style=numbers --color=always {} | head -500")"
+  nvim "$(list-files "$@" | fzf --preview "bat --style=numbers $bat_force_colors {} | head -500")"
 }
 
 unalias gsb 2>/dev/null

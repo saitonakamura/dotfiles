@@ -1,16 +1,23 @@
-let system = 'Unknown'
-if has('unix') && filereadable('/proc/version')
-  let lines = readfile('/proc/version')
-  if lines[0] =~ "Microsoft"
-    let system = 'LinuxWsl'
-  else
-    let system = 'Linux'
+function! GetSystem()
+  let l:system = 'Unknown'
+
+  if has('unix') && filereadable('/proc/version')
+    let lines = readfile('/proc/version')
+    if lines[0] =~ "Microsoft"
+      let l:system = 'LinuxWsl'
+    else
+      let l:system = 'Linux'
+    endif
+  elseif has('win32')
+    let l:system = 'Windows'
+  elseif has('macunix')
+    let l:system = 'Macos'
   endif
-elseif has('win32')
-  let system = 'Windows'
-elseif has('macunix')
-  let system = 'Macos'
-endif
+  
+  return l:system
+endfunction
+
+let s:system = GetSystem()
 
 call plug#begin(stdpath('data') . '/plugged')
 
@@ -19,7 +26,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'joshdick/onedark.vim'
-Plug 'sonph/onehalf'
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
+" Plug 'rakrvim-one'
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -27,19 +35,21 @@ Plug 'janko/vim-test'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+" Plug 'autozimu/LanguageClient-neovim', {
+"     \ 'branch': 'next',
+"     \ 'do': 'bash install.sh',
+"     \ }
 Plug 'reasonml-editor/vim-reason-plus'
 Plug 'vim-scripts/ReplaceWithRegister'
+Plug 'neovim/nvim-lsp'
 
-if system == 'Macos'
-  Plug '/usr/local/opt/fzf'
+if s:system == 'Macos'
+  " Plug '/usr/local/opt/fzf'
 else
   " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 endif
-  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
 Plug 'junegunn/fzf.vim'
 
@@ -81,32 +91,61 @@ command! GoToCurrentFileDir :edit %:p:h
 
 function SetLightTheme()
   set background=light
-  colorscheme zellner
-  let g:airline_theme='light'
-  AirlineTheme light
+  colorscheme onehalflight
+
+  let $BAT_THEME='OneHalfLight'
+
+  let g:airline_theme='onehalflight'
+  try
+    AirlineTheme onehalflight
+  catch
+  endtry
 endfunction
 
 function SetDarkTheme()
   set background=dark
-  " colorscheme onehalflight
-  colorscheme onedark
-  " let g:airline_theme='onehalfdark'
-  let g:airline_theme='deus'
-  AirlineTheme deus
+  colorscheme onehalfdark
+
+  let $BAT_THEME='OneHalfDark'
+
+  let g:airline_theme='onehalfdark'
+  try
+    AirlineTheme onehalfdark
+  catch
+  endtry
+endfunction
+
+function SetCurrentSystemTheme()
+  let l:theme = 'light'
+  let l:system = GetSystem()
+
+  if l:system == 'Macos'
+    let l:mode = systemlist('defaults read -g AppleInterfaceStyle')[0]
+    if l:mode == 'Dark'
+      let l:theme = 'dark'
+    endif
+  elseif l:system == 'Windows' || l:system == 'LinuxWsl'
+    " TODO Implement
+  endif
+  
+  if l:theme == 'dark'
+    call SetDarkTheme()
+  else
+    call SetLightTheme()
+  endif
 endfunction
 
 command! SetLightTheme :call SetLightTheme()
 command! SetDarkTheme :call SetDarkTheme()
+command! SetCurrentSystemTheme :call SetCurrentSystemTheme()
 
 set termguicolors
 syntax on
 
 set background=dark
 try
-  " colorscheme onehalflight
-  colorscheme onedark
-  " let g:airline_theme='onehalfdark'
-  let g:airline_theme='deus'
+  colorscheme onehalfdark
+  " colorscheme one
 catch
   colorscheme slate
 endtry
@@ -131,9 +170,9 @@ let mapleader = ' '
 let g:NERDTreeShowHidden = 1
 
 try
+  let g:airline_theme='onehalfdark'
   let g:airline#extensions#tabline#enabled = 1
   let g:airline_powerline_fonts = 1
-  let g:airline_theme='deus'
   let g:airline#extensions#tabline#buffer_nr_show = 1
   "let g:airline#extensions#tabline#left_sep = ' '
   "let g:airline#extensions#tabline#left_alt_sep = '|'
@@ -141,6 +180,8 @@ try
 catch
   echo 'Airline is not installed, give :PlugInstall a try'
 endtry
+
+call SetCurrentSystemTheme()
 
 " COC.NVIM
 
@@ -159,18 +200,18 @@ set hidden
   " \ 'typescriptreact': ['typescript-language-server', '--stdio'],
   
   " \ 'reason': ['~/lsp/reason-language-server/reason-language-server'],
-let g:LanguageClient_serverCommands = {
-  \ 'javascript': ['typescript-language-server', '--stdio'],
-  \ 'javascriptreact': ['typescript-language-server', '--stdio'],
-  \ 'typescript': ['typescript-language-server', '--stdio'],
-  \ 'typescriptreact': ['typescript-language-server', '--stdio'],
-  \ 'reason': ['ocaml-language-server', '--stdio'],
-  \ 'ocaml': ['ocaml-language-server', '--stdio'],
-  \ 'vim': ['vim-language-server', '--stdio'],
-  \ 'css': ['css-languageserver', '--stdio'],
-  \ 'scss': ['css-languageserver', '--stdio'],
-  \ 'dockerfile': ['dockerfile-langserver', '--stdio'],
-  \ }
+" let g:LanguageClient_serverCommands = {
+"   \ 'javascript': ['typescript-language-server', '--stdio'],
+"   \ 'javascriptreact': ['typescript-language-server', '--stdio'],
+"   \ 'typescript': ['typescript-language-server', '--stdio'],
+"   \ 'typescriptreact': ['typescript-language-server', '--stdio'],
+"   \ 'reason': ['ocaml-language-server', '--stdio'],
+"   \ 'ocaml': ['ocaml-language-server', '--stdio'],
+"   \ 'vim': ['vim-language-server', '--stdio'],
+"   \ 'css': ['css-languageserver', '--stdio'],
+"   \ 'scss': ['css-languageserver', '--stdio'],
+"   \ 'dockerfile': ['dockerfile-langserver', '--stdio'],
+"   \ }
 
 " Some servers have issues with backup files, see #649
 set nobackup
@@ -293,11 +334,16 @@ nnoremap <silent> <leader>qp :NERDTreeClose<CR>
 nnoremap <silent> <leader>nb :Buffers<CR>
 
 " GOTO
-nnoremap <silent> <leader>gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <leader>gt :call LanguageClient#textDocument_typeDefinition()<CR>
-nnoremap <silent> <leader>gi :call LanguageClient#textDocument_implementation()<CR>
-nnoremap <silent> <leader>gr :call LanguageClient#textDocument_references()<CR>
-nnoremap <silent> <leader>gs :call LanguageClient#workspace_symbol()<CR>
+" nnoremap <silent> <leader>gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <leader>gd <cmd>lua vim.lsp.buf.definition()<CR>
+" nnoremap <silent> <leader>gt :call LanguageClient#textDocument_typeDefinition()<CR>
+nnoremap <silent> <leader>gt <cmd>lua vim.lsp.buf.type_definition()<CR>
+" nnoremap <silent> <leader>gi :call LanguageClient#textDocument_implementation()<CR>
+nnoremap <silent> <leader>gi <cmd>lua vim.lsp.buf.implementation()<CR>
+" nnoremap <silent> <leader>gr :call LanguageClient#textDocument_references()<CR>
+nnoremap <silent> <leader>gr <cmd>lua vim.lsp.buf.references()<CR>
+" nnoremap <silent> <leader>gs :call LanguageClient#workspace_symbol()<CR>
+nnoremap <silent> <leader>gs <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 " nnoremap <silent> <leader>gu :action GotoTest<CR>
 
 nnoremap <silent> <leader>c :Commands<CR>
@@ -307,20 +353,26 @@ nnoremap <silent> <leader>f :Files<CR>
 nnoremap <silent> <leader>m :Maps<CR>
 
 " PREVIEW
-nnoremap <silent> <leader>k :call LanguageClient#textDocument_hover()<CR>
-noremap <A-Space> :call LanguageClient#textDocument_completion()<CR>
+" nnoremap <silent> <leader>k :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> <leader>k <cmd>lua vim.lsp.buf.hover()<CR>
+" noremap <A-Space> :call LanguageClient#textDocument_completion()<CR>
+inoremap <A-Space> <cmd>lua vim.lsp.buf.completion()<CR>
 " nnoremap <silent> <leader>pd :call QuickImplementations<CR>
 " nnoremap <silent> <leader>pr :call ShowUsages<CR>
 " nnoremap <silent> <leader>pb :call RecentLocations<CR>
 " nnoremap <silent> <leader>ps :call FileStructurePopup<CR>
-nnoremap <silent> <leader>ps :call LanguageClient#textDocument_documentSymbol()<CR>
+" nnoremap <silent> <leader>ps :call LanguageClient#textDocument_documentSymbol()<CR>
+nnoremap <silent> <leader>ps <cmd>lua vim.lsp.buf.document_symbol()<CR>
 
 " FORMAT FIXES REFACTORINGS
-nnoremap <silent> <leader>ar :call LanguageClient#textDocument_rename()<CR>
-nnoremap <silent> <leader>am :call LanguageClient#textDocument_codeAction()<CR>
-vnoremap <silent> <leader>am :call LanguageClient#textDocument_codeAction()<CR>
-nnoremap <silent> <leader>af :call LanguageClient#textDocument_formatting()<CR>
-vnoremap <silent> <leader>af :call LanguageClient#textDocument_rangeFormatting()<CR>
+" nnoremap <silent> <leader>ar :call LanguageClient#textDocument_rename()<CR>
+nnoremap <silent> <leader>ar <cmd>lua vim.lsp.buf.rename()<CR>
+" nnoremap <silent> <leader>am :call LanguageClient#textDocument_codeAction()<CR>
+" vnoremap <silent> <leader>am :call LanguageClient#textDocument_codeAction()<CR>
+nnoremap <silent> <leader>am <cmd>lua vim.lsp.buf.code_action()<CR>
+vnoremap <silent> <leader>am <cmd>lua vim.lsp.buf.code_action()<CR>
+" nnoremap <silent> <leader>af :call LanguageClient#textDocument_formatting()<CR>
+" vnoremap <silent> <leader>af :call LanguageClient#textDocument_rangeFormatting()<CR>
 " nnoremap <silent> <leader>ap :call ReformatWithPrettierAction<CR>
 " nmap <silent> <leader>al :action
 
@@ -368,3 +420,11 @@ map <silent> <leader>acp :CopyCurrentFilePath<CR>
 " nnoremap <silent> <leader>di :action StepInto<CR>
 " nnoremap <silent> <leader>ds :action SmartStepInto<CR>
 " nnoremap <silent> <leader>du :action StepOut<CR>
+
+lua << EOF
+require'nvim_lsp'.intelephense.setup{}
+require'nvim_lsp'.vimls.setup{}
+require'nvim_lsp'.tsserver.setup{}
+require'nvim_lsp'.jsonls.setup{}
+EOF
+
