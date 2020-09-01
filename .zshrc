@@ -16,7 +16,8 @@ if [ -d "$HOME/.npm-global/bin" ] ; then
   export PATH="$HOME/.npm-global/bin:$PATH"
 fi
 
-export PATH="/usr/local/opt/node@12/bin:$PATH"
+# export PATH="/usr/local/opt/node/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
 
 theme=`defaults read -g AppleInterfaceStyle` &>/dev/null
 
@@ -85,7 +86,7 @@ else
   # echo -ne '^[]1337;SetColors=preset=OneHalfLight^G'
 fi
 
-BAT_THEME=$([ theme = 'dark' ] && echo "OneHalfDark" || echo "OneHalfLight" )
+export BAT_THEME=$([ theme = 'dark' ] && echo "OneHalfDark" || echo "OneHalfLight" )
 
 bat_force_colors="--color=always --theme=$BAT_THEME"
 
