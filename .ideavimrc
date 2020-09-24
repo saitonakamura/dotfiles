@@ -2,6 +2,7 @@
 set commentary
 set surround
 set ReplaceWithRegister
+set highlightedyank
 
 set ignorecase
 set showmode
@@ -35,7 +36,6 @@ nnoremap <silent> <leader>np :action SelectInProjectView<CR>
 nnoremap <silent> <leader>nb :action RecentFiles<CR>
 nnoremap <silent> <leader>nc :action ActivatenpmToolWindow<CR>
 nnoremap <silent> <leader>nu :action ActivateRunToolWindow<CR>
-nnoremap <silent> <leader>nf :action FindInPath<CR>
 nnoremap <silent> <leader>nr :action ReplaceInPath<CR>
 nnoremap <silent> <leader>ng :action FindInPath<CR>
 
@@ -47,7 +47,7 @@ nnoremap <silent> <leader>gd :action GotoDeclaration<CR>
 nnoremap <silent> <leader>gt :action GotoTypeDeclaration<CR>
 nnoremap <silent> <leader>gi :action GotoImplementation<CR>
 nnoremap <silent> <leader>gr :action FindUsages<CR>
-nnoremap <silent> <leader>gs :action GotoSymbol<CR>
+noremap <silent> <leader>gs :action GotoSymbol<CR>
 nnoremap <silent> <leader>gu :action GotoTest<CR>
 
 nnoremap <silent> <leader>c :action GotoAction<CR>
@@ -67,8 +67,7 @@ nmap <silent> <leader>ar :action RenameElement<CR>
 nnoremap <silent> <leader>am :action ShowIntentionActions<CR>
 vnoremap <silent> <leader>am :action ShowIntentionActions<CR>
 nmap <silent> <leader>af :action ReformatCode<CR>
-nmap <silent> <leader>ap :action ReformatWithPrettierAction<CR>
-vmap <silent> <leader>ap :action ReformatWithPrettierAction<CR>
+vmap <silent> <leader>af :action ReformatCode<CR>
 " nmap <silent> <leader>al :action
 
 nmap <silent> <leader>rr :action RenameElement<CR>
@@ -96,6 +95,7 @@ nmap <silent> <leader>vP :action Vcs.Force.Push<CR>
 nmap <silent> <leader>vb :action Annotate<CR>
 nmap <silent> <leader>vl :action Git.Pull<CR>
 nmap <silent> <leader>vf :action Git.Fetch<CR>
+nmap <silent> <leader>vv :action ActivateVersionControlToolWindow<CR>
 
 " HELP
 nmap <silent> <leader>h :actionlist<space>

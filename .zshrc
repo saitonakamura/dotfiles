@@ -147,6 +147,9 @@ fi
 
 export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
 
+GPG_TTY=$(tty)
+export GPG_TTY
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -235,3 +238,4 @@ alias cdp='fd --type d --hidden | fzf --preview "exa --long --header --color=alw
 # POSTSETUP
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH="/usr/local/opt/mozjpeg/bin:$PATH"

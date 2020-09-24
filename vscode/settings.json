@@ -7,7 +7,7 @@
   "workbench.iconTheme": "vscode-icons",
   "workbench.editor.showTabs": true,
   "workbench.preferredDarkColorTheme": "Atom One Dark",
-  "workbench.preferredLightColorTheme": "Atom One Dark",
+  "workbench.preferredLightColorTheme": "Atom One Light",
   "workbench.settings.editor": "json",
   "window.zoomLevel": 2,
   "window.autoDetectColorScheme": true,
@@ -77,6 +77,10 @@
     {
       "before": ["<leader>", "n", "b"],
       "commands": ["workbench.files.action.focusOpenEditorsView"]
+    },
+    {
+      "before": ["<leader>", "n", "g"],
+      "commands": ["workbench.view.search"]
     },
     // Toggle
     {
@@ -278,5 +282,8 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "workbench.colorTheme": "Atom One Dark",
-  "jest.runAllTestsFirst": false
+  "jest.runAllTestsFirst": false,
+  "zenMode.centerLayout": false,
+  "zenMode.fullScreen": false,
+  "editor.minimap.enabled": true
 }
