@@ -2,6 +2,10 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 username=`id -un`
+
+export LANG=en_US.UTF-8
+export LC_CTYPE=C
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -234,6 +238,14 @@ alias rgc='rg --no-heading --column'
 alias cfp='fd --type f --hidden | fzf --preview "bat --style=numbers --color=always {} | head -500" | pbcopy'
 
 alias cdp='fd --type d --hidden | fzf --preview "exa --long --header --color=always | head -100" | pbcopy'
+
+# MISC
+
+if [ theme = 'dark' ] ; then
+  alias ctop='ctop'
+else
+  alias ctop='ctop -i'
+fi
 
 # POSTSETUP
 
