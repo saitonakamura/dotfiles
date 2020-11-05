@@ -251,6 +251,24 @@
       "commands": ["bookmarks.list"]
     }
   ],
+  "vim.visualModeKeyBindings": [
+    {
+      "before": ["<leader>", "]"],
+      "commands": ["workbench.action.navigateForward"]
+    },
+    {
+      "before": ["<C-i>"],
+      "commands": ["workbench.action.navigateForward"]
+    },
+    {
+      "before": ["<leader>", "["],
+      "commands": ["workbench.action.navigateBack"]
+    },
+    {
+      "before": ["<C-o>"],
+      "commands": ["workbench.action.navigateBack"]
+    }
+  ],
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.tabSize": 2

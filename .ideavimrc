@@ -103,6 +103,7 @@ nmap <silent> <leader>h :actionlist<space>
 " ETC
 nnoremap <leader>/ :nohlsearch<CR>
 nnoremap / :action Find<CR>
+vnoremap / :action Find<CR>
 nnoremap g/ /
 nnoremap <leader>o o<Esc>
 nnoremap <leader>O O<Esc>
