@@ -261,4 +261,4 @@ alias cdp='fd --type d --hidden | fzf --preview "exa --long --header --color=alw
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-export PATH="/usr/local/opt/mozjpeg/bin:$PATH"
+export PATH="/usr/local/opt/mozjpeg/bin:$HOME/localbin:$PATH"
