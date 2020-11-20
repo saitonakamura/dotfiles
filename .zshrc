@@ -1,3 +1,27 @@
+ITERM2_DARK_PRESET='OneHalfDark'
+ITERM2_LIGHT_PRESET='OneHalfLight'
+
+theme=`defaults read -g AppleInterfaceStyle` &>/dev/null
+
+if [ "$theme" = 'Dark' ] ; then
+  theme='dark'
+else
+  theme='light'
+fi
+
+if [ "$theme" = 'dark' ] ; then
+  echo -e "\033]1337;SetColors=preset=$ITERM2_DARK_PRESET\a"
+else
+  echo -e "\033]1337;SetColors=preset=$ITERM2_LIGHT_PRESET\a"
+fi
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -14,7 +38,8 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 DEFAULT_USER="$username"
-ZSH_THEME="saitonakamura"
+# ZSH_THEME="saitonakamura"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 if [ -d "$HOME/.npm-global/bin" ] ; then
   export PATH="$HOME/.npm-global/bin:$PATH"
@@ -23,13 +48,6 @@ fi
 # export PATH="/usr/local/opt/node/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 
-theme=`defaults read -g AppleInterfaceStyle` &>/dev/null
-
-if [ theme = 'Dark' ] ; then
-  theme='dark'
-else
-  theme='light'
-fi
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -84,20 +102,15 @@ fi
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-if [ theme = 'dark' ] ; then
-  # echo -ne '^[]1337;SetColors=preset=OneHalfDark^G'
-else
-  # echo -ne '^[]1337;SetColors=preset=OneHalfLight^G'
-fi
-
-export BAT_THEME=$([ theme = 'dark' ] && echo "OneHalfDark" || echo "OneHalfLight" )
+export BAT_THEME=$([ "$theme" = 'dark' ] && echo "OneHalfDark" || echo "OneHalfLight" )
 
 bat_force_colors="--color=always --theme=$BAT_THEME"
 
-zsh-install-custom-plugins() {
-  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-}
+if [ "$theme" = 'dark' ] ; then
+  alias ctop='ctop'
+else
+  alias ctop='ctop -i'
+fi
 
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
@@ -241,13 +254,11 @@ alias cdp='fd --type d --hidden | fzf --preview "exa --long --header --color=alw
 
 # MISC
 
-if [ theme = 'dark' ] ; then
-  alias ctop='ctop'
-else
-  alias ctop='ctop -i'
-fi
-
 # POSTSETUP
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
 export PATH="/usr/local/opt/mozjpeg/bin:$PATH"
