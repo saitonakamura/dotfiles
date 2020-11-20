@@ -14,7 +14,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 DEFAULT_USER="$username"
-ZSH_THEME="agnoster"
+ZSH_THEME="saitonakamura"
 
 if [ -d "$HOME/.npm-global/bin" ] ; then
   export PATH="$HOME/.npm-global/bin:$PATH"

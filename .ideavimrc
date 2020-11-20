@@ -63,6 +63,8 @@ nnoremap <silent> <leader>pb :action RecentLocations<CR>
 nnoremap <silent> <leader>ps :action FileStructurePopup<CR>
 
 " FORMAT FIXES REFACTORINGS
+nnoremap <silent> <leader>m :action EditorPopupMenu<CR>
+vnoremap <silent> <leader>m :action EditorPopupMenu<CR>
 nmap <silent> <leader>ar :action RenameElement<CR>
 nnoremap <silent> <leader>am :action ShowIntentionActions<CR>
 vnoremap <silent> <leader>am :action ShowIntentionActions<CR>

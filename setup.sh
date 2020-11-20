@@ -7,3 +7,4 @@ ln -sfn ~/dotfiles/vscode/settings.json ~/.vscode-server/data/Machine/settings.j
 ln -sfn ~/dotfiles/vscode/keybindings.json ~/.vscode-server/data/Machine/keybindings.json
 ln -sfn ~/dotfiles/.fdignore ~/.fdignore
 ln -sfn ~/dotfiles/.ideavimrc ~/.ideavimrc
+ln -sfn ~/dotfiles/saitonakamura.zsh-theme ~/.oh-my-zsh/custom/themes/saitonakamura.zsh-theme
