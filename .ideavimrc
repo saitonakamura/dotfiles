@@ -37,10 +37,13 @@ nnoremap <silent> <leader>nb :action RecentFiles<CR>
 nnoremap <silent> <leader>nc :action ActivatenpmToolWindow<CR>
 nnoremap <silent> <leader>nu :action ActivateRunToolWindow<CR>
 nnoremap <silent> <leader>nr :action ReplaceInPath<CR>
+vnoremap <silent> <leader>nr :action ReplaceInPath<CR>
 nnoremap <silent> <leader>ng :action FindInPath<CR>
+vnoremap <silent> <leader>ng :action FindInPath<CR>
 
-nnoremap <silent> <leader>qs :action HideSideWindows<CR>
-nnoremap <silent> <leader>qt :action HideActiveToolWindow<CR>
+nnoremap <silent> <leader>qa :action HideAllWindows<CR>
+nnoremap <silent> <leader>qt :action HideSideWindows<CR>
+nnoremap <silent> <leader>qs :action HideActiveToolWindow<CR>
 
 " GOTO
 nnoremap <silent> <leader>gd :action GotoDeclaration<CR>
