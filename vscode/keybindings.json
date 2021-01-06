@@ -16,6 +16,16 @@
         "when": "terminalFocus && isMac"
     },
     {
+        "key": "ctrl+pagedown",
+        "command": "workbench.action.terminal.focusNext",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+pageup",
+        "command": "workbench.action.terminal.focusPrevious",
+        "when": "terminalFocus"
+    },
+    {
         "key": "shift+cmd+up",
         "command": "workbench.action.toggleMaximizedPanel",
         "when": "terminalFocus && isMac"
@@ -39,5 +49,10 @@
         "key": "ctrl+escape",
         "command": "workbench.action.focusActiveEditorGroup",
         "when": "filesExplorerFocus || terminalFocus || openEditorsFocus || explorerViewletFocus || searchViewletFocus || sideBarFocus || problemFocus"
+    }
+    {
+        "key": "win+escape",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "filesExplorerFocus || terminalFocus || openEditorsFocus || explorerViewletFocus || searchViewletFocus || sideBarFocus || problemFocus && isWindows"
     }
 ]
