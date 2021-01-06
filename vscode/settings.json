@@ -9,7 +9,7 @@
   "workbench.preferredDarkColorTheme": "Atom One Dark",
   "workbench.preferredLightColorTheme": "Atom One Light",
   "workbench.settings.editor": "json",
-  "window.zoomLevel": 2,
+  "window.zoomLevel": 1,
   "window.autoDetectColorScheme": true,
   "diffEditor.ignoreTrimWhitespace": false,
   "git.autofetch": true,
@@ -255,7 +255,7 @@
       "commands": ["bookmarks.list"]
     }
   ],
-  "vim.visualModeKeyBindings": [
+  "vim.visualModeKeyBindingsNonRecursive": [
     {
       "before": ["<leader>", "]"],
       "commands": ["workbench.action.navigateForward"]
@@ -311,7 +311,7 @@
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "workbench.colorTheme": "Atom One Dark",
+  "workbench.colorTheme": "Atom One Light",
   "jest.runAllTestsFirst": false,
   "zenMode.centerLayout": false,
   "zenMode.fullScreen": false,
