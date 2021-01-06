@@ -106,11 +106,11 @@ export BAT_THEME=$([ "$theme" = 'dark' ] && echo "OneHalfDark" || echo "OneHalfL
 
 bat_force_colors="--color=always --theme=$BAT_THEME"
 
-if [ "$theme" = 'dark' ] ; then
-  alias ctop='ctop'
-else
-  alias ctop='ctop -i'
-fi
+# if [ "$theme" = 'dark' ] ; then
+#   alias ctop='ctop'
+# else
+#   alias ctop='ctop -i'
+# fi
 
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
@@ -254,11 +254,22 @@ alias cdp='fd --type d --hidden | fzf --preview "exa --long --header --color=alw
 
 # MISC
 
+unalias get-github-latest-release 2>/dev/null
+get-github-latest-release() {
+  curl -s -L "https://api.github.com/repos/$1/releases/latest" | \
+  jq ".assets[] | select(.name == \"$2\") | .browser_download_url" --raw-output
+}
+
 # POSTSETUP
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+if [[ -f ~/.fzf.zsh ]]; then
+  source ~/.fzf.zsh
+elif [[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ]]; then
+  source /usr/share/doc/fzf/examples/key-bindings.zsh
+  source /usr/share/doc/fzf/examples/completion.zsh
+fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-export PATH="/usr/local/opt/mozjpeg/bin:$HOME/localbin:$PATH"
+export PATH="/usr/local/opt/mozjpeg/bin:$HOME/.local/bin:$HOME/.npm-global/bin:$PATH"

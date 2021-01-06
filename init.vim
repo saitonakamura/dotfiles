@@ -41,7 +41,7 @@ Plug 'tpope/vim-repeat'
 "     \ }
 Plug 'reasonml-editor/vim-reason-plus'
 Plug 'vim-scripts/ReplaceWithRegister'
-Plug 'neovim/nvim-lsp'
+Plug 'neovim/nvim-lspconfig'
 
 if s:system == 'Macos'
   " Plug '/usr/local/opt/fzf'
@@ -421,10 +421,5 @@ map <silent> <leader>acp :CopyCurrentFilePath<CR>
 " nnoremap <silent> <leader>ds :action SmartStepInto<CR>
 " nnoremap <silent> <leader>du :action StepOut<CR>
 
-lua << EOF
-require'nvim_lsp'.intelephense.setup{}
-require'nvim_lsp'.vimls.setup{}
-require'nvim_lsp'.tsserver.setup{}
-require'nvim_lsp'.jsonls.setup{}
-EOF
+luafile ~/dotfiles/vim.lua
 
