@@ -43,6 +43,14 @@ sudo apt install gh -y
 
 sudo apt install ninja-build -y
 
+wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+sudo dpkg -i packages-microsoft-prod.deb
+rm packages-microsoft-prod.deb
+sudo apt-get update
+sudo apt-get install -y apt-transport-https && \
+sudo apt-get update && \
+sudo apt-get install -y dotnet-sdk-5.0
+
 sudo update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60
 sudo update-alternatives --config vi
 sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60
