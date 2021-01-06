@@ -205,6 +205,10 @@
       "before": ["<leader>", "v", "l"],
       "commands": ["git.pull"]
     },
+    {
+      "before": ["<leader>", "v", "b"],
+      "commands": ["gitlens.toggleFileBlame"]
+    },
     // ETC
     {
       "before": ["<leader>", "/"],
@@ -267,6 +271,14 @@
     {
       "before": ["<C-o>"],
       "commands": ["workbench.action.navigateBack"]
+    },
+    {
+      "before": ["/"],
+      "commands": ["actions.find"]
+    },
+    {
+      "before": ["<leader>", "n", "g"],
+      "commands": ["workbench.view.search"]
     }
   ],
   "[typescript]": {
