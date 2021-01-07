@@ -64,6 +64,7 @@ nmap <silent> <leader>pd :action QuickImplementations<CR>
 nmap <silent> <leader>pr :action ShowUsages<CR>
 nnoremap <silent> <leader>pb :action RecentLocations<CR>
 nnoremap <silent> <leader>ps :action FileStructurePopup<CR>
+nnoremap <silent> <leader>pe :action ShowErrorDescription<CR>
 
 " FORMAT FIXES REFACTORINGS
 nnoremap <silent> <leader>m :action EditorPopupMenu<CR>
