@@ -3,4 +3,19 @@
   email = accounts@saitonakamura.me
 
 [core]
-    editor = nvim
+  editor = nvim
+
+[difftool]
+  prompt = false
+
+[diff]
+  tool = nvimdiff
+
+[merge]
+  tool = nvimmerge
+
+[difftool "nvimdiff"]
+  cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+
+[mergetool "nvimmerge"]
+  cmd = "nvim -f -c \"Gdiffsplit!\" \"$MERGED\""
