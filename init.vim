@@ -125,7 +125,11 @@ function SetCurrentSystemTheme()
       let l:theme = 'dark'
     endif
   elseif l:system == 'Windows' || l:system == 'LinuxWsl'
-    " TODO Implement
+    let l:appsUseLightTheme = systemlist('reg.exe query "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize" /v AppsUseLightTheme | sed "2 s/.*//" | sed "3 s/^.*0x//g" | sed "/^\s*$/d"')[0]
+
+    if l:appsUseLightTheme == 0
+      let l:theme = 'dark'
+    endif
   endif
   
   if l:theme == 'dark'

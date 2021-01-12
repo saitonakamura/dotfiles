@@ -1,0 +1,6 @@
+[user]
+  name = Michael Bashurov
+  email = accounts@saitonakamura.me
+
+[core]
+    editor = nvim

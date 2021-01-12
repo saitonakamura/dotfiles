@@ -10,6 +10,7 @@ ln -sfn ~/dotfiles/init.vim ~/.config/nvim/init.vim
 ln -sfn ~/dotfiles/.fdignore ~/.fdignore
 ln -sfn ~/dotfiles/.ideavimrc ~/.ideavimrc
 ln -sfn ~/dotfiles/.p10k.zsh ~/.p10k.zsh
+ln -sfn ~/dotfiles/.gitconfig ~/.gitconfig
 
 install-npm-langservers() {
     npm install -g vim-language-server

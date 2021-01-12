@@ -9,6 +9,14 @@ else
   theme='light'
 fi
 
+appsUseLightTheme=`reg.exe query "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize" /v AppsUseLightTheme | sed '2 s/.*//' | sed '3 s/^.*0x//g' | sed '/^\s*$/d'`
+
+if [ "$appsUseLightTheme" = '0' ] ; then
+  theme='dark'
+else
+  theme='light'
+fi
+
 if [ "$theme" = 'dark' ] ; then
   echo -e "\033]1337;SetColors=preset=$ITERM2_DARK_PRESET\a"
 else
