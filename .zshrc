@@ -1,3 +1,11 @@
+# HELPERS
+
+command_exists () {
+  type "$1" &> /dev/null ;
+}
+
+# COLORS
+
 ITERM2_DARK_PRESET='OneHalfDark'
 ITERM2_LIGHT_PRESET='OneHalfLight'
 
@@ -9,12 +17,14 @@ else
   theme='light'
 fi
 
-appsUseLightTheme=`reg.exe query "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize" /v AppsUseLightTheme | sed '2 s/.*//' | sed '3 s/^.*0x//g' | sed '/^\s*$/d'`
+if command_exists "reg.exe" ; then
+  appsUseLightTheme=`reg.exe query "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize" /v AppsUseLightTheme | sed '2 s/.*//' | sed '3 s/^.*0x//g' | sed '/^\s*$/d'`
 
-if [ "$appsUseLightTheme" = '0' ] ; then
-  theme='dark'
-else
-  theme='light'
+  if [ "$appsUseLightTheme" = '0' ] ; then
+    theme='dark'
+  else
+    theme='light'
+  fi
 fi
 
 if [ "$theme" = 'dark' ] ; then
@@ -23,12 +33,16 @@ else
   echo -e "\033]1337;SetColors=preset=$ITERM2_LIGHT_PRESET\a"
 fi
 
+# Powerlevel10k instant prompt
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+
+# VARIABLES
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -130,7 +144,7 @@ plugins=(
   ssh-agent
   git
   ripgrep
-  vi-mode
+  # vi-mode
   fzf-tab
   zsh-syntax-highlighting
   zsh-autosuggestions
@@ -139,12 +153,6 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-
-# HELPERS
-
-command_exists () {
-  type "$1" &> /dev/null ;
-}
 
 # export MANPATH="/usr/local/man:$MANPATH"
 system='unknown'
