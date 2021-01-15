@@ -144,7 +144,7 @@ plugins=(
   ssh-agent
   git
   ripgrep
-  # vi-mode
+  vi-mode
   fzf-tab
   zsh-syntax-highlighting
   zsh-autosuggestions
