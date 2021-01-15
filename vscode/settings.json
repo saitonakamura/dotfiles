@@ -27,6 +27,10 @@
   "vim.normalModeKeyBindingsNonRecursive": [
     // Navigate to
     {
+      "before": ["<leader>", ";"],
+      "after": [":"]
+    },
+    {
       "before": ["<leader>", "]"],
       "commands": ["workbench.action.navigateForward"]
     },
@@ -256,6 +260,10 @@
     }
   ],
   "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<leader>", ";"],
+      "after": [":"]
+    },
     {
       "before": ["<leader>", "]"],
       "commands": ["workbench.action.navigateForward"]

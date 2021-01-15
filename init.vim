@@ -329,6 +329,9 @@ nnoremap <silent> <leader>nb :Buffers<CR>
 nnoremap <leader>nt[ :tabprevious<CR>
 nnoremap <leader>nt] :tabnext<CR>
 
+nnoremap <silent> <leader>; :
+vnoremap <silent> <leader>; :
+
 " nnoremap <leader>d[ :action GotoPreviousError<CR>
 " nnoremap <leader>d] :action GotoNextError<CR>
 

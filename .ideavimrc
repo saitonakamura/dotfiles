@@ -21,6 +21,8 @@ nnoremap g<C-o> <C-o>
 nnoremap <leader>] :action Forward<CR>
 nnoremap <C-i> :action Forward<CR>
 nnoremap g<C-i> <C-i>
+nnoremap <silent> <leader>; :
+vnoremap <silent> <leader>; :
 
 nnoremap <leader>b[ :action PreviousTab<CR>
 nnoremap <leader>b] :action NextTab<CR>
