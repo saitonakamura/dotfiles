@@ -36,6 +36,7 @@ nnoremap <silent> <leader>np :action SelectInProjectView<CR>
 nnoremap <silent> <leader>nb :action RecentFiles<CR>
 nnoremap <silent> <leader>nc :action ActivatenpmToolWindow<CR>
 nnoremap <silent> <leader>nu :action ActivateRunToolWindow<CR>
+nnoremap <silent> <leader>nd :action JumpToLastWindow<CR>
 nnoremap <silent> <leader>nr :action ReplaceInPath<CR>
 vnoremap <silent> <leader>nr :action ReplaceInPath<CR>
 nnoremap <silent> <leader>ng :action FindInPath<CR>

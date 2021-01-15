@@ -402,7 +402,7 @@ nnoremap <silent> <leader>tf :TestFile<CR>
 " nnoremap <silent> <leader>vs :action Git.Branches<CR>
 " nnoremap <silent> <leader>vS :action Git.CreateNewBranch<CR>
 nnoremap <silent> <leader>vc :Gcommit<CR>
-nnoremap <silent> <leader>vs :G<CR>
+nnoremap <silent> <leader>vv :G<CR>
 nnoremap <silent> <leader>vp :Gpush<CR>
 " nnoremap <silent> <leader>vP :Gpush!<CR>
 nnoremap <silent> <leader>vb :Gblame<CR>
