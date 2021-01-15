@@ -241,7 +241,7 @@ pf() {
 unalias nd 2>/dev/null
 nd() {
   if command_exists exa ; then
-    cd "$(list-dirs "$@" | fzf --preview "exa --long --header $bat_force_colors {} | head -100")"
+    cd "$(list-dirs "$@" | fzf --preview "exa --header --color=always --long --all {} | head -100")"
   else
     cd "$(list-dirs "$@" | fzf --preview "ls -a -l -G -F {} | head -100")"
   fi
@@ -256,20 +256,20 @@ unalias gsb 2>/dev/null
 gsb() {
   local branches branch branchForSwitch
   branches=$(git branch --all | grep -v HEAD) &&
-  branch=$(echo "$branches" | fzf) &&
+  branch=$(echo "$branches" | fzf --query "$1") &&
   branchForSwitch=$(echo $branch | sed "s/.* //" | sed "s#remotes/[^/]*/##") &&
   git switch $branchForSwitch
 }
 
 # SEARCHING
 
-alias rgc='rg --no-heading --column'
+# alias rgc='rg --no-heading --column'
 
 # COPYING
 
-alias cfp='fd --type f --hidden | fzf --preview "bat --style=numbers --color=always {} | head -500" | pbcopy'
+# alias cfp='fd --type f --hidden | fzf --preview "bat --style=numbers --color=always {} | head -500" | pbcopy'
 
-alias cdp='fd --type d --hidden | fzf --preview "exa --long --header --color=always | head -100" | pbcopy'
+# alias cdp='fd --type d --hidden | fzf --preview "exa --long --header --color=always | head -100" | pbcopy'
 
 # MISC
 

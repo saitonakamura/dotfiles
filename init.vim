@@ -42,6 +42,7 @@ Plug 'tpope/vim-repeat'
 Plug 'reasonml-editor/vim-reason-plus'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/completion-nvim'
 
 if s:system == 'Macos'
   " Plug '/usr/local/opt/fzf'
@@ -247,6 +248,15 @@ set signcolumn=yes
 
 " Trigger completion.
 " inoremap <silent><expr> <alt-space> coc#refresh()
+
+imap <silent> <c-p> <Plug>(completion_trigger)
+imap <tab> <Plug>(completion_smart_tab)
+imap <s-tab> <Plug>(completion_smart_s_tab)
+
+" imap <silent> <c-p> 
+" imap <tab> <C-X><C-O>
+" imap <s-tab> <Plug>(completion_smart_s_tab)
+
 
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
 " Coc only does snippet and additional edit on confirm.
