@@ -13,10 +13,12 @@
 
 [merge]
   tool = nvimmerge
-  keepBackup = false
 
 [difftool "nvimdiff"]
   cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+
+[mergetool]
+  keepBackup = false
 
 [mergetool "nvimmerge"]
   cmd = "nvim -f -c \"Gdiffsplit!\" \"$MERGED\""

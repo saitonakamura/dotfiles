@@ -86,6 +86,10 @@
       "before": ["<leader>", "n", "g"],
       "commands": ["workbench.view.search"]
     },
+    {
+      "before": ["<leader>", "n", "r"],
+      "commands": ["workbench.action.replaceinfiles"]
+    },
     // Toggle
     {
       "before": ["<leader>", "t", "s"],
@@ -94,6 +98,10 @@
     {
       "before": ["<leader>", "t", "p"],
       "commands": ["workbench.action.togglePanel"]
+    },
+    {
+      "before": ["<C-W>", "Q"],
+      "commands": ["workbench.action.closeEditorsInGroup"]
     },
     // GOTO
     {
@@ -287,6 +295,14 @@
     {
       "before": ["<leader>", "n", "g"],
       "commands": ["workbench.view.search"]
+    },
+    {
+      "before": ["<leader>", "n", "r"],
+      "commands": ["workbench.action.replaceInFiles"]
+    },
+    {
+      "before": ["<leader>", "a", "f"],
+      "commands": ["editor.action.formatDocument"]
     }
   ],
   "[typescript]": {
