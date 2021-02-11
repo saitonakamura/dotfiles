@@ -1,58 +1,63 @@
 // Place your key bindings in this file to override the defaults
 [
-    {
-        "key": "alt+space",
-        "command": "editor.action.triggerSuggest",
-        "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
-    },
-    {
-        "key": "shift+cmd+]",
-        "command": "workbench.action.terminal.focusNext",
-        "when": "terminalFocus && isMac"
-    },
-    {
-        "key": "shift+cmd+[",
-        "command": "workbench.action.terminal.focusPrevious",
-        "when": "terminalFocus && isMac"
-    },
-    {
-        "key": "ctrl+pagedown",
-        "command": "workbench.action.terminal.focusNext",
-        "when": "terminalFocus"
-    },
-    {
-        "key": "ctrl+pageup",
-        "command": "workbench.action.terminal.focusPrevious",
-        "when": "terminalFocus"
-    },
-    {
-        "key": "shift+cmd+up",
-        "command": "workbench.action.toggleMaximizedPanel",
-        "when": "terminalFocus && isMac"
-    },
-    {
-        "key": "shift+cmd+down",
-        "command": "workbench.action.toggleMaximizedPanel",
-        "when": "terminalFocus && isMac"
-    },
-    {
-        "key": "shift+ctrl+up",
-        "command": "workbench.action.toggleMaximizedPanel",
-        "when": "terminalFocus && !isMac"
-    },
-    {
-        "key": "shift+ctrl+down",
-        "command": "workbench.action.toggleMaximizedPanel",
-        "when": "terminalFocus && !isMac"
-    },
-    {
-        "key": "cmd+escape",
-        "command": "workbench.action.focusActiveEditorGroup",
-        "when": "filesExplorerFocus || terminalFocus || openEditorsFocus || explorerViewletFocus || searchViewletFocus || sideBarFocus || problemFocus"
-    },
-    {
-        "key": "win+escape",
-        "command": "workbench.action.focusActiveEditorGroup",
-        "when": "filesExplorerFocus || terminalFocus || openEditorsFocus || explorerViewletFocus || searchViewletFocus || sideBarFocus || problemFocus"
-    }
+  {
+    "key": "alt+space",
+    "command": "editor.action.triggerSuggest",
+    "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
+  },
+  {
+    "key": "shift+cmd+]",
+    "command": "workbench.action.terminal.focusNext",
+    "when": "terminalFocus && isMac"
+  },
+  {
+    "key": "shift+cmd+[",
+    "command": "workbench.action.terminal.focusPrevious",
+    "when": "terminalFocus && isMac"
+  },
+  {
+    "key": "ctrl+pagedown",
+    "command": "workbench.action.terminal.focusNext",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+pageup",
+    "command": "workbench.action.terminal.focusPrevious",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "shift+cmd+up",
+    "command": "workbench.action.toggleMaximizedPanel",
+    "when": "terminalFocus && isMac"
+  },
+  {
+    "key": "shift+cmd+down",
+    "command": "workbench.action.toggleMaximizedPanel",
+    "when": "terminalFocus && isMac"
+  },
+  {
+    "key": "shift+ctrl+up",
+    "command": "workbench.action.toggleMaximizedPanel",
+    "when": "terminalFocus && !isMac"
+  },
+  {
+    "key": "shift+ctrl+down",
+    "command": "workbench.action.toggleMaximizedPanel",
+    "when": "terminalFocus && !isMac"
+  },
+  {
+    "key": "cmd+escape",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "filesExplorerFocus || terminalFocus || openEditorsFocus || explorerViewletFocus || searchViewletFocus || sideBarFocus || problemFocus"
+  },
+  {
+    "key": "win+escape",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "filesExplorerFocus || terminalFocus || openEditorsFocus || explorerViewletFocus || searchViewletFocus || sideBarFocus || problemFocus"
+  },
+  {
+    "key": "cmd+r",
+    "command": "editor.action.startFindReplaceAction",
+    "when": "editorFocus || editorIsOpen"
+  }
 ]

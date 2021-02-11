@@ -210,6 +210,10 @@
       "commands": ["workbench.view.scm"]
     },
     {
+      "before": ["<leader>", "v", "f"],
+      "commands": ["git.fetch"]
+    },
+    {
       "before": ["<leader>", "v", "p"],
       "commands": ["git.push"]
     },
