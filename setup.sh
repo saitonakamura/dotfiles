@@ -11,6 +11,7 @@ ln -sfn ~/dotfiles/.fdignore ~/.fdignore
 ln -sfn ~/dotfiles/.ideavimrc ~/.ideavimrc
 ln -sfn ~/dotfiles/.p10k.zsh ~/.p10k.zsh
 ln -sfn ~/dotfiles/.gitconfig ~/.gitconfig
+ln -sfn ~/dotfiles/.yarnrc.yml ~/.yarnrc.yml
 
 install-npm-langservers() {
     npm install -g vim-language-server

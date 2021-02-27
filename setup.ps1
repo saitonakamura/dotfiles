@@ -28,6 +28,14 @@ New-Item -Item SymbolicLink -Force `
     -Target (Resolve-Path "~\dotfiles\vscode\keybindings.json") `
     -Path "~\AppData\Roaming\Code\User\keybindings.json"
 
+New-Item -Item SymbolicLink -Force `
+    -Target (Resolve-Path "~\dotfiles\.gitconfig") `
+    -Path "~\.gitconfig"
+
+New-Item -Item SymbolicLink -Force `
+    -Target (Resolve-Path "~\dotfiles\.yarnrc.yml") `
+    -Path "~\.yarnrc.yml"
+
 Install-Module posh-git -Scope CurrentUser -Force
 Install-Module oh-my-posh -Scope CurrentUser -Force
 # Windows 10 PS6+ Already have PSReadLine
