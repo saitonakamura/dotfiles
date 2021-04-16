@@ -176,9 +176,9 @@ fi
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 if command_exists fd ; then
-  export FZF_DEFAULT_COMMAND='fd --hidden --exclude ".git"'
+  export FZF_DEFAULT_COMMAND='fd --hidden'
 else
-  export FZF_DEFAULT_COMMAND='fdfind --hidden --exclude ".git"'
+  export FZF_DEFAULT_COMMAND='fdfind --hidden'
 fi
 
 export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
@@ -213,11 +213,11 @@ turn-into-dotfile() {
 }
 
 list-dirs() {
-  fd --hidden --type d --exclude ".git" . "${1-.}"
+  fd --hidden --type d . "${1-.}"
 }
 
 list-files() {
-  fd --hidden --type f --exclude ".git" . "${1-.}"
+  fd --hidden --type f . "${1-.}"
 }
 
 # SHOWING
