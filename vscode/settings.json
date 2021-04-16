@@ -9,7 +9,6 @@
   "workbench.preferredDarkColorTheme": "Atom One Dark",
   "workbench.preferredLightColorTheme": "Atom One Light",
   "workbench.settings.editor": "json",
-  "window.zoomLevel": 1,
   "window.autoDetectColorScheme": true,
   "diffEditor.ignoreTrimWhitespace": false,
   "git.autofetch": true,
@@ -306,7 +305,7 @@
     },
     {
       "before": ["<leader>", "a", "f"],
-      "commands": ["editor.action.formatDocument"]
+      "commands": ["editor.action.formatSelection"]
     }
   ],
   "[typescript]": {
@@ -315,7 +314,7 @@
   },
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
   },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -343,5 +342,16 @@
   "jest.runAllTestsFirst": false,
   "zenMode.centerLayout": false,
   "zenMode.fullScreen": false,
-  "editor.minimap.enabled": true
+  "editor.minimap.enabled": true,
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "emmet.excludeLanguages": [
+    "typescriptreact",
+    "typescript",
+    "javascriptreact",
+    "javascript",
+    "markdown"
+  ],
+  "terminal.integrated.shell.linux": "zsh"
 }

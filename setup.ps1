@@ -36,6 +36,10 @@ New-Item -Item SymbolicLink -Force `
     -Target (Resolve-Path "~\dotfiles\.yarnrc.yml") `
     -Path "~\.yarnrc.yml"
 
+New-Item -Item SymbolicLink -Force `
+    -Target (Resolve-Path "~\dotfiles\.ideavimrc") `
+    -Path "~\.ideavimrc"
+
 Install-Module posh-git -Scope CurrentUser -Force
 Install-Module oh-my-posh -Scope CurrentUser -Force
 # Windows 10 PS6+ Already have PSReadLine
