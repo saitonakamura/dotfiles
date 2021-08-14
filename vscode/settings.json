@@ -5,7 +5,6 @@
   "editor.fontLigatures": true,
   "editor.find.addExtraSpaceOnTop": false,
   "workbench.iconTheme": "vscode-icons",
-  "workbench.editor.showTabs": true,
   "workbench.preferredDarkColorTheme": "Atom One Dark",
   "workbench.preferredLightColorTheme": "Atom One Light",
   "workbench.settings.editor": "json",
@@ -17,7 +16,6 @@
   "terminal.integrated.shell.windows": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
   "terminal.external.windowsExec": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
   "terminal.integrated.automationShell.windows": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
-  "jest.autoEnable": false,
   "vim.leader": " ",
   "vim.useSystemClipboard": true,
   "vim.replaceWithRegister": true,
@@ -306,6 +304,10 @@
     {
       "before": ["<leader>", "a", "f"],
       "commands": ["editor.action.formatSelection"]
+    },
+    {
+      "before": ["<leader>", "c"],
+      "commands": ["workbench.action.showCommands"]
     }
   ],
   "[typescript]": {
@@ -314,7 +316,7 @@
   },
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.tabSize": 2,
+    "editor.tabSize": 2
   },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -338,7 +340,7 @@
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "workbench.colorTheme": "Atom One Light",
+  "workbench.colorTheme": "Atom One Dark",
   "jest.runAllTestsFirst": false,
   "zenMode.centerLayout": false,
   "zenMode.fullScreen": false,
@@ -353,5 +355,6 @@
     "javascript",
     "markdown"
   ],
-  "terminal.integrated.shell.linux": "zsh"
+  "terminal.integrated.shell.linux": "zsh",
+  "workbench.editor.wrapTabs": true
 }
