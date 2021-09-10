@@ -5,6 +5,9 @@ git clone https://github.com/Aloxaf/fzf-tab ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/p
 
 rm ~/.zshrc
 
+mkdir ~/.config
+mkdir ~/.config/nvim
+
 ln -sfn ~/dotfiles/.zshrc ~/.zshrc
 ln -sfn ~/dotfiles/init.vim ~/.config/nvim/init.vim
 ln -sfn ~/dotfiles/.fdignore ~/.fdignore

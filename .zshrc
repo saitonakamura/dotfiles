@@ -292,3 +292,10 @@ fi
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 export PATH="/usr/local/opt/mozjpeg/bin:$HOME/.local/bin:$HOME/.npm-global/bin:$PATH"
+
+# opam configuration
+test -r /home/saito/.opam/opam-init/init.zsh && . /home/saito/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+# fnm
+export PATH=/home/saito/.fnm:$PATH
+eval "`fnm env`"
