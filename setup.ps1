@@ -1,6 +1,6 @@
 New-Item -Item SymbolicLink -Force `
     -Target (Resolve-Path "~\dotfiles\WindowsTerminal-profiles.json") `
-    -Path "~\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\profiles.json"
+    -Path "~\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
 
 mkdir ~\AppData\Local\nvim\autoload
 
@@ -20,13 +20,13 @@ New-Item -Item SymbolicLink -Force `
     -Target (Resolve-Path "~\dotfiles\Powershell_profile.ps1") `
     -Path "$profile"
 
-New-Item -Item SymbolicLink -Force `
-    -Target (Resolve-Path "~\dotfiles\vscode\settings.json") `
-    -Path "~\AppData\Roaming\Code\User\settings.json"
+# New-Item -Item SymbolicLink -Force `
+#     -Target (Resolve-Path "~\dotfiles\vscode\settings.json") `
+#     -Path "~\AppData\Roaming\Code\User\settings.json"
 
-New-Item -Item SymbolicLink -Force `
-    -Target (Resolve-Path "~\dotfiles\vscode\keybindings.json") `
-    -Path "~\AppData\Roaming\Code\User\keybindings.json"
+# New-Item -Item SymbolicLink -Force `
+#     -Target (Resolve-Path "~\dotfiles\vscode\keybindings.json") `
+#     -Path "~\AppData\Roaming\Code\User\keybindings.json"
 
 New-Item -Item SymbolicLink -Force `
     -Target (Resolve-Path "~\dotfiles\.gitconfig") `

@@ -30,5 +30,5 @@ Set-Alias -Name pd -Value Get-ChildItem -Force
 # Set-Alias -Name gs -Value git status
 # Set-Alias -Name gss -Value git status --short
 # Set-Alias -Name gf -Value git fetch
-Set-Prompt
-Set-Theme Paradox
+# Set-Prompt
+Set-PoshPrompt -Theme Paradox
