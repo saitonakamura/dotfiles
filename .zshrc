@@ -263,7 +263,7 @@ gsb() {
 
 # SEARCHING
 
-# alias rgc='rg --no-heading --column'
+alias rgc='rg --no-heading --column'
 
 # COPYING
 

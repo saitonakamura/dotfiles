@@ -11,8 +11,8 @@ install-lua-langserver() {
 
 sh ./setup.sh
 
-ln -sfn ~/dotfiles/vscode/settings.json ~/Library/ApplicationSupport/Code/User/settings.json
-ln -sfn ~/dotfiles/vscode/keybindings.json ~/Library/ApplicationSupport/Code/User/keybindings.json
+ln -sfn ~/dotfiles/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
+ln -sfn ~/dotfiles/vscode/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
 
 mkdir ~/.local
 mkdir ~/.local/bin

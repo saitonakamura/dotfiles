@@ -340,7 +340,6 @@
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "workbench.colorTheme": "Atom One Dark",
   "jest.runAllTestsFirst": false,
   "zenMode.centerLayout": false,
   "zenMode.fullScreen": false,
@@ -356,5 +355,8 @@
     "markdown"
   ],
   "terminal.integrated.shell.linux": "zsh",
-  "workbench.editor.wrapTabs": true
+  "workbench.editor.wrapTabs": true,
+  "workbench.colorTheme": "Atom One Light",
+  "window.zoomLevel": 1,
+  "coqtop.binPath": "/home/saito/.opam/default/bin/"
 }
