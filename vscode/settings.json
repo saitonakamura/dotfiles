@@ -44,11 +44,11 @@
       "commands": ["workbench.action.navigateBack"]
     },
     {
-      "before": ["<leader>", "b", "]"],
+      "before": ["<leader>", "b", "["],
       "commands": ["workbench.action.previousEditor"]
     },
     {
-      "before": ["<leader>", "b", "["],
+      "before": ["<leader>", "b", "]"],
       "commands": ["workbench.action.nextEditor"]
     },
     {
@@ -356,7 +356,8 @@
   ],
   "terminal.integrated.shell.linux": "zsh",
   "workbench.editor.wrapTabs": true,
-  "workbench.colorTheme": "Atom One Light",
-  "window.zoomLevel": 1,
-  "coqtop.binPath": "/home/saito/.opam/default/bin/"
+  "workbench.colorTheme": "Atom One Dark",
+  "coqtop.binPath": "/home/saito/.opam/default/bin/",
+  "editor.accessibilitySupport": "off",
+  "gitlens.mode.active": "zen"
 }

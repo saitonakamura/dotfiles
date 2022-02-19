@@ -1,8 +1,8 @@
 $DefaultUser = 'saito'
 
-Import-Module posh-git
+# Import-Module posh-git
 Import-Module oh-my-posh
-Import-Module PSReadLine
+# Import-Module PSReadLine
 
 $env:FZF_DEFAULT_COMMAND='fd --hidden'
 
@@ -31,4 +31,5 @@ Set-Alias -Name pd -Value Get-ChildItem -Force
 # Set-Alias -Name gss -Value git status --short
 # Set-Alias -Name gf -Value git fetch
 # Set-Prompt
-Set-PoshPrompt -Theme Paradox
+# Set-Theme Paradox
+Set-PoshPrompt -Theme powerlevel10k_modern
