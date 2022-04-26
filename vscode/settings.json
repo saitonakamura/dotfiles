@@ -13,9 +13,7 @@
   "git.autofetch": true,
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "terminal.integrated.fontFamily": "Cascadia Code PL",
-  "terminal.integrated.shell.windows": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
   "terminal.external.windowsExec": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
-  "terminal.integrated.automationShell.windows": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
   "vim.leader": " ",
   "vim.useSystemClipboard": true,
   "vim.replaceWithRegister": true,
@@ -222,6 +220,10 @@
       "before": ["<leader>", "v", "b"],
       "commands": ["gitlens.toggleFileBlame"]
     },
+    {
+      "before": ["<leader>", "v", "k"],
+      "commands": ["gitlens.showQuickCommitDetails"]
+    },
     // ETC
     {
       "before": ["<leader>", "/"],
@@ -340,7 +342,7 @@
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "jest.runAllTestsFirst": false,
+  "jest.autoRun": { "watch": false, "onSave": ["test-file"] },
   "zenMode.centerLayout": false,
   "zenMode.fullScreen": false,
   "editor.minimap.enabled": true,
@@ -354,10 +356,11 @@
     "javascript",
     "markdown"
   ],
-  "terminal.integrated.shell.linux": "zsh",
   "workbench.editor.wrapTabs": true,
-  "workbench.colorTheme": "Atom One Dark",
+  "workbench.colorTheme": "Atom One Light",
   "coqtop.binPath": "/home/saito/.opam/default/bin/",
   "editor.accessibilitySupport": "off",
-  "gitlens.mode.active": "zen"
+  "gitlens.mode.active": "zen",
+  "window.zoomLevel": 1,
+  "gitlens.keymap": "none"
 }
