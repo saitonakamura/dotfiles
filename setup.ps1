@@ -44,3 +44,7 @@ Install-Module posh-git -Scope CurrentUser -Force
 Install-Module oh-my-posh -Scope CurrentUser -Force
 # Windows 10 PS6+ Already have PSReadLine
 # Install-Module -Name PSReadLine -AllowPrerelease -Scope CurrentUser -Force -SkipPublisherCheck
+
+# Install next
+# Printunl
+# WebStorm
