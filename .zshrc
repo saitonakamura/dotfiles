@@ -299,7 +299,3 @@ test -r /home/saito/.opam/opam-init/init.zsh && . /home/saito/.opam/opam-init/in
 # fnm
 export PATH=/home/saito/.fnm:$PATH
 eval "`fnm env`"
-
-# fnm
-export PATH=/home/saito/.fnm:$PATH
-eval "`fnm env`"

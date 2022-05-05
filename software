@@ -1,0 +1,12 @@
+apt-transport-https
+bat
+curl
+ffmpeg
+fd-find
+fzf
+gh
+htop
+jq
+neovim
+zip
+zsh
