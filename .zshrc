@@ -227,7 +227,7 @@ pd() {
   if command_exists exa ; then
     exa --long --header --all "$@"
   else
-    ls -a -l -G -F "$@"
+    ls -a -l -G -F -h "$@"
   fi
 }
 
@@ -295,6 +295,10 @@ export PATH="/usr/local/opt/mozjpeg/bin:$HOME/.local/bin:$HOME/.npm-global/bin:$
 
 # opam configuration
 test -r /home/saito/.opam/opam-init/init.zsh && . /home/saito/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+# fnm
+export PATH=/home/saito/.fnm:$PATH
+eval "`fnm env`"
 
 # fnm
 export PATH=/home/saito/.fnm:$PATH
