@@ -184,6 +184,7 @@ export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
 
 alias zshconfig="nvim ~/.zshrc"
 alias zshreloadconfig="source ~/.zshrc"
+alias neovide="/mnt/c/Users/saito/AppData/Local/neovide/neovide.exe --wsl"
 
 if command_exists fd ; then
 else
