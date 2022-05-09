@@ -46,4 +46,6 @@ sudo update-alternatives --config editor
 # install-npm-langservers
 # install-lua-langserver
 
+curl -fsSL https://fnm.vercel.app/install | bash -s -- --install-dir "$HOME/.local/bin"
+
 ln -s /usr/bin/batcat ~/.local/bin/bat
