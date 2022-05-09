@@ -16,8 +16,9 @@ get-github-latest-release() {
 
 sh ./setup.sh
 
-ln -sfn ~/dotfiles/vscode/settings.json ~/.vscode-server/data/machine/settings.json
-ln -sfn ~/dotfiles/vscode/keybindings.json ~/.vscode-server/data/machine/keybindings.json
+# Using vscode settings sync now
+# ln -sfn ~/dotfiles/vscode/settings.json ~/.vscode-server/data/machine/settings.json
+# ln -sfn ~/dotfiles/vscode/keybindings.json ~/.vscode-server/data/machine/keybindings.json
 ln -sfn ~/dotfiles/.npmrc ~/.npmrc
 
 mkdir ~/.local
@@ -28,7 +29,6 @@ mkdir ~/.npm-global
 mkdir ~/.npm-global/bin
 
 sudo apt-get update
-
 
 curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
@@ -46,3 +46,4 @@ sudo update-alternatives --config editor
 # install-npm-langservers
 # install-lua-langserver
 
+ln -s /usr/bin/batcat ~/.local/bin/bat

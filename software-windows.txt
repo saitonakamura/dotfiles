@@ -1,0 +1,25 @@
+--id AgileBits.1Password
+--id Discord.Discord
+--id Docker.DockerDesktop
+--id Figma.Figma
+--id Git.Git
+--id Google.Chrome.Canary
+--id Logitech.Options
+--id Microsoft.WindowsTerminal
+--id Spotify.Spotify
+--id Valve.Steam
+--id VideoLAN.VLC
+--id SlackTechnologies.Slack
+--id 7zip.7zip
+--id Armin2208.WindowsAutoNightMode
+--id Telegram.TelegramDesktop
+--id Google.Chrome
+--id Microsoft.VisualStudioCode
+--id Microsoft.PowerToys
+--id Nvidia.GeForceExperience
+--id Zoom.Zoom
+--id Microsoft.PowerShell
+--name "NVIDIA Control Panel"
+--name "iCloud"
+--name "Ubuntu 22.04 LTS"
+--id JanDeDobbeleer.OhMyPosh
