@@ -10,3 +10,5 @@ jq
 neovim
 zip
 zsh
+ssh-askpass
+ripgrep

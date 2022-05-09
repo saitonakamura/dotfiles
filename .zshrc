@@ -49,13 +49,6 @@ fi
 
 username=`id -un`
 
-export LANG=en_US.UTF-8
-export LC_CTYPE=C
-export DOTNET_CLI_TELEMETRY_OPTOUT=1
-
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -63,13 +56,6 @@ export ZSH="$HOME/.oh-my-zsh"
 DEFAULT_USER="$username"
 # ZSH_THEME="saitonakamura"
 ZSH_THEME="powerlevel10k/powerlevel10k"
-
-if [ -d "$HOME/.npm-global/bin" ] ; then
-  export PATH="$HOME/.npm-global/bin:$PATH"
-fi
-
-# export PATH="/usr/local/opt/node/bin:$PATH"
-export PATH="/usr/local/sbin:$PATH"
 
 
 # Set list of themes to pick from when loading at random
@@ -150,6 +136,8 @@ plugins=(
   zsh-autosuggestions
 )
 
+# zstyle :omz:plugins:ssh-agent lazy yes
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -162,9 +150,6 @@ system='unknown'
 #else
 #  system='Linux'
 #fi
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -183,8 +168,8 @@ fi
 
 export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
 
-GPG_TTY=$(tty)
-export GPG_TTY
+# GPG_TTY=$(tty)
+# export GPG_TTY
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -291,11 +276,10 @@ fi
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-export PATH="/usr/local/opt/mozjpeg/bin:$HOME/.local/bin:$HOME/.npm-global/bin:$PATH"
+# export PATH="/usr/local/opt/mozjpeg/bin:$PATH"
 
 # opam configuration
 test -r /home/saito/.opam/opam-init/init.zsh && . /home/saito/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 # fnm
-export PATH=/home/saito/.fnm:$PATH
 eval "`fnm env`"
