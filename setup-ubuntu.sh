@@ -50,3 +50,5 @@ curl -fsSL https://fnm.vercel.app/install | bash -s -- --install-dir "$HOME/.loc
 fnm install --lts
 
 ln -s /usr/bin/batcat ~/.local/bin/bat
+
+npm install --global yarn
