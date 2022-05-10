@@ -31,7 +31,7 @@ local on_attach = function(client, bufnr, ...)
 
   local opts = { buffer = bufnr }
   vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, opts)
-  vim.keymap.set('n', '<leader>ar', vim.lsp.buf.formatting, {})
+  vim.keymap.set('n', '<leader>af', vim.lsp.buf.formatting, {})
   vim.api.nvim_create_user_command("Format", vim.lsp.buf.formatting, {})
 end
 

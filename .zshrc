@@ -184,7 +184,9 @@ export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
 
 alias zshconfig="nvim ~/.zshrc"
 alias zshreloadconfig="source ~/.zshrc"
-alias neovide="/mnt/c/Users/saito/AppData/Local/neovide/neovide.exe --wsl"
+if [ -d "/mnt/c" ] ; then
+  alias neovide="/mnt/c/Users/saito/AppData/Local/neovide/neovide.exe --wsl"
+fi
 
 if command_exists fd ; then
 else
@@ -281,4 +283,3 @@ fi
 
 # opam configuration
 test -r /home/saito/.opam/opam-init/init.zsh && . /home/saito/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-

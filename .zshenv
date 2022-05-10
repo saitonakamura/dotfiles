@@ -14,8 +14,9 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 # export PATH="/usr/local/opt/node/bin:$PATH"
-export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
 
 # fnm
 eval "`fnm env`"
 
+. "$HOME/.cargo/env"
