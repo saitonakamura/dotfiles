@@ -39,10 +39,15 @@ Plug 'tpope/vim-repeat'
 "     \ 'branch': 'next',
 "     \ 'do': 'bash install.sh',
 "     \ }
-Plug 'reasonml-editor/vim-reason-plus'
+" Plug 'reasonml-editor/vim-reason-plus'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
+" Plug 'nvim-lua/completion-nvim'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'L3MON4D3/LuaSnip'
+" Plug 'hrsh7th/cmp-cmdline'
 
 if s:system == 'Macos'
   " Plug '/usr/local/opt/fzf'
@@ -55,6 +60,8 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 call plug#end()
+
+set completeopt=menu,menuone,noselect
 
 " Use `:Format` to format current buffer
 " command! -nargs=0 Format :call CocAction('format')
@@ -188,35 +195,6 @@ endtry
 
 call SetCurrentSystemTheme()
 
-" COC.NVIM
-
-" if hidden is not set, TextEdit might fail.
-set hidden
-
-
-  " \ 'javascript': ['javascript-typescript-stdio'],
-  " \ 'javascriptreact': ['javascript-typescript-stdio'],
-  " \ 'typescript': ['javascript-typescript-stdio'],
-  " \ 'typescriptreact': ['javascript-typescript-stdio'],
-
-  " \ 'javascript': ['typescript-language-server', '--stdio'],
-  " \ 'javascriptreact': ['typescript-language-server', '--stdio'],
-  " \ 'typescript': ['typescript-language-server', '--stdio'],
-  " \ 'typescriptreact': ['typescript-language-server', '--stdio'],
-  
-  " \ 'reason': ['~/lsp/reason-language-server/reason-language-server'],
-" let g:LanguageClient_serverCommands = {
-"   \ 'javascript': ['typescript-language-server', '--stdio'],
-"   \ 'javascriptreact': ['typescript-language-server', '--stdio'],
-"   \ 'typescript': ['typescript-language-server', '--stdio'],
-"   \ 'typescriptreact': ['typescript-language-server', '--stdio'],
-"   \ 'reason': ['ocaml-language-server', '--stdio'],
-"   \ 'ocaml': ['ocaml-language-server', '--stdio'],
-"   \ 'vim': ['vim-language-server', '--stdio'],
-"   \ 'css': ['css-languageserver', '--stdio'],
-"   \ 'scss': ['css-languageserver', '--stdio'],
-"   \ 'dockerfile': ['dockerfile-langserver', '--stdio'],
-"   \ }
 
 " Some servers have issues with backup files, see #649
 set nobackup
@@ -238,20 +216,20 @@ set signcolumn=yes
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
 "inoremap <silent><expr> <C-TAB>
 "      \ pumvisible() ? "\<C-n>" :
-"      \ <SID>check_back_space() ? "\<C-TAB>" :
+"      \ <SID>check_back_pace() ? "\<C-TAB>" :
 "      \ coc#refresh()
 " inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-" function! s:check_back_space() abort
+" function! s:check_back_pace() abort
 "   let col = col('.') - 1
 " endfunction
 
 " Trigger completion.
-" inoremap <silent><expr> <alt-space> coc#refresh()
+" inoremap <silent><expr> <alt-pace> coc#refresh()
 
-imap <silent> <c-p> <Plug>(completion_trigger)
-imap <tab> <Plug>(completion_smart_tab)
-imap <s-tab> <Plug>(completion_smart_s_tab)
+" imap <silent> <c-p> <Plug>(completion_trigger)
+" imap <tab> <Plug>(completion_smart_tab)
+" imap <s-tab> <Plug>(completion_smart_s_tab)
 
 " imap <silent> <c-p> 
 " imap <tab> <C-X><C-O>
@@ -307,6 +285,21 @@ imap <s-tab> <Plug>(completion_smart_s_tab)
 "   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 " augroup end
 
+function! ChangeDirToPrj()
+   let l:Args = argv()
+   if len(l:Args) != 1 " do it only when a single folder was passed to Vim as arg
+      return
+   endif
+   if isdirectory(l:Args[0])
+      exec 'chdir ' .. l:Args[0]
+   endif
+endfunction
+
+augroup VIMRC
+   autocmd!
+   autocmd VimEnter * call ChangeDirToPrj()
+augroup END
+
 " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
 " xmap <leader>a  <Plug>(coc-codeaction-selected)
 " nmap <leader>a  <Plug>(coc-codeaction-selected)
@@ -350,18 +343,18 @@ nnoremap <silent> <leader>np :NERDTreeFind<CR>
 nnoremap <silent> <leader>qp :NERDTreeClose<CR>
 nnoremap <silent> <leader>nb :Buffers<CR>
 
-" GOTO
-" nnoremap <silent> <leader>gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <leader>gd <cmd>lua vim.lsp.buf.definition()<CR>
-" nnoremap <silent> <leader>gt :call LanguageClient#textDocument_typeDefinition()<CR>
-nnoremap <silent> <leader>gt <cmd>lua vim.lsp.buf.type_definition()<CR>
-" nnoremap <silent> <leader>gi :call LanguageClient#textDocument_implementation()<CR>
-nnoremap <silent> <leader>gi <cmd>lua vim.lsp.buf.implementation()<CR>
-" nnoremap <silent> <leader>gr :call LanguageClient#textDocument_references()<CR>
-nnoremap <silent> <leader>gr <cmd>lua vim.lsp.buf.references()<CR>
-" nnoremap <silent> <leader>gs :call LanguageClient#workspace_symbol()<CR>
-nnoremap <silent> <leader>gs <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
-" nnoremap <silent> <leader>gu :action GotoTest<CR>
+" " GOTO
+" " nnoremap <silent> <leader>gd :call LanguageClient#textDocument_definition()<CR>
+" nnoremap <silent> <leader>gd <cmd>lua vim.lsp.buf.definition()<CR>
+" " nnoremap <silent> <leader>gt :call LanguageClient#textDocument_typeDefinition()<CR>
+" nnoremap <silent> <leader>gt <cmd>lua vim.lsp.buf.type_definition()<CR>
+" " nnoremap <silent> <leader>gi :call LanguageClient#textDocument_implementation()<CR>
+" nnoremap <silent> <leader>gi <cmd>lua vim.lsp.buf.implementation()<CR>
+" " nnoremap <silent> <leader>gr :call LanguageClient#textDocument_references()<CR>
+" nnoremap <silent> <leader>gr <cmd>lua vim.lsp.buf.references()<CR>
+" " nnoremap <silent> <leader>gs :call LanguageClient#workspace_symbol()<CR>
+" nnoremap <silent> <leader>gs <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+" " nnoremap <silent> <leader>gu :action GotoTest<CR>
 
 nnoremap <silent> <leader>c :Commands<CR>
 nnoremap <silent> <leader>f :Files<CR>
@@ -369,36 +362,36 @@ nnoremap <silent> <leader>f :Files<CR>
 " map <silent> <leader>nd :Cd<CR>
 nnoremap <silent> <leader>m :Maps<CR>
 
-" PREVIEW
-" nnoremap <silent> <leader>k :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> <leader>k <cmd>lua vim.lsp.buf.hover()<CR>
-" noremap <A-Space> :call LanguageClient#textDocument_completion()<CR>
-inoremap <A-Space> <cmd>lua vim.lsp.buf.completion()<CR>
-" nnoremap <silent> <leader>pd :call QuickImplementations<CR>
-" nnoremap <silent> <leader>pr :call ShowUsages<CR>
-" nnoremap <silent> <leader>pb :call RecentLocations<CR>
-" nnoremap <silent> <leader>ps :call FileStructurePopup<CR>
-" nnoremap <silent> <leader>ps :call LanguageClient#textDocument_documentSymbol()<CR>
-nnoremap <silent> <leader>ps <cmd>lua vim.lsp.buf.document_symbol()<CR>
+" " PREVIEW
+" " nnoremap <silent> <leader>k :call LanguageClient#textDocument_hover()<CR>
+" nnoremap <silent> <leader>k <cmd>lua vim.lsp.buf.hover()<CR>
+" " noremap <A-Space> :call LanguageClient#textDocument_completion()<CR>
+" inoremap <A-Space> <cmd>lua vim.lsp.buf.completion()<CR>
+" " nnoremap <silent> <leader>pd :call QuickImplementations<CR>
+" " nnoremap <silent> <leader>pr :call ShowUsages<CR>
+" " nnoremap <silent> <leader>pb :call RecentLocations<CR>
+" " nnoremap <silent> <leader>ps :call FileStructurePopup<CR>
+" " nnoremap <silent> <leader>ps :call LanguageClient#textDocument_documentSymbol()<CR>
+" nnoremap <silent> <leader>ps <cmd>lua vim.lsp.buf.document_symbol()<CR>
 
-" FORMAT FIXES REFACTORINGS
-" nnoremap <silent> <leader>ar :call LanguageClient#textDocument_rename()<CR>
-nnoremap <silent> <leader>ar <cmd>lua vim.lsp.buf.rename()<CR>
-" nnoremap <silent> <leader>am :call LanguageClient#textDocument_codeAction()<CR>
-" vnoremap <silent> <leader>am :call LanguageClient#textDocument_codeAction()<CR>
-nnoremap <silent> <leader>am <cmd>lua vim.lsp.buf.code_action()<CR>
-vnoremap <silent> <leader>am <cmd>lua vim.lsp.buf.code_action()<CR>
-" nnoremap <silent> <leader>af :call LanguageClient#textDocument_formatting()<CR>
-" vnoremap <silent> <leader>af :call LanguageClient#textDocument_rangeFormatting()<CR>
-" nnoremap <silent> <leader>ap :call ReformatWithPrettierAction<CR>
-" nmap <silent> <leader>al :action
+" " FORMAT FIXES REFACTORINGS
+" " nnoremap <silent> <leader>ar :call LanguageClient#textDocument_rename()<CR>
+" nnoremap <silent> <leader>ar <cmd>lua vim.lsp.buf.rename()<CR>
+" " nnoremap <silent> <leader>am :call LanguageClient#textDocument_codeAction()<CR>
+" " vnoremap <silent> <leader>am :call LanguageClient#textDocument_codeAction()<CR>
+" nnoremap <silent> <leader>am <cmd>lua vim.lsp.buf.code_action()<CR>
+" vnoremap <silent> <leader>am <cmd>lua vim.lsp.buf.code_action()<CR>
+" " nnoremap <silent> <leader>af :call LanguageClient#textDocument_formatting()<CR>
+" " vnoremap <silent> <leader>af :call LanguageClient#textDocument_rangeFormatting()<CR>
+" " nnoremap <silent> <leader>ap :call ReformatWithPrettierAction<CR>
+" " nmap <silent> <leader>al :action
 
-" nnoremap <silent> <leader>rr :action RenameElement<CR>
-" nnoremap <silent> <leader>rm :action Move<CR>
-" nnoremap <silent> <leader>rv :action IntroduceVariable<CR>
-" nnoremap <silent> <leader>ri :action Inline<CR>
-" nnoremap <silent> <leader>rf :action ExtractMethod<CR>
-" nnoremap <silent> <leader>rp :action IntroduceParameter<CR>
+" " nnoremap <silent> <leader>rr :action RenameElement<CR>
+" " nnoremap <silent> <leader>rm :action Move<CR>
+" " nnoremap <silent> <leader>rv :action IntroduceVariable<CR>
+" " nnoremap <silent> <leader>ri :action Inline<CR>
+" " nnoremap <silent> <leader>rf :action ExtractMethod<CR>
+" " nnoremap <silent> <leader>rp :action IntroduceParameter<CR>
 
 
 " FILES
@@ -414,13 +407,13 @@ nnoremap <silent> <leader>tf :TestFile<CR>
 " GIT
 " nnoremap <silent> <leader>vs :action Git.Branches<CR>
 " nnoremap <silent> <leader>vS :action Git.CreateNewBranch<CR>
-nnoremap <silent> <leader>vc :Gcommit<CR>
-nnoremap <silent> <leader>vv :G<CR>
-nnoremap <silent> <leader>vp :Gpush<CR>
+nnoremap <silent> <leader>vc :Git commit<CR>
+nnoremap <silent> <leader>vv :Git<CR>
+nnoremap <silent> <leader>vp :Git push<CR>
 " nnoremap <silent> <leader>vP :Gpush!<CR>
-nnoremap <silent> <leader>vb :Gblame<CR>
-nnoremap <silent> <leader>vl :Gpull<CR>
-nnoremap <silent> <leader>vf :Gfetch<CR>
+nnoremap <silent> <leader>vb :Git blame<CR>
+nnoremap <silent> <leader>vl :Git pull<CR>
+nnoremap <silent> <leader>vf :Git fetch<CR>
 
 " HELP
 " nmap <silent> <leader>h :actionlist<space>
