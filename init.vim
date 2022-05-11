@@ -46,8 +46,12 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
 Plug 'L3MON4D3/LuaSnip'
 " Plug 'hrsh7th/cmp-cmdline'
+Plug 'sbdchd/neoformat'
 
 if s:system == 'Macos'
   " Plug '/usr/local/opt/fzf'
@@ -62,6 +66,8 @@ Plug 'junegunn/fzf.vim'
 call plug#end()
 
 set completeopt=menu,menuone,noselect
+
+
 
 " Use `:Format` to format current buffer
 " command! -nargs=0 Format :call CocAction('format')
@@ -392,11 +398,13 @@ nnoremap <silent> <leader>m :Maps<CR>
 " " nnoremap <silent> <leader>ri :action Inline<CR>
 " " nnoremap <silent> <leader>rf :action ExtractMethod<CR>
 " " nnoremap <silent> <leader>rp :action IntroduceParameter<CR>
-
+let g:neoformat_try_node_exe = 1
+nnoremap <silent> <leader>af :Neoformat<CR>
+vnoremap <silent> <leader>af :Neoformat<CR>
 
 " FILES
 nnoremap <silent> <leader>w :write<CR>
-" nnoremap <silent> <leader>W :action SaveAll<CR>
+nnoremap <silent> <leader><S-w> :wall<CR>
 
 " TESTS
 nnoremap <silent> <leader>tt :TestNearest<CR>

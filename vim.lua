@@ -31,8 +31,17 @@ local on_attach = function(client, bufnr, ...)
 
   local opts = { buffer = bufnr }
   vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, opts)
-  vim.keymap.set('n', '<leader>af', vim.lsp.buf.formatting, {})
-  vim.api.nvim_create_user_command("Format", vim.lsp.buf.formatting, {})
+  vim.keymap.set('n', '<leader>gD', vim.lsp.buf.declaration, opts)
+  vim.keymap.set('n', '<leader>k', vim.lsp.buf.hover, opts)
+  vim.keymap.set('n', '<leader>gt', vim.lsp.buf.type_definition, opts)
+  vim.keymap.set('n', '<leader>gi', vim.lsp.buf.implementation, opts)
+  vim.keymap.set('n', '<leader>gr', vim.lsp.buf.references, opts)
+  vim.keymap.set('n', '<leader>gs', vim.lsp.buf.workspace_symbol, opts)
+  vim.keymap.set('n', '<leader>ps', vim.lsp.buf.document_symbol, opts)
+  vim.keymap.set('n', '<leader>ar', vim.lsp.buf.rename, opts)
+  vim.keymap.set('n', '<leader>am', vim.lsp.buf.code_action, opts)
+  -- vim.keymap.set('n', '<leader>af', vim.lsp.buf.formatting, {})
+  -- vim.api.nvim_create_user_command("Format", vim.lsp.buf.formatting, {})
 end
 
 -- require'lspconfig'.intelephense.setup{}
@@ -44,7 +53,7 @@ local omnisharp_bin = "omnisharp-language-server"
 
 -- lspconfig.vimls.setup{ on_attach = on_attach }
 lspconfig.tsserver.setup{ on_attach = on_attach, capabilities = capabilities }
--- lspconfig.tsserver.setup{}
+lspconfig.eslint.setup{ on_attach = on_attach, capabilities = capabilities }
 -- lspconfig.jsonls.setup{ on_attach = on_attach }
 -- lspconfig.cssls.setup{ on_attach = on_attach }
 -- lspconfig.bashls.setup{ on_attach = on_attach }
@@ -120,5 +129,23 @@ cmp.setup {
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
+    { name = 'buffer' },
   },
 }
+
+cmp.setup.cmdline('/', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = {
+    { name = 'buffer' }
+  }
+})
+
+cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+    { name = 'path' }
+  }, {
+    { name = 'cmdline' }
+  })
+})
+
