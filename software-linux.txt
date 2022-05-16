@@ -7,7 +7,7 @@ fzf
 gh
 htop
 jq
-neovim
+# neovim
 zip
 zsh
 ssh-askpass
