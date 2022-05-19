@@ -24,7 +24,7 @@ call plug#begin(stdpath('data') . '/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'sheerun/vim-polyglot'
+" Plug 'sheerun/vim-polyglot'
 Plug 'joshdick/onedark.vim'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
 " Plug 'rakrvim-one'
@@ -59,13 +59,17 @@ else
   " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 endif
 
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
-Plug 'junegunn/fzf.vim'
+" Plug 'junegunn/fzf.vim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'kyazdani42/nvim-web-devicons'
 
 call plug#end()
 
-set completeopt=menu,menuone,noselect
+" set completeopt=menu,menuone,noselect
 
 
 
@@ -157,7 +161,7 @@ command! SetLightTheme :call SetLightTheme()
 command! SetDarkTheme :call SetDarkTheme()
 command! SetCurrentSystemTheme :call SetCurrentSystemTheme()
 
-set termguicolors
+" set termguicolors
 syntax on
 
 set background=dark
@@ -347,7 +351,10 @@ vnoremap <silent> <leader>; :
 " nnoremap <silent> <leader>nt :action ActivateTerminalToolWindow<CR>
 nnoremap <silent> <leader>np :NERDTreeFind<CR>
 nnoremap <silent> <leader>qp :NERDTreeClose<CR>
-nnoremap <silent> <leader>nb :Buffers<CR>
+" nnoremap <silent> <leader>nb :Buffers<CR>
+nnoremap <silent> <leader>nb <cmd>Telescope buffers<CR>
+nnoremap <silent> <leader>nf <cmd>Telescope live_grep<CR>
+
 
 " " GOTO
 " " nnoremap <silent> <leader>gd :call LanguageClient#textDocument_definition()<CR>
@@ -362,14 +369,19 @@ nnoremap <silent> <leader>nb :Buffers<CR>
 " nnoremap <silent> <leader>gs <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 " " nnoremap <silent> <leader>gu :action GotoTest<CR>
 
-nnoremap <silent> <leader>c :Commands<CR>
-nnoremap <silent> <leader>f :Files<CR>
+" nnoremap <silent> <leader>c :Commands<CR>
+nnoremap <silent> <leader>c <cmd>Telescope commands<CR>
+" nnoremap <silent> <leader>f :Files<CR>
+nnoremap <silent> <leader>f <cmd>Telescope git_files<CR>
+nnoremap <silent> <leader>F <cmd>Telescope find_files<CR>
 " nnoremap <silent> <leader>e :action SearchEverywhere<CR>
 " map <silent> <leader>nd :Cd<CR>
-nnoremap <silent> <leader>m :Maps<CR>
+" nnoremap <silent> <leader>m :Maps<CR>
+nnoremap <silent> <leader>m <cmd>Telescope keymaps<CR>
+
 
 " " PREVIEW
-" " nnoremap <silent> <leader>k :call LanguageClient#textDocument_hover()<CR>
+" nnoremap <silent> <leader>k :call LanguageClient#textDocument_hover()<CR>
 " nnoremap <silent> <leader>k <cmd>lua vim.lsp.buf.hover()<CR>
 " " noremap <A-Space> :call LanguageClient#textDocument_completion()<CR>
 " inoremap <A-Space> <cmd>lua vim.lsp.buf.completion()<CR>
@@ -424,10 +436,10 @@ nnoremap <silent> <leader>vl :Git pull<CR>
 nnoremap <silent> <leader>vf :Git fetch<CR>
 
 " HELP
-" nmap <silent> <leader>h :actionlist<space>
+nmap <silent> <leader>h <cmd>Telescope help_tags<CR>
 
 " ETC
-nnoremap <leader>/ :nohlsearch<CR>
+" nnoremap <leader>/ :nohlsearch<CR>
 " nnoremap / :action Find<CR>
 " nnoremap g/ /
 map <silent> <leader>acp :CopyCurrentFilePath<CR>

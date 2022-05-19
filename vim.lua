@@ -9,9 +9,43 @@ else
   print("Unsupported system for sumneko")
 end
 
+vim.o.mouse = 'a'
+vim.o.completeopt = 'menu,menuone,noselect'
+vim.o.termguicolors = true
+vim.opt.undofile = true
+
+-- Highlight on yank
+local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+  group = highlight_group,
+  pattern = '*',
+})
+
 -- vim.lsp.set_log_level("debug")
 
+local fd_cli = "fd"
+
+if system_name == "Linux" then
+  fd_cli = "fdfind"
+end
+
+-- require('telescope').setup {
+--   pickers = {
+--     find_files = {
+--       find_command = {
+--         fd_cli, "--hidden", "--type", "f"
+--       }
+--     }
+--   }
+-- }
+
+vim.keymap.set('n', '<leader>/', require('telescope.builtin').current_buffer_fuzzy_find)
+vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles)
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
+vim.keymap.set('n', '<leader>E', require('telescope.builtin').diagnostics)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
@@ -35,9 +69,9 @@ local on_attach = function(client, bufnr, ...)
   vim.keymap.set('n', '<leader>k', vim.lsp.buf.hover, opts)
   vim.keymap.set('n', '<leader>gt', vim.lsp.buf.type_definition, opts)
   vim.keymap.set('n', '<leader>gi', vim.lsp.buf.implementation, opts)
-  vim.keymap.set('n', '<leader>gr', vim.lsp.buf.references, opts)
+  vim.keymap.set('n', '<leader>gr', require('telescope.builtin').lsp_references, opts)
   vim.keymap.set('n', '<leader>gs', vim.lsp.buf.workspace_symbol, opts)
-  vim.keymap.set('n', '<leader>ps', vim.lsp.buf.document_symbol, opts)
+  vim.keymap.set('n', '<leader>ps', require('telescope.builtin').lsp_document_symbols, opts)
   vim.keymap.set('n', '<leader>ar', vim.lsp.buf.rename, opts)
   vim.keymap.set('n', '<leader>am', vim.lsp.buf.code_action, opts)
   -- vim.keymap.set('n', '<leader>af', vim.lsp.buf.formatting, {})
@@ -54,8 +88,9 @@ local omnisharp_bin = "omnisharp-language-server"
 -- lspconfig.vimls.setup{ on_attach = on_attach }
 lspconfig.tsserver.setup{ on_attach = on_attach, capabilities = capabilities }
 lspconfig.eslint.setup{ on_attach = on_attach, capabilities = capabilities }
--- lspconfig.jsonls.setup{ on_attach = on_attach }
--- lspconfig.cssls.setup{ on_attach = on_attach }
+lspconfig.jsonls.setup{ on_attach = on_attach, capabilities = capabilities }
+lspconfig.html.setup{ on_attach = on_attach, capabilities = capabilities }
+lspconfig.cssls.setup{ on_attach = on_attach, capabilities = capabilities }
 -- lspconfig.bashls.setup{ on_attach = on_attach }
 
 -- lspconfig.omnisharp.setup{
