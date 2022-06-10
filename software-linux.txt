@@ -7,8 +7,8 @@ fzf
 gh
 htop
 jq
-# neovim
+# neovim is too old in apt
 zip
-zsh
+# zsh will be installed separately
 ssh-askpass
 ripgrep
