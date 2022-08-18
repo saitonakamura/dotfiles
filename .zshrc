@@ -229,9 +229,9 @@ pf() {
 unalias nd 2>/dev/null
 nd() {
   if command_exists exa ; then
-    cd "$(list-dirs "$@" | fzf --preview "exa --header --color=always --long --all {} | head -100")"
+    cd "$(list-dirs "./" | fzf --query "$1" --preview "exa --header --color=always --long --all {} | head -100")"
   else
-    cd "$(list-dirs "$@" | fzf --preview "ls -a -l -G -F {} | head -100")"
+    cd "$(list-dirs "./" | fzf --query "$1" --preview "ls -a -l -G -F {} | head -100")"
   fi
 }
 
