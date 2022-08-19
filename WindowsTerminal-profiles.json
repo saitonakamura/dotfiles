@@ -29,10 +29,18 @@
         {
             "command": 
             {
-                "action": "resizePane",
+                "action": "moveFocus",
                 "direction": "down"
             },
-            "keys": "alt+shift+down"
+            "keys": "ctrl+alt+down"
+        },
+        {
+            "command": 
+            {
+                "action": "resizePane",
+                "direction": "up"
+            },
+            "keys": "alt+shift+up"
         },
         {
             "command": 
@@ -47,17 +55,18 @@
         {
             "command": 
             {
-                "action": "prevTab"
+                "action": "moveFocus",
+                "direction": "left"
             },
-            "keys": "ctrl+pgup"
+            "keys": "ctrl+alt+left"
         },
         {
             "command": 
             {
                 "action": "resizePane",
-                "direction": "up"
+                "direction": "down"
             },
-            "keys": "alt+shift+up"
+            "keys": "alt+shift+down"
         },
         {
             "command": "paste",
@@ -66,10 +75,25 @@
         {
             "command": 
             {
+                "action": "prevTab"
+            },
+            "keys": "ctrl+pgup"
+        },
+        {
+            "command": 
+            {
                 "action": "splitPane",
                 "split": "right"
             },
             "keys": "ctrl+alt+shift+right"
+        },
+        {
+            "command": 
+            {
+                "action": "copy",
+                "singleLine": false
+            },
+            "keys": "ctrl+c"
         },
         {
             "command": 
@@ -86,22 +110,6 @@
                 "direction": "right"
             },
             "keys": "ctrl+alt+right"
-        },
-        {
-            "command": 
-            {
-                "action": "moveFocus",
-                "direction": "left"
-            },
-            "keys": "ctrl+alt+left"
-        },
-        {
-            "command": 
-            {
-                "action": "moveFocus",
-                "direction": "down"
-            },
-            "keys": "ctrl+alt+down"
         },
         {
             "command": 
@@ -128,14 +136,6 @@
         {
             "command": 
             {
-                "action": "copy",
-                "singleLine": false
-            },
-            "keys": "ctrl+c"
-        },
-        {
-            "command": 
-            {
                 "action": "splitPane",
                 "split": "auto",
                 "splitMode": "duplicate"
@@ -146,8 +146,8 @@
     "alwaysShowTabs": true,
     "copyFormatting": "none",
     "copyOnSelect": false,
-    "defaultProfile": "{60c3e313-8e1a-58f6-8175-3650c2bd2b26}",
-    "launchMode": "maximized",
+    "defaultProfile": "{f9ceaf27-504c-58d7-927c-d1d6a7ac7d3c}",
+    "launchMode": "default",
     "profiles": 
     {
         "defaults": 
@@ -194,16 +194,16 @@
                 "startingDirectory": "\\\\wsl$\\Ubuntu\\home\\saito"
             },
             {
-                "guid": "{60c3e313-8e1a-58f6-8175-3650c2bd2b26}",
-                "hidden": false,
-                "name": "Ubuntu 22.04 LTS",
-                "source": "CanonicalGroupLimited.Ubuntu22.04LTS_79rhkp1fndgsc"
-            },
-            {
                 "guid": "{17bf3de4-5353-5709-bcf9-835bd952a95e}",
                 "hidden": true,
                 "name": "Ubuntu-22.04",
                 "source": "Windows.Terminal.Wsl"
+            },
+            {
+                "guid": "{f9ceaf27-504c-58d7-927c-d1d6a7ac7d3c}",
+                "hidden": false,
+                "name": "Ubuntu 22.04.1 LTS",
+                "source": "CanonicalGroupLimited.Ubuntu22.04LTS_79rhkp1fndgsc"
             }
         ]
     },
@@ -440,5 +440,6 @@
             "yellow": "#808000"
         }
     ],
-    "startOnUserLogin": true
+    "startOnUserLogin": true,
+    "windowingBehavior": "useExisting"
 }
