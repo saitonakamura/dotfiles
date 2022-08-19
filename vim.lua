@@ -49,6 +49,8 @@ vim.keymap.set('n', '<leader>E', require('telescope.builtin').diagnostics)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
+vim.keymap.set('n', '<leader>vs', require('telescope.builtin').git_branches)
 -- vim.keymap.set('n', '<leader>f', vim)
 
 -- Add additional capabilities supported by nvim-cmp
@@ -64,7 +66,7 @@ local on_attach = function(client, bufnr, ...)
   -- require'completion'.on_attach(client, bufnr, ...)
 
   local opts = { buffer = bufnr }
-  vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, opts)
+  vim.keymap.set('n', '<leader>gd', require('telescope.builtin').lsp_definitions, opts)
   vim.keymap.set('n', '<leader>gD', vim.lsp.buf.declaration, opts)
   vim.keymap.set('n', '<leader>k', vim.lsp.buf.hover, opts)
   vim.keymap.set('n', '<leader>gt', vim.lsp.buf.type_definition, opts)
