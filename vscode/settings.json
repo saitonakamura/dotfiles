@@ -20,7 +20,6 @@
   "vim.surround": true,
   "vim.highlightedyank.enable": true,
   "vim.normalModeKeyBindingsNonRecursive": [
-    // Navigate to
     {
       "before": ["<leader>", ";"],
       "after": [":"]
@@ -58,12 +57,12 @@
       "commands": ["workbench.action.closeAllEditors"]
     },
     {
-      "before": ["<leader>", "d", "]"],
-      "commands": ["editor.action.marker.next"]
+      "before": ["[", "d"],
+      "commands": ["editor.action.marker.prev"]
     },
     {
-      "before": ["<leader>", "d", "["],
-      "commands": ["editor.action.marker.prev"]
+      "before": ["]", "d"],
+      "commands": ["editor.action.marker.next"]
     },
     {
       "before": ["<leader>", "n", "t"],
@@ -85,7 +84,6 @@
       "before": ["<leader>", "n", "r"],
       "commands": ["workbench.action.replaceinfiles"]
     },
-    // Toggle
     {
       "before": ["<leader>", "t", "s"],
       "commands": ["workbench.action.toggleSidebarVisibility"]
@@ -98,7 +96,6 @@
       "before": ["<C-W>", "Q"],
       "commands": ["workbench.action.closeEditorsInGroup"]
     },
-    // GOTO
     {
       "before": ["<leader>", "g", "d"],
       "commands": ["editor.action.revealDefinition"]
@@ -127,17 +124,6 @@
       "before": ["<leader>", "f"],
       "commands": ["workbench.action.quickOpen"]
     },
-    // {
-    //     "before": [
-    //         "<leader>",
-    //         "n",
-    //         "e"
-    //     ],
-    //     "commands": [
-    //         "workbench.action.focusActiveEditorGroup"
-    //     ]
-    // },
-    // PREVIEW
     {
       "before": ["<leader>", "k"],
       "commands": ["editor.action.showHover"]
@@ -154,7 +140,6 @@
       "before": ["<leader>", "p", "s"],
       "commands": ["workbench.action.gotoSymbol"]
     },
-    // FORMAT FIXES REFACTORINGS
     {
       "before": ["<leader>", "a", "r"],
       "commands": ["editor.action.rename"]
@@ -171,7 +156,6 @@
       "before": ["<leader>", "r", "r"],
       "commands": ["editor.action.rename"]
     },
-    // FILES
     {
       "before": ["<leader>", "w"],
       "commands": ["workbench.action.files.save"]
@@ -180,14 +164,11 @@
       "before": ["<leader>", "W"],
       "commands": ["workbench.action.files.saveAll"]
     },
-    // DEBUG
     {
       "before": ["<leader>", "d", "b"],
       "commands": ["editor.debug.action.toggleBreakpoint"],
       "when": "editorTextFocus"
     },
-    // TESTS
-    // GIT
     {
       "before": ["<leader>", "v", "c"],
       "commands": ["git.commit"]
@@ -224,7 +205,6 @@
       "before": ["<leader>", "v", "k"],
       "commands": ["gitlens.showQuickCommitDetails"]
     },
-    // ETC
     {
       "before": ["<leader>", "/"],
       "commands": [":nohlsearch"]
@@ -357,10 +337,10 @@
     "markdown"
   ],
   "workbench.editor.wrapTabs": true,
-  "workbench.colorTheme": "Atom One Light",
   "coqtop.binPath": "/home/saito/.opam/default/bin/",
   "editor.accessibilitySupport": "off",
   "gitlens.mode.active": "zen",
-  "window.zoomLevel": 1,
-  "gitlens.keymap": "none"
+  "window.zoomLevel": 2,
+  "gitlens.keymap": "none",
+  "workbench.colorTheme": "Atom One Light"
 }
