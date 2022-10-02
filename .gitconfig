@@ -43,6 +43,7 @@
 
 [gpg "ssh"]
   program = "C:/Users/saito/AppData/Local/1Password/app/8/op-ssh-sign.exe"
+	allowedSignersFile = "~/.ssh/allowed_signers"
 
 [commit]
   gpgsign = true
