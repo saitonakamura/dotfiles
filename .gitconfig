@@ -1,9 +1,11 @@
 [user]
   name = Michael Bashurov
   email = accounts@saitonakamura.me
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBgN+8itmPjt40+Vw9tx3kQKH7aUny46xVPiKPEzh+xs
 
 [core]
   editor = nvim
+  sshCommand = "C:/Windows/System32/OpenSSH/ssh.exe"
 
 [difftool]
   prompt = false
@@ -29,8 +31,18 @@
 
 [init]
 	defaultBranch = main
+
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+
+[gpg]
+  format = ssh
+
+[gpg "ssh"]
+  program = "C:/Users/saito/AppData/Local/1Password/app/8/op-ssh-sign.exe"
+
+[commit]
+  gpgsign = true
