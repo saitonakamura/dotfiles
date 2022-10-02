@@ -42,8 +42,15 @@
   format = ssh
 
 [gpg "ssh"]
-  program = "C:/Users/saito/AppData/Local/1Password/app/8/op-ssh-sign.exe"
 	allowedSignersFile = "~/.ssh/allowed_signers"
+  program = "C:/Users/saito/AppData/Local/1Password/app/8/op-ssh-sign.exe"
 
 [commit]
   gpgsign = true
+
+[includeIf "gitdir:**/Users"]
+    path = .gitconfig-macos
+[includeIf "gitdir:%(prefix)C:"]
+    path = .gitconfig-windows
+[includeIf "gitdir:%(prefix)/home/**"]
+    path = .gitconfig-linux
