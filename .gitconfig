@@ -5,7 +5,7 @@
 
 [core]
   editor = nvim
-  sshCommand = "C:/Windows/System32/OpenSSH/ssh.exe"
+  # sshCommand = "C:/Windows/System32/OpenSSH/ssh.exe"
 
 [difftool]
   prompt = false
@@ -43,7 +43,7 @@
 
 [gpg "ssh"]
 	allowedSignersFile = "~/.ssh/allowed_signers"
-  program = "C:/Users/saito/AppData/Local/1Password/app/8/op-ssh-sign.exe"
+  # program = "C:/Users/saito/AppData/Local/1Password/app/8/op-ssh-sign.exe"
 
 [commit]
   gpgsign = true
