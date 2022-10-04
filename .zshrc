@@ -121,13 +121,18 @@ bat_force_colors="--color=always --theme=$BAT_THEME"
 #   alias ctop='ctop -i'
 # fi
 
+zstyle :omz:plugins:keychain agents ssh
+zstyle :omz:plugins:keychain identities id_rsa id_ed25519
+zstyle :omz:plugins:keychain options --quiet
+
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  ssh-agent
+  # ssh-agent
+  keychain
   git
   ripgrep
   vi-mode
