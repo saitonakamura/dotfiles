@@ -19,7 +19,7 @@ export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
 # fnm
 eval "`fnm env`"
 
-if [ -d "$HOME/.cargo/env" ] ; then
+if [ -f "$HOME/.cargo/env" ] ; then
   . "$HOME/.cargo/env"
 fi
 

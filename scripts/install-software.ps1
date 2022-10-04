@@ -1,19 +1,21 @@
-param (
-  [switch] $PSRemoting,
-  [switch] $DotNet
-)
+# TODO Needs to be adapted for winget
 
-$enablePSRemoting = if ($PSRemoting -eq true) { "ENABLE_PSREMOTING=1" } else { "" }
+# param (
+#   [switch] $PSRemoting,
+#   [switch] $DotNet
+# )
 
-& choco install powershell-core -y `
-  --install-arguments='"$enablePSRemoting ADD_EXPLORER_CONTEXT_MENU_OPENPOWERSHELL=1"'
+# $enablePSRemoting = if ($PSRemoting -eq true) { "ENABLE_PSREMOTING=1" } else { "" }
 
-& choco install vscode -y
+# & choco install powershell-core -y `
+#   --install-arguments='"$enablePSRemoting ADD_EXPLORER_CONTEXT_MENU_OPENPOWERSHELL=1"'
 
-& choco install neovim -y
+# & choco install vscode -y
 
-& choco install firacode -y
+# & choco install neovim -y
 
-if ($DotNet -eq true) {
-  & choco install jetbrains-rider -y
-}
+# & choco install firacode -y
+
+# if ($DotNet -eq true) {
+#   & choco install jetbrains-rider -y
+# }
