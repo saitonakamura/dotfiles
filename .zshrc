@@ -287,4 +287,4 @@ fi
 # export PATH="/usr/local/opt/mozjpeg/bin:$PATH"
 
 # opam configuration
-test -r /home/saito/.opam/opam-init/init.zsh && . /home/saito/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+# test -r /home/saito/.opam/opam-init/init.zsh && . /home/saito/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true

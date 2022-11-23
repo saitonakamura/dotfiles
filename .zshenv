@@ -23,3 +23,5 @@ if [ -f "$HOME/.cargo/env" ] ; then
   . "$HOME/.cargo/env"
 fi
 
+# opam
+[[ ! -r /home/saito/.opam/opam-init/init.zsh ]] || source /home/saito/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
