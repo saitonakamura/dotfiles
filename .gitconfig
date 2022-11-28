@@ -46,7 +46,7 @@
   # program = "C:/Users/saito/AppData/Local/1Password/app/8/op-ssh-sign.exe"
 
 [commit]
-  gpgsign = true
+  # gpgsign = true
 
 [includeIf "gitdir:**/Users"]
     path = .gitconfig-macos

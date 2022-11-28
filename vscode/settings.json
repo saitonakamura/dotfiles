@@ -77,7 +77,7 @@
       "commands": ["workbench.files.action.focusOpenEditorsView"]
     },
     {
-      "before": ["<leader>", "n", "g"],
+      "before": ["<leader>", "n", "f"],
       "commands": ["workbench.view.search"]
     },
     {
@@ -210,10 +210,6 @@
       "commands": [":nohlsearch"]
     },
     {
-      "before": ["/"],
-      "commands": ["actions.find"]
-    },
-    {
       "before": ["g", "/"],
       "commands": ["/"]
     },
@@ -337,10 +333,14 @@
     "markdown"
   ],
   "workbench.editor.wrapTabs": true,
-  "coqtop.binPath": "/home/saito/.opam/default/bin/",
   "editor.accessibilitySupport": "off",
-  "gitlens.mode.active": "zen",
+  "workbench.colorTheme": "Atom One Light",
+  "vsicons.dontShowNewVersionMessage": true,
   "window.zoomLevel": 2,
-  "gitlens.keymap": "none",
-  "workbench.colorTheme": "Atom One Light"
+  "hexeditor.columnWidth": 32,
+  "hexeditor.showDecodedText": true,
+  "hexeditor.defaultEndianness": "little",
+  "hexeditor.inspectorType": "aside",
+  "redhat.telemetry.enabled": false,
+  "editor.acceptSuggestionOnCommitCharacter": false
 }
