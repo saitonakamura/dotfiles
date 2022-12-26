@@ -321,7 +321,7 @@
   "jest.autoRun": { "watch": false, "onSave": ["test-file"] },
   "zenMode.centerLayout": false,
   "zenMode.fullScreen": false,
-  "editor.minimap.enabled": true,
+  "editor.minimap.enabled": false,
   "[scss]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -342,5 +342,6 @@
   "hexeditor.defaultEndianness": "little",
   "hexeditor.inspectorType": "aside",
   "redhat.telemetry.enabled": false,
-  "editor.acceptSuggestionOnCommitCharacter": false
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  "terminal.integrated.tabs.enabled": false
 }
