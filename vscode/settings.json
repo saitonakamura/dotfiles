@@ -336,7 +336,7 @@
   "editor.accessibilitySupport": "off",
   "workbench.colorTheme": "Atom One Light",
   "vsicons.dontShowNewVersionMessage": true,
-  "window.zoomLevel": 2,
+  "window.zoomLevel": 1,
   "hexeditor.columnWidth": 32,
   "hexeditor.showDecodedText": true,
   "hexeditor.defaultEndianness": "little",

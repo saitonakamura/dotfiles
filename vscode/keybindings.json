@@ -46,18 +46,43 @@
     "when": "terminalFocus && !isMac"
   },
   {
+    "key": "shift+cmd+j",
+    "command": "workbench.action.toggleMaximizedPanel",
+    "when": "terminalFocus && isMac"
+  },
+  {
+    "key": "shift+cmd+k",
+    "command": "workbench.action.toggleMaximizedPanel",
+    "when": "terminalFocus && isMac"
+  },
+  {
+    "key": "shift+ctrl+j",
+    "command": "workbench.action.toggleMaximizedPanel",
+    "when": "terminalFocus && !isMac"
+  },
+  {
+    "key": "shift+ctrl+k",
+    "command": "workbench.action.toggleMaximizedPanel",
+    "when": "terminalFocus && !isMac"
+  },
+  {
     "key": "cmd+escape",
     "command": "workbench.action.focusActiveEditorGroup",
-    "when": "filesExplorerFocus || terminalFocus || openEditorsFocus || explorerViewletFocus || searchViewletFocus || sideBarFocus || problemFocus"
+    "when": "isMac"
   },
   {
     "key": "win+escape",
     "command": "workbench.action.focusActiveEditorGroup",
-    "when": "filesExplorerFocus || terminalFocus || openEditorsFocus || explorerViewletFocus || searchViewletFocus || sideBarFocus || problemFocus"
+    "when": "!isMac"
   },
   {
     "key": "cmd+r",
     "command": "editor.action.startFindReplaceAction",
     "when": "editorFocus || editorIsOpen"
+  },
+  {
+    "key": "ctrl+v",
+    "command": "-workbench.action.terminal.paste",
+    "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
   }
 ]
