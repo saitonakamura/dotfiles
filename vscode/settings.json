@@ -321,7 +321,7 @@
   "jest.autoRun": { "watch": false, "onSave": ["test-file"] },
   "zenMode.centerLayout": false,
   "zenMode.fullScreen": false,
-  "editor.minimap.enabled": true,
+  "editor.minimap.enabled": false,
   "[scss]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -334,13 +334,14 @@
   ],
   "workbench.editor.wrapTabs": true,
   "editor.accessibilitySupport": "off",
-  "workbench.colorTheme": "Atom One Light",
+  "workbench.colorTheme": "Atom One Dark",
   "vsicons.dontShowNewVersionMessage": true,
-  "window.zoomLevel": 2,
+  "window.zoomLevel": 1,
   "hexeditor.columnWidth": 32,
   "hexeditor.showDecodedText": true,
   "hexeditor.defaultEndianness": "little",
   "hexeditor.inspectorType": "aside",
   "redhat.telemetry.enabled": false,
-  "editor.acceptSuggestionOnCommitCharacter": false
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  "terminal.integrated.tabs.enabled": false
 }

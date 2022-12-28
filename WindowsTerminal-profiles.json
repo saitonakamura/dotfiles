@@ -29,28 +29,20 @@
         {
             "command": 
             {
-                "action": "moveFocus",
-                "direction": "down"
-            },
-            "keys": "ctrl+alt+down"
-        },
-        {
-            "command": 
-            {
-                "action": "resizePane",
-                "direction": "up"
-            },
-            "keys": "alt+shift+up"
-        },
-        {
-            "command": 
-            {
                 "action": "setColorScheme",
                 "colorScheme": "One Half Light"
             },
             "icon": "\u2600\ufe0f",
             "keys": "ctrl+alt+shift+period",
             "name": "Set light theme"
+        },
+        {
+            "command": 
+            {
+                "action": "moveFocus",
+                "direction": "down"
+            },
+            "keys": "ctrl+alt+down"
         },
         {
             "command": 
@@ -69,8 +61,21 @@
             "keys": "alt+shift+down"
         },
         {
-            "command": "paste",
-            "keys": "ctrl+v"
+            "command": 
+            {
+                "action": "resizePane",
+                "direction": "up"
+            },
+            "keys": "alt+shift+up"
+        },
+        {
+            "command": 
+            {
+                "action": "splitPane",
+                "split": "auto",
+                "splitMode": "duplicate"
+            },
+            "keys": "alt+shift+d"
         },
         {
             "command": 
@@ -132,15 +137,6 @@
         {
             "command": "find",
             "keys": "ctrl+shift+f"
-        },
-        {
-            "command": 
-            {
-                "action": "splitPane",
-                "split": "auto",
-                "splitMode": "duplicate"
-            },
-            "keys": "alt+shift+d"
         }
     ],
     "alwaysShowTabs": true,
@@ -440,6 +436,6 @@
             "yellow": "#808000"
         }
     ],
-    "startOnUserLogin": true,
+    "startOnUserLogin": false,
     "windowingBehavior": "useExisting"
 }
