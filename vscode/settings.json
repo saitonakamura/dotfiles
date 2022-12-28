@@ -334,7 +334,7 @@
   ],
   "workbench.editor.wrapTabs": true,
   "editor.accessibilitySupport": "off",
-  "workbench.colorTheme": "Atom One Light",
+  "workbench.colorTheme": "Atom One Dark",
   "vsicons.dontShowNewVersionMessage": true,
   "window.zoomLevel": 1,
   "hexeditor.columnWidth": 32,
