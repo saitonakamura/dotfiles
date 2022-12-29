@@ -6,14 +6,6 @@
         {
             "command": 
             {
-                "action": "resizePane",
-                "direction": "right"
-            },
-            "keys": "alt+shift+right"
-        },
-        {
-            "command": 
-            {
                 "action": "nextTab"
             },
             "keys": "ctrl+pgdn"
@@ -22,9 +14,9 @@
             "command": 
             {
                 "action": "resizePane",
-                "direction": "left"
+                "direction": "right"
             },
-            "keys": "alt+shift+left"
+            "keys": "alt+shift+right"
         },
         {
             "command": 
@@ -39,18 +31,10 @@
         {
             "command": 
             {
-                "action": "moveFocus",
-                "direction": "down"
-            },
-            "keys": "ctrl+alt+down"
-        },
-        {
-            "command": 
-            {
-                "action": "moveFocus",
+                "action": "resizePane",
                 "direction": "left"
             },
-            "keys": "ctrl+alt+left"
+            "keys": "alt+shift+left"
         },
         {
             "command": 
@@ -63,10 +47,18 @@
         {
             "command": 
             {
-                "action": "resizePane",
-                "direction": "up"
+                "action": "moveFocus",
+                "direction": "left"
             },
-            "keys": "alt+shift+up"
+            "keys": "ctrl+alt+left"
+        },
+        {
+            "command": 
+            {
+                "action": "moveFocus",
+                "direction": "down"
+            },
+            "keys": "ctrl+alt+down"
         },
         {
             "command": 
@@ -80,9 +72,22 @@
         {
             "command": 
             {
-                "action": "prevTab"
+                "action": "resizePane",
+                "direction": "up"
             },
-            "keys": "ctrl+pgup"
+            "keys": "alt+shift+up"
+        },
+        {
+            "command": "paste",
+            "keys": "ctrl+v"
+        },
+        {
+            "command": 
+            {
+                "action": "copy",
+                "singleLine": false
+            },
+            "keys": "ctrl+c"
         },
         {
             "command": 
@@ -95,10 +100,9 @@
         {
             "command": 
             {
-                "action": "copy",
-                "singleLine": false
+                "action": "prevTab"
             },
-            "keys": "ctrl+c"
+            "keys": "ctrl+pgup"
         },
         {
             "command": 
