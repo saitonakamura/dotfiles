@@ -244,7 +244,11 @@
     {
       "before": ["<leader>", "p", "m"],
       "commands": ["bookmarks.list"]
-    }
+    },
+    // https://github.com/VSCodeVim/Vim/issues/8157
+    // Undo & Redo
+    { "before": ["u"], "commands": ["undo"] },
+    { "before": ["c-r"], "commands": ["redo"] }
   ],
   "vim.visualModeKeyBindingsNonRecursive": [
     {
@@ -282,6 +286,10 @@
     {
       "before": ["<leader>", "a", "f"],
       "commands": ["editor.action.formatSelection"]
+    },
+    {
+      "before": ["<leader>", "a", "m"],
+      "commands": ["editor.action.quickFix"]
     },
     {
       "before": ["<leader>", "c"],
@@ -337,7 +345,7 @@
   "workbench.colorTheme": "Atom One Dark",
   "vsicons.dontShowNewVersionMessage": true,
   "window.zoomLevel": 1,
-  "hexeditor.columnWidth": 32,
+  "hexeditor.columnWidth": 26,
   "hexeditor.showDecodedText": true,
   "hexeditor.defaultEndianness": "little",
   "hexeditor.inspectorType": "aside",

@@ -6,6 +6,10 @@ New-Item -Item SymbolicLink -Force `
     -Path "~\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
 
 New-Item -Item SymbolicLink -Force `
+    -Target (Resolve-Path "~\dotfiles\WindowsTerminalPreview-settings.json") `
+    -Path "~\AppData\Local\Packages\Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe\LocalState\settings.json"
+
+New-Item -Item SymbolicLink -Force `
     -Target (Resolve-Path "~\dotfiles\winget-settings.json") `
     -Path "~\AppData\Local\Packages\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe\LocalState\settings.json"
 
