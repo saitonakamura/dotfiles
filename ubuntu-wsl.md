@@ -10,6 +10,12 @@ curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo 
 && sudo apt install gh -y
 ```
 
+### setup git
+
+```sh
+ln -sfn ~/dotfiles/.gitconfig ~/.gitconfig
+```
+
 ## install nvim
 
 https://github.com/neovim/neovim/wiki/Installing-Neovim#ubuntu
@@ -46,6 +52,7 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 mkdir ~/.config
 mkdir ~/.config/nvim
 ln -sfn ~/dotfiles/init.vim ~/.config/nvim/init.vim
+ln -sfn ~/dotfiles/.ideavimrc ~/.ideavimrc
 nvim -c PlugInstall -c qall
 ln -sfn ~/dotfiles/.ideavimrc ~/.ideavimrc
 ```
@@ -71,4 +78,41 @@ https://github.com/Aloxaf/fzf-tab#oh-my-zsh
 ```sh
 sudo apt install fzf -y
 git clone https://github.com/Aloxaf/fzf-tab ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-tab
+```
+
+
+## fd
+
+https://github.com/sharkdp/fd#on-ubuntu
+
+```sh
+sudo apt install fd-find -y
+ln -sfn ~/dotfiles/.fdignore ~/.fdignore
+```
+
+## fnm
+
+```sh
+sudo apt install curl unzip -y
+curl -fsSL https://fnm.vercel.app/install | bash
+fnm install --lts
+```
+
+## yarn
+
+```sh
+ln -sfn ~/dotfiles/.yarnrc.yml ~/.yarnrc.yml
+corepack enable
+```
+
+## code
+
+```sh
+mkdir ~/code
+```
+
+### stuff
+
+```sh
+sudo apt install bat jq ripgrep -y
 ```
