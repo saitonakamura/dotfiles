@@ -1,3 +1,9 @@
+# HELPERS
+
+command_exists () {
+  type "$1" &> /dev/null ;
+}
+
 export LANG=en_US.UTF-8
 export LC_CTYPE=C
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
@@ -17,7 +23,16 @@ fi
 export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
 
 # fnm
-eval "`fnm env`"
+if command_exists fnm ; then
+  eval "`fnm env`"
+fi
+
+# pyenv
+if command_exists pyenv ; then
+  export PYENV_ROOT="$HOME/.pyenv"
+  command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init -)"
+fi
 
 if [ -f "$HOME/.cargo/env" ] ; then
   . "$HOME/.cargo/env"
