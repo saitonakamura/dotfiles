@@ -32,6 +32,8 @@ nnoremap <silent> <leader>bm :action EditorTabsPopupMenu<CR>
 
 nnoremap <leader>d[ :action GotoPreviousError<CR>
 nnoremap <leader>d] :action GotoNextError<CR>
+nnoremap [d :action GotoPreviousError<CR>
+nnoremap ]d :action GotoNextError<CR>
 
 nnoremap <silent> <leader>nt :action ActivateTerminalToolWindow<CR>
 nnoremap <silent> <leader>np :action SelectInProjectView<CR>
@@ -62,7 +64,7 @@ nnoremap <silent> <leader>e :action SearchEverywhere<CR>
 nnoremap <silent> <leader>r :action RunAnything<CR>
 
 " PREVIEW
-nmap <silent> <leader>k :action QuickJavaDoc<CR>
+nmap <silent> <leader>k :action ShowErrorDescription<CR>
 nmap <silent> <leader>pd :action QuickImplementations<CR>
 nmap <silent> <leader>pr :action ShowUsages<CR>
 nnoremap <silent> <leader>pb :action RecentLocations<CR>

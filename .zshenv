@@ -4,8 +4,6 @@ command_exists () {
   type "$1" &> /dev/null ;
 }
 
-export LANG=en_US.UTF-8
-export LC_CTYPE=C
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 # Path to your oh-my-zsh installation.

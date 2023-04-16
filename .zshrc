@@ -135,10 +135,10 @@ plugins=(
   keychain
   git
   ripgrep
-  vi-mode
+  # vi-mode
   fzf-tab
-  zsh-syntax-highlighting
-  zsh-autosuggestions
+  # zsh-syntax-highlighting
+  # zsh-autosuggestions
 )
 
 # zstyle :omz:plugins:ssh-agent lazy yes
@@ -187,8 +187,6 @@ export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
 
 # SETUP
 
-alias zshconfig="nvim ~/.zshrc"
-alias zshreloadconfig="source ~/.zshrc"
 if [ -d "/mnt/c" ] ; then
   alias neovide="/mnt/c/Users/saito/.cargo/bin/neovide.exe --wsl --nofork --multigrid"
 fi
@@ -254,23 +252,13 @@ gsb() {
   git switch $branchForSwitch
 }
 
-# SEARCHING
-
-alias rgc='rg --no-heading --column'
-
-# COPYING
-
-# alias cfp='fd --type f --hidden | fzf --preview "bat --style=numbers --color=always {} | head -500" | pbcopy'
-
-# alias cdp='fd --type d --hidden | fzf --preview "exa --long --header --color=always | head -100" | pbcopy'
-
 # MISC
 
-unalias get-github-latest-release 2>/dev/null
-get-github-latest-release() {
-  curl -s -L "https://api.github.com/repos/$1/releases/latest" | \
-  jq ".assets[] | select(.name == \"$2\") | .browser_download_url" --raw-output
-}
+# unalias get-github-latest-release 2>/dev/null
+# get-github-latest-release() {
+#   curl -s -L "https://api.github.com/repos/$1/releases/latest" | \
+#   jq ".assets[] | select(.name == \"$2\") | .browser_download_url" --raw-output
+# }
 
 # POSTSETUP
 
@@ -283,8 +271,6 @@ fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# export PATH="/usr/local/opt/mozjpeg/bin:$PATH"
 
 # opam configuration
 # test -r /home/saito/.opam/opam-init/init.zsh && . /home/saito/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true

@@ -342,7 +342,7 @@
   ],
   "workbench.editor.wrapTabs": true,
   "editor.accessibilitySupport": "off",
-  "workbench.colorTheme": "Atom One Dark",
+  "workbench.colorTheme": "Atom One Light",
   "vsicons.dontShowNewVersionMessage": true,
   "window.zoomLevel": 1,
   "hexeditor.columnWidth": 26,
@@ -351,5 +351,6 @@
   "hexeditor.inspectorType": "aside",
   "redhat.telemetry.enabled": false,
   "editor.acceptSuggestionOnCommitCharacter": false,
-  "terminal.integrated.tabs.enabled": false
+  "terminal.integrated.tabs.enabled": false,
+  "gitlens.mode.active": "zen"
 }
