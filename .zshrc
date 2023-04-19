@@ -5,21 +5,21 @@ command_exists () {
 }
 
 # COLORS
+if command_exists "defaults" ; then
+  theme=`defaults read -g AppleInterfaceStyle` &>/dev/null
+  system='Macos'
 
-ITERM2_DARK_PRESET='OneHalfDark'
-ITERM2_LIGHT_PRESET='OneHalfLight'
-
-theme=`defaults read -g AppleInterfaceStyle` &>/dev/null
-
-if [ "$theme" = 'Dark' ] ; then
-  theme='dark'
-else
-  theme='light'
+  if [ "$theme" = 'Dark' ] ; then
+    theme='dark'
+  else
+    theme='light'
+  fi
 fi
 
 if command_exists "reg.exe" ; then
-  appsUseLightTheme=`reg.exe query "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize" /v AppsUseLightTheme | sed '2 s/.*//' | sed '3 s/^.*0x//g' | sed '/^\s*$/d'`
+  system='WSL'
 
+  appsUseLightTheme=`reg.exe query "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize" /v AppsUseLightTheme | sed '2 s/.*//' | sed '3 s/^.*0x//g' | sed '/^\s*$/d'`
   if [ "$appsUseLightTheme" = '0' ] ; then
     theme='dark'
   else
@@ -28,10 +28,16 @@ if command_exists "reg.exe" ; then
 fi
 
 if [ "$theme" = 'dark' ] ; then
-  echo -e "\033]1337;SetColors=preset=$ITERM2_DARK_PRESET\a"
+  echo -e "\033]1337;SetColors=preset=OneHalfDark\a"
+  export BAT_THEME="OneHalfDark"
+  export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --color dark"
 else
-  echo -e "\033]1337;SetColors=preset=$ITERM2_LIGHT_PRESET\a"
+  echo -e "\033]1337;SetColors=preset=OneHalfLight\a"
+  export BAT_THEME="OneHalfLight"
+  export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --color light"
 fi
+
+bat_force_colors="--color=always --theme=$BAT_THEME"
 
 # Powerlevel10k instant prompt
 
@@ -43,42 +49,11 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # VARIABLES
-
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
 username=`id -un`
-
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 DEFAULT_USER="$username"
-# ZSH_THEME="saitonakamura"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+zstyle ':omz:update' mode auto
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS=true
@@ -111,20 +86,11 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-export BAT_THEME=$([ "$theme" = 'dark' ] && echo "OneHalfDark" || echo "OneHalfLight" )
-
-bat_force_colors="--color=always --theme=$BAT_THEME"
-
-# if [ "$theme" = 'dark' ] ; then
-#   alias ctop='ctop'
-# else
-#   alias ctop='ctop -i'
-# fi
-
 zstyle :omz:plugins:keychain agents ssh
 zstyle :omz:plugins:keychain identities id_rsa id_ed25519
 zstyle :omz:plugins:keychain options --quiet
 
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa --oneline $realpath'
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -134,27 +100,21 @@ plugins=(
   # ssh-agent
   keychain
   git
+  gitfast
+  git-auto-fetch
   ripgrep
+  fd
+  docker
   # vi-mode
+  # fzf
   fzf-tab
   # zsh-syntax-highlighting
   # zsh-autosuggestions
 )
 
-# zstyle :omz:plugins:ssh-agent lazy yes
-
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-system='unknown'
-
-#if [ "$(uname)" == 'Darwin' ]; then
-#  system='Macos'
-#else
-#  system='Linux'
-#fi
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -163,18 +123,22 @@ else
   export EDITOR='nvim'
 fi
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
 if command_exists fd ; then
-  export FZF_DEFAULT_COMMAND='fd --hidden'
+  export FZF_DEFAULT_COMMAND='fd'
 else
-  export FZF_DEFAULT_COMMAND='fdfind --hidden'
+  export FZF_DEFAULT_COMMAND='fdfind'
 fi
 
-export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND --type d"
 
-# GPG_TTY=$(tty)
-# export GPG_TTY
+export FZF_CTRL_T_OPTS="
+  --preview 'test -d {} && exa --long --tree --level=3 --group-directories-first {} || bat $bat_force_colors {} | head -200'
+  --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+
+export FZF_ALT_C_OPTS="--preview 'exa --long --tree --level=3 --group-directories-first {} | head -200'"
+
+# export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -196,52 +160,52 @@ else
   alias fd=fdfind
 fi
 
-turn-into-dotfile() {
-  cp "$1" "$1.back" &&
-  cp "$1" "$2" &&
-  rm "$1" &&
-  ln -sfn "$2" "$1"
-}
+# turn-into-dotfile() {
+#   cp "$1" "$1.back" &&
+#   cp "$1" "$2" &&
+#   rm "$1" &&
+#   ln -sfn "$2" "$1"
+# }
 
-list-dirs() {
-  fd --hidden --type d . "${1-.}"
-}
+# list-dirs() {
+#   fd --hidden --type d . "${1-.}"
+# }
 
-list-files() {
-  fd --hidden --type f . "${1-.}"
-}
+# list-files() {
+#   fd --hidden --type f . "${1-.}"
+# }
 
 # SHOWING
 
-unalias pd 2>/dev/null
-pd() {
-  if command_exists exa ; then
-    exa --long --header --all "$@"
-  else
-    ls -a -l -G -F -h "$@"
-  fi
-}
+# unalias pd 2>/dev/null
+# pd() {
+#   if command_exists exa ; then
+#     exa --long --header --all "$@"
+#   else
+#     ls -a -l -G -F -h "$@"
+#   fi
+# }
 
-unalias pf 2>/dev/null
-pf() {
-  list-files "$@" | fzf --preview "bat --style=numbers $bat_force_colors | head -500"
-}
+# unalias pf 2>/dev/null
+# pf() {
+#   list-files "$@" | fzf --preview "bat --style=numbers $bat_force_colors | head -500"
+# }
 
 # NAVIGATION
 
-unalias nd 2>/dev/null
-nd() {
-  if command_exists exa ; then
-    cd "$(list-dirs "./" | fzf --query "$1" --preview "exa --header --color=always --long --all {} | head -100")"
-  else
-    cd "$(list-dirs "./" | fzf --query "$1" --preview "ls -a -l -G -F {} | head -100")"
-  fi
-}
+# unalias nd 2>/dev/null
+# nd() {
+#   if command_exists exa ; then
+#     cd "$(list-dirs "./" | fzf --query "$1" --preview "exa --header --color=always --long --all {} | head -100")"
+#   else
+#     cd "$(list-dirs "./" | fzf --query "$1" --preview "ls -a -l -G -F {} | head -100")"
+#   fi
+# }
 
-unalias nf 2>/dev/null
-nf() {
-  nvim "$(list-files "$@" | fzf --preview "bat --style=numbers $bat_force_colors {} | head -500")"
-}
+# unalias nf 2>/dev/null
+# nf() {
+#   nvim "$(list-files "$@" | fzf --preview "bat --style=numbers $bat_force_colors {} | head -500")"
+# }
 
 unalias gsb 2>/dev/null
 gsb() {

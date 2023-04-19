@@ -87,6 +87,7 @@ https://github.com/sharkdp/fd#on-ubuntu
 
 ```sh
 sudo apt install fd-find -y
+ln -s /usr/bin/fdfind ~/.local/bin/fd
 ln -sfn ~/dotfiles/.fdignore ~/.fdignore
 ```
 
@@ -114,5 +115,13 @@ mkdir ~/code
 ### stuff
 
 ```sh
-sudo apt install bat jq ripgrep -y
+sudo apt install bat jq exa ripgrep -y
+```
+
+## bat
+
+```sh
+sudo apt install bat -y
+mkdir -p ~/.local/bin
+ln -s /usr/bin/batcat ~/.local/bin/bat
 ```

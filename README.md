@@ -29,3 +29,11 @@
 * `s` - (code) symbol
 * `r` - refator | (code) reference
 * `i` - (code) implementation
+
+## completion rules
+
+* completion might be triggered as I type, or forcefully called via <Tab> or <Ctrl/Option-Space>
+* completion items can be fuzzy/non-fuzzy filtered
+* next/prev items can be selected by <Tab>/<Shift-Tab>
+* completion should be disabled when pressing <Esc>
+* item should be commited when <Enter> is pressed
