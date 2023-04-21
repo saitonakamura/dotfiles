@@ -1,7 +1,14 @@
 ## prepare
 
 ```sh
-sudo apt update && sudo apt upgrade
+sudo apt update && sudo apt upgrade -y
+```
+
+## ssh
+
+* copy
+```sh
+chmod go-r ~/.ssh/*
 ```
 
 ## install gh
@@ -19,7 +26,7 @@ curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo 
 ## get dotfiles
 
 ```sh
-gh auth
+gh auth login
 gh repo clone saitonakamura/dotfiles ~/dotfiles
 cd ~/dotfiles
 ```
@@ -35,14 +42,14 @@ ln -sfn ~/dotfiles/.gitconfig ~/.gitconfig
 https://github.com/neovim/neovim/wiki/Installing-Neovim#ubuntu
 
 ```sh
-sudo add-apt-repository ppa:neovim-ppa/unstable
+sudo add-apt-repository ppa:neovim-ppa/unstable -y
 sudo apt-get update
 sudo apt-get install neovim -y
 ```
 
 set as editor
 
-```
+```sh
 sudo update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60
 sudo update-alternatives --config vi
 sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60
@@ -76,6 +83,11 @@ ln -sfn ~/dotfiles/.ideavimrc ~/.ideavimrc
 ```sh
 sudo apt install zsh -y
 chsh -c $(which zsh)
+```
+
+restart shell
+
+```sh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 rm ~/.zshrc
@@ -94,6 +106,7 @@ sudo apt install fzf -y
 git clone https://github.com/Aloxaf/fzf-tab ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-tab
 ```
 
+restart shell
 
 ## fd
 
@@ -101,6 +114,7 @@ https://github.com/sharkdp/fd#on-ubuntu
 
 ```sh
 sudo apt install fd-find -y
+mkdir -p ~/.local/bin
 ln -s /usr/bin/fdfind ~/.local/bin/fd
 ln -sfn ~/dotfiles/.fdignore ~/.fdignore
 ```
@@ -109,9 +123,16 @@ ln -sfn ~/dotfiles/.fdignore ~/.fdignore
 
 ```sh
 sudo apt install curl unzip -y
-curl -fsSL https://fnm.vercel.app/install | bash
+curl -fsSL https://fnm.vercel.app/install | bash -s -- --skip-shell
+```
+
+restart shell
+
+```sh
 fnm install --lts
 ```
+
+restart shell
 
 ## yarn
 
@@ -139,3 +160,5 @@ sudo apt install bat -y
 mkdir -p ~/.local/bin
 ln -s /usr/bin/batcat ~/.local/bin/bat
 ```
+
+restart shell
