@@ -7,6 +7,7 @@ command_exists () {
 if command_exists "defaults" ; then
   # macos
   export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
+  export PATH="$HOME/.local/flutter/bin:$PATH"
 fi
 
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
