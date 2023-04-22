@@ -4,6 +4,11 @@ command_exists () {
   type "$1" &> /dev/null ;
 }
 
+if command_exists "defaults" ; then
+  # macos
+  export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
+fi
+
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 # Path to your oh-my-zsh installation.
