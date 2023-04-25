@@ -25,13 +25,15 @@ if [ -d "$HOME/.local/bin" ] ; then
   export PATH="$HOME/.local/bin:$PATH"
 fi
 
-# export PATH="/usr/local/opt/node/bin:$PATH"
-export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
-
 # fnm
+if [ -d "$HOME/.local/share/fnm" ] ; then
+  export PATH="/home/saito/.local/share/fnm:$PATH"
+fi
 if command_exists fnm ; then
   eval "`fnm env`"
 fi
+
+export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
 
 # pyenv
 if command_exists pyenv ; then
