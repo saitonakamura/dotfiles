@@ -8,6 +8,7 @@ sudo apt update && sudo apt upgrade -y
 
 * copy
 ```sh
+sudo apt install keychain -y
 chmod go-r ~/.ssh/*
 ```
 
