@@ -86,7 +86,7 @@ zstyle ':omz:update' mode auto
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-zstyle :omz:plugins:keychain agents ssh
+zstyle :omz:plugins:keychain agents gpg,ssh
 zstyle :omz:plugins:keychain identities id_rsa id_ed25519
 zstyle :omz:plugins:keychain options --quiet
 
