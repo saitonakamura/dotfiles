@@ -1,3 +1,4 @@
+
 [user]
   name = Michael Bashurov
   email = accounts@saitonakamura.me
@@ -31,11 +32,11 @@
 [init]
 	defaultBranch = main
 
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+# [filter "lfs"]
+# 	clean = git-lfs clean -- %f
+# 	smudge = git-lfs smudge -- %f
+# 	process = git-lfs filter-process
+# 	required = true
 
 [gpg]
   format = ssh
@@ -47,5 +48,6 @@
 #     path = .gitconfig-macos
 # [includeIf "gitdir:%(prefix)C:"]
 #     path = .gitconfig-windows
+#     path = windows.gitconfig
 # [includeIf "gitdir:%(prefix)/home/**"]
 #     path = .gitconfig-linux

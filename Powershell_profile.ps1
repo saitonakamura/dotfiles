@@ -4,23 +4,33 @@ $DefaultUser = 'saito'
 # Import-Module oh-my-posh
 
 oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\powerlevel10k_modern.omp.json" | Invoke-Expression
-# Import-Module PSReadLine
+Import-Module PSReadLine
 
-$env:FZF_DEFAULT_COMMAND='fd --hidden'
+$env:FZF_DEFAULT_COMMAND='fd'
+$env:FZF_CTRL_T_COMMAND='fd'
+$env:FZF_ALT_C_COMMAND='fd --type d'
 
-function Set-Location-Fzf([string] $Path = ".") {
-  Set-Location $(fd --type directory --hidden --exclude .git . $Path | fzf)
-}
+Import-Module PSFzf
 
-Set-Alias -Name nd -Value Set-Location-Fzf -Force
+Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
+Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
+Set-PsFzfOption -TabExpansion
 
-function Open-File-Fzf([string] $Path = ".", [string] $Editor = "nvim-qt.exe") {
-  & $Editor $(fd --type file --hidden --exclude .git . $Path | fzf)
-}
+fnm env --use-on-cd | Out-String | Invoke-Expression
 
-Set-Alias -Name nf -Value Open-File-Fzf -Force
+# function Set-Location-Fzf([string] $Path = ".") {
+#   Set-Location $(fd --type directory --hidden --exclude .git . $Path | fzf)
+# }
 
-Set-Alias -Name pd -Value Get-ChildItem -Force
+# Set-Alias -Name nd -Value Set-Location-Fzf -Force
+
+# function Open-File-Fzf([string] $Path = ".", [string] $Editor = "nvim-qt.exe") {
+#   & $Editor $(fd --type file --hidden --exclude .git . $Path | fzf)
+# }
+
+# Set-Alias -Name nf -Value Open-File-Fzf -Force
+
+# Set-Alias -Name pd -Value Get-ChildItem -Force
 
 # Git
 
