@@ -36,7 +36,8 @@ fi
 export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
 
 # pyenv
-if command_exists pyenv ; then
+# also check that it's wsl pyenv, not windows one
+if command_exists pyenv && [ -d "$HOME/.pyenv" ] ; then
   export PYENV_ROOT="$HOME/.pyenv"
   command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
   eval "$(pyenv init -)"
