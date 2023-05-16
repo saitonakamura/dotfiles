@@ -1,4 +1,11 @@
-
+# not supposed to be commited
+[core]
+  sshCommand = "C:/Windows/System32/OpenSSH/ssh.exe"
+# [gpg "ssh"]
+#   program = "C:/Users/saito/AppData/Local/1Password/app/8/op-ssh-sign.exe"
+# [commit]
+  # gpgsign = true
+# common
 [user]
   name = Michael Bashurov
   email = accounts@saitonakamura.me
@@ -51,3 +58,8 @@
 #     path = windows.gitconfig
 # [includeIf "gitdir:%(prefix)/home/**"]
 #     path = .gitconfig-linux
+[credential]
+	helper = 
+	helper = C:/Users/saito/AppData/Local/Programs/Git\\ Credential\\ Manager/git-credential-manager.exe
+	helper = 
+	helper = C:/Program\\ Files/Git/mingw64/bin/git-credential-manager

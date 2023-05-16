@@ -17,6 +17,9 @@ Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
 Set-PsFzfOption -TabExpansion
 
 fnm env --use-on-cd | Out-String | Invoke-Expression
+# PowerShellGet\Install-Module posh-sshell -Scope CurrentUser
+Import-Module posh-sshell
+Start-SshAgent -Quiet
 
 # function Set-Location-Fzf([string] $Path = ".") {
 #   Set-Location $(fd --type directory --hidden --exclude .git . $Path | fzf)
