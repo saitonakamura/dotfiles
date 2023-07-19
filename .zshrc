@@ -88,7 +88,12 @@ zstyle ':omz:update' mode auto
 
 zstyle :omz:plugins:keychain agents gpg,ssh
 zstyle :omz:plugins:keychain identities id_rsa id_ed25519
-zstyle :omz:plugins:keychain options --quiet
+
+if [ "$system" = 'Macos' ] ; then
+  zstyle :omz:plugins:keychain options --quiet --inherit any
+else
+  zstyle :omz:plugins:keychain options --quiet
+fi
 
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa --oneline $realpath'
 # Which plugins would you like to load?

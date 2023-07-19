@@ -1,10 +1,15 @@
-# not supposed to be commited
-[core]
-  sshCommand = "C:/Windows/System32/OpenSSH/ssh.exe"
+# not meant to be commited
+
 # [gpg "ssh"]
-#   program = "C:/Users/saito/AppData/Local/1Password/app/8/op-ssh-sign.exe"
+#   program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+# [credential]
+# 	helper = 
+# 	helper = C:/Users/saito/AppData/Local/Programs/Git\\ Credential\\ Manager/git-credential-manager.exe
+# 	helper = 
+# 	helper = C:/Program\\ Files/Git/mingw64/bin/git-credential-manager
 # [commit]
-  # gpgsign = true
+#   gpgsign = true
+
 # common
 [user]
   name = Michael Bashurov
@@ -58,8 +63,3 @@
 #     path = windows.gitconfig
 # [includeIf "gitdir:%(prefix)/home/**"]
 #     path = .gitconfig-linux
-[credential]
-	helper = 
-	helper = C:/Users/saito/AppData/Local/Programs/Git\\ Credential\\ Manager/git-credential-manager.exe
-	helper = 
-	helper = C:/Program\\ Files/Git/mingw64/bin/git-credential-manager
