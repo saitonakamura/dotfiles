@@ -7,8 +7,8 @@
 # 	helper = C:/Users/saito/AppData/Local/Programs/Git\\ Credential\\ Manager/git-credential-manager.exe
 # 	helper = 
 # 	helper = C:/Program\\ Files/Git/mingw64/bin/git-credential-manager
-# [commit]
-#   gpgsign = true
+[commit]
+  gpgsign = true
 
 # common
 [user]
@@ -44,22 +44,8 @@
 [init]
 	defaultBranch = main
 
-# [filter "lfs"]
-# 	clean = git-lfs clean -- %f
-# 	smudge = git-lfs smudge -- %f
-# 	process = git-lfs filter-process
-# 	required = true
-
 [gpg]
   format = ssh
 
 [gpg "ssh"]
 	allowedSignersFile = "~/.ssh/allowed_signers"
-
-# [includeIf "gitdir:**/Users"]
-#     path = .gitconfig-macos
-# [includeIf "gitdir:%(prefix)C:"]
-#     path = .gitconfig-windows
-#     path = windows.gitconfig
-# [includeIf "gitdir:%(prefix)/home/**"]
-#     path = .gitconfig-linux
