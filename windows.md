@@ -2,8 +2,10 @@
 
 ```powershell
 gsudo { Remove-WindowsCapability -Online -Name OpenSSH.Client~~~~0.0.1.0 }
-winget install openssh
+winget install Microsoft.OpenSSH.Beta
 ```
+
+Add `C:/Program Files/OpenSSH` to PATH
 
 ## ideavim
 
