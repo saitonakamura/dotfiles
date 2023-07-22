@@ -17,8 +17,8 @@ Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
 Set-PsFzfOption -TabExpansion
 
 fnm env --use-on-cd | Out-String | Invoke-Expression
-# PowerShellGet\Install-Module posh-sshell -Scope CurrentUser
-Import-Module posh-sshell
+
+. "./PSModules/posh-sshell.ps1"
 Start-SshAgent -Quiet
 
 # function Set-Location-Fzf([string] $Path = ".") {
