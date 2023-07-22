@@ -1,3 +1,11 @@
+## winget
+
+## powershell
+
+```cmd
+winget install --id Microsoft.Powershell --source winget
+```
+
 ## ssh
 
 ```powershell
@@ -17,3 +25,4 @@ gsudo {
 }
 ```
 
+t

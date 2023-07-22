@@ -18,7 +18,9 @@ Set-PsFzfOption -TabExpansion
 
 fnm env --use-on-cd | Out-String | Invoke-Expression
 
-. "./PSModules/posh-sshell.ps1"
+$dotfiles = get-item $profile | select-object -ExpandProperty Target
+$dotfilesDir = (get-item $dotfiles).Directory.FullName
+. "$dotfilesDir\PSModules\posh-sshell.ps1"
 Start-SshAgent -Quiet
 
 # function Set-Location-Fzf([string] $Path = ".") {
