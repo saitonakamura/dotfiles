@@ -15,6 +15,22 @@ winget install Microsoft.OpenSSH.Beta
 
 Add `C:/Program Files/OpenSSH` to PATH
 
+## git sign
+
+.gitconfig
+
+```conf
+[gpg "ssh"]
+  program = C:/Program Files/OpenSSH/ssh-keygen.exe
+[commit]
+  gpgsign = true
+[tag]
+  gpgsign = true
+[core]
+  autocrlf = true
+  sshCommand = \"C:/Program Files/OpenSSH/ssh.exe\"
+```
+
 ## ideavim
 
 ```powershell
