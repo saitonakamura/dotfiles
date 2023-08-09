@@ -34,6 +34,12 @@ gsudo {
 
 gsudo {
     New-Item -Item SymbolicLink -Force `
+        -Target (Resolve-Path "~\dotfiles\init.lua") `
+        -Path "~\AppData\Local\nvim\init.lua"
+}
+
+gsudo {
+    New-Item -Item SymbolicLink -Force `
         -Target (Resolve-Path "~\dotfiles\Powershell_profile.ps1") `
         -Path "$profile"
 }
