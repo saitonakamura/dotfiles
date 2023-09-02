@@ -88,12 +88,14 @@ chsh -c $(which zsh)
 
 restart shell
 
+https://github.com/ohmyzsh/ohmyzsh#basic-installation
+
 ```sh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 rm ~/.zshrc
-ln -sfn ~/dotfiles/.zshrc ~/.zshrc
 ln -sfn ~/dotfiles/.zshenv ~/.zshenv
+ln -sfn ~/dotfiles/.zshrc ~/.zshrc
 ln -sfn ~/dotfiles/.p10k.zsh ~/.p10k.zsh
 ```
 
@@ -130,7 +132,7 @@ curl -fsSL https://fnm.vercel.app/install | bash -s -- --skip-shell
 restart shell
 
 ```sh
-fnm install --lts
+fnm install --lts --corepack-enabled
 ```
 
 restart shell
@@ -151,7 +153,7 @@ mkdir ~/code
 ### stuff
 
 ```sh
-sudo apt install bat jq exa ripgrep -y
+sudo apt install jq exa ripgrep -y
 ```
 
 ## bat

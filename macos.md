@@ -1,3 +1,9 @@
+## macos
+
+* set lang change to option space
+* set caps lock to esc
+* set keyboard repeat rate to fast
+
 ## brew
 
 https://brew.sh
@@ -15,6 +21,7 @@ https://1password.com/downloads/mac/
 * ominvore
 * xcode
 * 1password for safari
+* vimari
 * magnet
 * slack
 
@@ -22,10 +29,15 @@ https://1password.com/downloads/mac/
 
 https://middleclick.app
 
+## cascadia code
+
+https://github.com/microsoft/cascadia-code#installation
+
 ## kitty
 
 ```sh
 brew install kitty
+defaults write -app kitty ApplePressAndHoldEnabled -bool false
 ```
 
 * write `include ~/dotfiles/kitty.conf` at the top of the config file
@@ -48,8 +60,7 @@ gh auth login
 ## dotfiles
 
 ```sh
-cd ~
-gh repo clone saitonakamura/dotfiles
+gh repo clone saitonakamura/dotfiles ~/dotfiles
 ```
 
 ## show all files
@@ -63,11 +74,106 @@ killall Finder
 
 ```sh
 brew install visual-studio-code
+defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+defaults delete -g ApplePressAndHoldEnabled
 ```
 
 * enable settings sync
 * disable context-dependent extensions
 
-## cascadia code
+## neovim
 
-https://github.com/microsoft/cascadia-code#installation
+```sh
+brew install neovim
+```
+
+## git
+
+```sh
+brew install git
+ln -sfn ~/dotfiles/.gitconfig ~/.gitconfig
+```
+
+## git sign
+
+```conf
+[commit]
+  gpgsign = true
+[tag]
+  gpgsign = true
+```
+
+## omz
+
+https://github.com/ohmyzsh/ohmyzsh#basic-installation
+
+https://ss64.com/osx/syntax-profile.html
+
+```sh
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+rm ~/.zshrc
+ln -sfn ~/dotfiles/.zshenv ~/.zshenv
+ln -sfn ~/dotfiles/.zshrc ~/.zshrc
+ln -sfn ~/dotfiles/.p10k.zsh ~/.p10k.zsh
+```
+
+## fzf
+
+https://github.com/junegunn/fzf#using-homebrew
+https://github.com/Aloxaf/fzf-tab#oh-my-zsh
+
+```sh
+brew install fzf
+$(brew --prefix)/opt/fzf/install
+git clone https://github.com/Aloxaf/fzf-tab ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-tab
+```
+
+* cleanup bash stuff
+
+## bat
+
+https://github.com/sharkdp/bat#on-macos-or-linux-via-homebrew
+
+```sh
+brew install bat
+```
+
+## stuff
+
+```sh
+brew install jq exa ripgrep
+```
+
+## fd
+
+https://github.com/sharkdp/fd#on-macos
+
+```sh
+brew install fd
+ln -sfn ~/dotfiles/.fdignore ~/.fdignore
+```
+
+## code
+
+```sh
+mkdir ~/code
+```
+
+## fnm
+
+```sh
+curl -fsSL https://fnm.vercel.app/install | bash -s -- --skip-shell
+```
+
+* restart shell
+
+```sh
+fnm install --lts --corepack-enabled
+```
+
+## yarn
+
+```sh
+ln -sfn ~/dotfiles/.yarnrc.yml ~/.yarnrc.yml
+```

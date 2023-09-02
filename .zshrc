@@ -37,6 +37,9 @@ else
   export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --color light"
 fi
 
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
 bat_force_colors="--color=always --theme=$BAT_THEME"
 
 # Powerlevel10k instant prompt
@@ -86,8 +89,9 @@ zstyle ':omz:update' mode auto
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-zstyle :omz:plugins:keychain agents gpg,ssh
-zstyle :omz:plugins:keychain identities id_rsa id_ed25519
+# https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/keychain
+zstyle :omz:plugins:keychain agents ssh
+zstyle :omz:plugins:keychain identities id_ed25519
 
 if [ "$system" = 'Macos' ] ; then
   zstyle :omz:plugins:keychain options --quiet --inherit any
@@ -233,9 +237,10 @@ gsb() {
 
 if [[ -f ~/.fzf.zsh ]]; then
   source ~/.fzf.zsh
-elif [[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ]]; then
-  source /usr/share/doc/fzf/examples/key-bindings.zsh
-  source /usr/share/doc/fzf/examples/completion.zsh
+# TODO find out what is this?
+# elif [[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ]]; then
+#   source /usr/share/doc/fzf/examples/key-bindings.zsh
+#   source /usr/share/doc/fzf/examples/completion.zsh
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
