@@ -50,6 +50,22 @@ defaults write -app kitty ApplePressAndHoldEnabled -bool false
 brew install keychain
 ```
 
+## git
+
+```sh
+brew install git
+ln -sfn ~/dotfiles/.gitconfig ~/.gitconfig
+```
+
+## git sign
+
+```conf
+[commit]
+  gpgsign = true
+[tag]
+  gpgsign = true
+```
+
 ## gh
 
 ```sh
@@ -99,20 +115,11 @@ git clone --depth=1 https://github.com/savq/paq-nvim.git \
     "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/pack/paqs/start/paq-nvim
 ```
 
-## git
+## neovide
 
 ```sh
-brew install git
-ln -sfn ~/dotfiles/.gitconfig ~/.gitconfig
-```
-
-## git sign
-
-```conf
-[commit]
-  gpgsign = true
-[tag]
-  gpgsign = true
+brew install neovide
+ln -sfv /opt/homebrew/Cellar/neovide/0.11.1/Neovide.app /Applications/Neovide.app
 ```
 
 ## omz
