@@ -85,6 +85,18 @@ defaults delete -g ApplePressAndHoldEnabled
 
 ```sh
 brew install neovim
+mkdir -p ~/.config/nvim
+ln -sfn ~/dotfiles/init.lua ~/.config/nvim/init.lua
+ln -sfn ~/dotfiles/lua ~/.config/nvim/lua
+```
+
+### paq
+
+https://github.com/savq/paq-nvim/#installation
+
+```sh
+git clone --depth=1 https://github.com/savq/paq-nvim.git \
+    "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/pack/paqs/start/paq-nvim
 ```
 
 ## git
