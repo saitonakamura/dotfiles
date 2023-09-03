@@ -233,6 +233,10 @@ gsb() {
 #   jq ".assets[] | select(.name == \"$2\") | .browser_download_url" --raw-output
 # }
 
+if command_exists fnm ; then
+  eval "`fnm env`"
+fi
+
 # POSTSETUP
 
 if [[ -f ~/.fzf.zsh ]]; then

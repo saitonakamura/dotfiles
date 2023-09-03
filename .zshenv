@@ -12,15 +12,23 @@ command_exists () {
 #   export PATH=$GEM_HOME/ruby/2.6.0/bin:$PATH
 # fi
 
-export DOTNET_CLI_TELEMETRY_OPTOUT=1
-
-if [ -d "$HOME/.npm-global/bin" ] ; then
-  export PATH="$HOME/.npm-global/bin:$PATH"
+# on macos same needs to be executed in .zprofile
+# because https://apple.stackexchange.com/questions/432226/homebrew-path-set-in-zshenv-is-overridden
+# but this will give access to brew in this file
+if [ -d "/opt/homebrew/bin" ] ; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-if [ -d "$HOME/.local/bin" ] ; then
-  export PATH="$HOME/.local/bin:$PATH"
-fi
+
+# export DOTNET_CLI_TELEMETRY_OPTOUT=1
+
+# if [ -d "$HOME/.npm-global/bin" ] ; then
+#   export PATH="$HOME/.npm-global/bin:$PATH"
+# fi
+
+# if [ -d "$HOME/.local/bin" ] ; then
+#   export PATH="$HOME/.local/bin:$PATH"
+# fi
 
 # fnm
 if [ -d "$HOME/.local/share/fnm" ] ; then
@@ -31,7 +39,7 @@ if command_exists fnm ; then
   eval "`fnm env`"
 fi
 
-export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
+# export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
 
 # pyenv
 # also check that it's wsl pyenv, not windows one
@@ -46,4 +54,4 @@ if [ -f "$HOME/.cargo/env" ] ; then
 fi
 
 # opam
-[[ ! -r /home/saito/.opam/opam-init/init.zsh ]] || source /home/saito/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+# [[ ! -r /home/saito/.opam/opam-init/init.zsh ]] || source /home/saito/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null

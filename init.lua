@@ -7,9 +7,18 @@ vim.g.maplocalleader = ' '
 
 require "paq" {
   'savq/paq-nvim',
+  
   { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' },
   'kylechui/nvim-surround',
   'neovim/nvim-lspconfig',
+
+  'zbirenbaum/copilot.lua',
+
+  'hrsh7th/cmp-nvim-lsp',
+  'hrsh7th/nvim-cmp',
+
+  'zbirenbaum/copilot-cmp',
+
   'tjdevries/colorbuddy.vim',
   'Th3Whit3Wolf/onebuddy',
   'f-person/auto-dark-mode.nvim',
@@ -17,7 +26,7 @@ require "paq" {
 
 
 vim.opt.number = true
-vim.opt.mouse = 'a'
+--vim.opt.mouse = 'a'
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.breakindent = true
 vim.opt.ignorecase = true
@@ -81,6 +90,26 @@ require'nvim-treesitter.configs'.setup {
     end,
   }
 }
+
+local cmp = require'cmp'
+
+cmp.setup({
+  sources = cmp.config.sources({
+    --{ name = 'copilot', group_index = 2 },
+    { name = 'nvim_lsp', group_index = 2 }
+  })
+})
+
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+
+--require('copilot').setup({})
+--vim.api.nvim_create_user_command('CopilotSetup',
+--  function()
+--    require('copilot').setup({})
+--  end,
+--  {}
+--)
 --if (vim.bo.filetype == 'lua') then
 --  vim.bo.expandtab = true
 --  vim.bo.shiftwidth = 2
