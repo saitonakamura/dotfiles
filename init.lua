@@ -7,10 +7,18 @@ vim.g.maplocalleader = ' '
 
 require "paq" {
   'savq/paq-nvim',
+
+  'nvim-lua/plenary.nvim',
+
+  { 'nvim-telescope/telescope.nvim', branch = '0.1.3' },
   
   { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' },
+  'JoosepAlviste/nvim-ts-context-commentstring',
+  'terrortylor/nvim-comment',
   'kylechui/nvim-surround',
   'neovim/nvim-lspconfig',
+
+  { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
 
   'zbirenbaum/copilot.lua',
 
@@ -79,6 +87,10 @@ require'nvim-treesitter.configs'.setup {
   ensure_installed = { "css", "dockerfile", "git_config", "git_rebase", "gitattributes", "gitcommit", "gitignore", "html", "javascript", "json", "lua", "make", "python", "tsx", "typescript", "yaml"  },
   sync_install = false,
   auto_install = true,
+  context_commentstring = {
+    enable = true,
+    enable_autocmd = false,
+  },
   highlight = {
     enable = true,
     disable = function(lang, buf)
@@ -89,6 +101,12 @@ require'nvim-treesitter.configs'.setup {
       end
     end,
   }
+}
+
+require'nvim_comment'.setup {
+  hook = function()
+    require('ts_context_commentstring.internal').update_commentstring()
+  end,
 }
 
 local cmp = require'cmp'
@@ -114,4 +132,26 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 --  vim.bo.expandtab = true
 --  vim.bo.shiftwidth = 2
 --end
+
+require'telescope'.setup {
+  extensions = {
+    fzf = {
+      fuzzy = true,
+      override_generic_sorter = true,
+      override_file_sorter = true,
+      case_mode = "smart_case",
+    }
+  }
+}
+
+require'telescope'.load_extension('fzf')
+
+local telescope_builtin = require'telescope.builtin'
+
+vim.keymap.set('n', '<leader>ff', telescope_builtin.find_files, {})
+vim.keymap.set('n', '<leader>fg', telescope_builtin.live_grep, {})
+vim.keymap.set('n', '<leader>fb', telescope_builtin.buffers, {})
+vim.keymap.set('n', '<leader>fh', telescope_builtin.help_tags, {})
+vim.keymap.set('n', '<leader>fs', telescope_builtin.treesitter, {})
+vim.keymap.set('n', '<leader>fc', telescope_builtin.commands, {})
 

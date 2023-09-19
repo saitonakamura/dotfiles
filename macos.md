@@ -196,3 +196,15 @@ fnm install --lts --corepack-enabled
 ```sh
 ln -sfn ~/dotfiles/.yarnrc.yml ~/.yarnrc.yml
 ```
+
+## python
+
+```sh
+brew install python
+```
+
+### pipenv
+
+```sh
+pip3 install pipenv --user
+```

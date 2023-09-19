@@ -36,7 +36,8 @@ if [ -d "$HOME/.local/share/fnm" ] ; then
 fi
 if command_exists fnm ; then
   export FNM_COREPACK_ENABLED=true
-  eval "`fnm env`"
+  # TODO don't run if interactive?
+  eval "$(fnm env)"
 fi
 
 # export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
@@ -47,6 +48,14 @@ if command_exists pyenv && [ -d "$HOME/.pyenv" ] ; then
   export PYENV_ROOT="$HOME/.pyenv"
   command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
   eval "$(pyenv init -)"
+fi
+
+if command_exists python3 ; then
+  export PATH="$(python3 -m site --user-base)/bin:$PATH"
+fi
+
+if command_exists pipenv ; then
+  export PIPENV_VENV_IN_PROJECT=1
 fi
 
 if [ -f "$HOME/.cargo/env" ] ; then
