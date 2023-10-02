@@ -110,7 +110,9 @@ plugins=(
   keychain
   git
   gitfast
-  git-auto-fetch
+  # this conflicts with manual git pull on terminal start w/ 'cannot fast forward to multiple branches'
+  # so I disabled it
+  # git-auto-fetch
   ripgrep
   fd
   docker
