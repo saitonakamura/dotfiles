@@ -1,14 +1,5 @@
-# not meant to be commited
-
-# [gpg "ssh"]
-#   program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
-# [credential]
-# 	helper = 
-# 	helper = C:/Users/saito/AppData/Local/Programs/Git\\ Credential\\ Manager/git-credential-manager.exe
-# 	helper = 
-# 	helper = C:/Program\\ Files/Git/mingw64/bin/git-credential-manager
-[commit]
-  gpgsign = true
+[include]
+  path = .local.gitconfig
 
 # common
 [user]

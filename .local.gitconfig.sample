@@ -1,0 +1,4 @@
+# [include]
+#   path = .windows.gitconfig
+#   path = .linux.gitconfig
+#   path = .macos.gitconfig
