@@ -36,8 +36,12 @@ if [ -d "$HOME/.local/share/fnm" ] ; then
 fi
 if command_exists fnm ; then
   export FNM_COREPACK_ENABLED=true
-  # TODO don't run if interactive?
-  eval "$(fnm env)"
+  export FNM_RESOLVE_ENGINES=true
+  # https://zsh.sourceforge.io/Guide/zshguide02.html#l8
+  if [[ -o interactive ]]; then
+  else
+    eval "$(fnm env)"
+  fi
 fi
 
 # export PATH="/usr/local/sbin:/usr/local/bin:$PATH"

@@ -38,7 +38,7 @@ else
 fi
 
 # Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+# export ZSH="$HOME/.oh-my-zsh"
 
 bat_force_colors="--color=always --theme=$BAT_THEME"
 
@@ -47,16 +47,16 @@ bat_force_colors="--color=always --theme=$BAT_THEME"
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
 
 # VARIABLES
-username=`id -un`
-DEFAULT_USER="$username"
-ZSH_THEME="powerlevel10k/powerlevel10k"
+# username=`id -un`
+# DEFAULT_USER="$username"
+# ZSH_THEME="powerlevel10k/powerlevel10k"
 
-zstyle ':omz:update' mode auto
+# zstyle ':omz:update' mode auto
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS=true
@@ -90,40 +90,43 @@ zstyle ':omz:update' mode auto
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/keychain
-zstyle :omz:plugins:keychain agents ssh
-zstyle :omz:plugins:keychain identities id_ed25519
+# zstyle :omz:plugins:keychain agents ssh
+# zstyle :omz:plugins:keychain identities id_ed25519
 
-if [ "$system" = 'Macos' ] ; then
-  zstyle :omz:plugins:keychain options --quiet --inherit any
-else
-  zstyle :omz:plugins:keychain options --quiet
-fi
+# if [ "$system" = 'Macos' ] ; then
+#   zstyle :omz:plugins:keychain options --quiet --inherit any
+# else
+#   zstyle :omz:plugins:keychain options --quiet
+# fi
 
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa --oneline $realpath'
+# zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa --oneline $realpath'
+
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  # ssh-agent
-  keychain
-  git
-  gitfast
-  # this conflicts with manual git pull on terminal start w/ 'cannot fast forward to multiple branches'
-  # so I disabled it
-  # git-auto-fetch
-  ripgrep
-  fd
-  docker
-  # vi-mode
-  # fzf
-  fzf-tab
-  # zsh-syntax-highlighting
-  # zsh-autosuggestions
-)
+# plugins=(
+#   # ssh-agent
+#   keychain
+#   git
+#   gitfast
+#   # this conflicts with manual git pull on terminal start w/ 'cannot fast forward to multiple branches'
+#   # so I disabled it
+#   # git-auto-fetch
+#   ripgrep
+#   fd
+#   docker
+#   # vi-mode
+#   # fzf
+#   fzf-tab
+#   # zsh-syntax-highlighting
+#   # zsh-autosuggestions
+# )
 
-source $ZSH/oh-my-zsh.sh
+# source $ZSH/oh-my-zsh.sh
+autoload -Uz compinit
+compinit
 
 # User configuration
 
@@ -140,14 +143,29 @@ else
   export FZF_DEFAULT_COMMAND='fdfind'
 fi
 
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND --type d"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND --hidden --follow --max-depth 5"
+export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND --type d --hidden --follow --max-depth 5"
 
 export FZF_CTRL_T_OPTS="
   --preview 'test -d {} && exa --long --tree --level=3 --group-directories-first {} || bat $bat_force_colors {} | head -200'
   --bind 'ctrl-/:change-preview-window(down|hidden|)'"
 
-export FZF_ALT_C_OPTS="--preview 'exa --long --tree --level=3 --group-directories-first {} | head -200'"
+fzf_dir_preview='exa --long --tree --level=3 --group-directories-first {} | head -200'
+export FZF_ALT_C_OPTS="--preview '$fzf_dir_preview'"
+
+_fzf_compgen_dir() {
+  fd --type d --hidden --follow --max-depth 5 . "$1"
+}
+
+_fzf_comprun() {
+  local command=$1
+  shift
+
+  case "$command" in
+    cd)           fzf --preview "$fzf_dir_preview"         "$@" ;;
+    *)            fzf --preview 'bat -n --color=always {}' "$@" ;;
+  esac
+}
 
 # export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
 
@@ -237,20 +255,26 @@ gsb() {
 
 if command_exists fnm ; then
   eval "$(fnm env --use-on-cd)"
+  eval "$(fnm completions --shell zsh)"
 fi
+
+source ~/dotfiles/zsh/fzf-tab/fzf-tab.plugin.zsh
 
 # POSTSETUP
 
-if [[ -f ~/.fzf.zsh ]]; then
-  source ~/.fzf.zsh
-# TODO find out what is this?
-# elif [[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ]]; then
-#   source /usr/share/doc/fzf/examples/key-bindings.zsh
-#   source /usr/share/doc/fzf/examples/completion.zsh
-fi
+# if [[ -f ~/.fzf.zsh ]]; then
+#   source ~/.fzf.zsh
+# # TODO find out what is this?
+# # elif [[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ]]; then
+# #   source /usr/share/doc/fzf/examples/key-bindings.zsh
+# #   source /usr/share/doc/fzf/examples/completion.zsh
+# fi
+eval "$(fzf --zsh)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # opam configuration
 # test -r /home/saito/.opam/opam-init/init.zsh && . /home/saito/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+eval "$(starship init zsh)"

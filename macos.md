@@ -122,6 +122,15 @@ brew install neovide
 ln -sfv /opt/homebrew/Cellar/neovide/0.11.1/Neovide.app /Applications/Neovide.app
 ```
 
+## starship
+
+https://starship.rs/guide/
+
+```sh
+mkdir -p ~/.config
+ln -sfn ~/dotfiles/.config/starship.toml ~/.config/starship.toml
+```
+
 ## omz
 
 https://github.com/ohmyzsh/ohmyzsh#basic-installation
