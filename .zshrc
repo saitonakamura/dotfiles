@@ -259,6 +259,8 @@ if command_exists fnm ; then
 fi
 
 source ~/dotfiles/zsh/fzf-tab/fzf-tab.plugin.zsh
+source ~/dotfiles/zsh/zsh-completions/zsh-completions.plugin.zsh
+fpath=(~/dotfiles/zsh/completions $fpath)
 
 # POSTSETUP
 

@@ -1,3 +1,6 @@
 [submodule "zsh/fzf-tab"]
 	path = zsh/fzf-tab
 	url = https://github.com/Aloxaf/fzf-tab
+[submodule "zsh/zsh-completions"]
+	path = zsh/zsh-completions
+	url = https://github.com/zsh-users/zsh-completions.git
