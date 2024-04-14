@@ -38,9 +38,8 @@ https://github.com/microsoft/cascadia-code#installation
 ```sh
 brew install kitty
 defaults write -app kitty ApplePressAndHoldEnabled -bool false
+ln -s ~/dotfiles/.config/kitty ~/.config/kitty
 ```
-
-* write `include ~/dotfiles/kitty.conf` at the top of the config file
 
 ## ssh
 

@@ -31,10 +31,12 @@ if [ "$theme" = 'dark' ] ; then
   echo -e "\033]1337;SetColors=preset=OneHalfDark\a"
   export BAT_THEME="OneHalfDark"
   export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --color dark"
+  # export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=244"
 else
   echo -e "\033]1337;SetColors=preset=OneHalfLight\a"
   export BAT_THEME="OneHalfLight"
   export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --color light"
+  export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=248"
 fi
 
 # Path to your oh-my-zsh installation.
@@ -125,8 +127,30 @@ bat_force_colors="--color=always --theme=$BAT_THEME"
 # )
 
 # source $ZSH/oh-my-zsh.sh
+# echo $fpath
+bindkey -e
+bindkey '^ ' autosuggest-fetch
+bindkey '\e[3~' delete-char # for some reason by default fn-delete is not working in zsh
+# bindkey
+
+zstyle ':completion:*' use-compctl false
+
+fpath=($fpath ~/dotfiles/zsh/completions)
+
+source ~/dotfiles/zsh/fzf-tab/fzf-tab.plugin.zsh
+source ~/dotfiles/zsh/zsh-completions/zsh-completions.plugin.zsh
+export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+source ~/dotfiles/zsh/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+
+eval "$(fzf --zsh)"
+
 autoload -Uz compinit
 compinit
+
+if command_exists fnm ; then
+  eval "$(fnm env --shell zsh --use-on-cd)"
+  eval "$(fnm completions --shell zsh)"
+fi
 
 # User configuration
 
@@ -253,14 +277,6 @@ gsb() {
 #   jq ".assets[] | select(.name == \"$2\") | .browser_download_url" --raw-output
 # }
 
-if command_exists fnm ; then
-  eval "$(fnm env --use-on-cd)"
-  eval "$(fnm completions --shell zsh)"
-fi
-
-source ~/dotfiles/zsh/fzf-tab/fzf-tab.plugin.zsh
-source ~/dotfiles/zsh/zsh-completions/zsh-completions.plugin.zsh
-fpath=(~/dotfiles/zsh/completions $fpath)
 
 # POSTSETUP
 
@@ -271,7 +287,6 @@ fpath=(~/dotfiles/zsh/completions $fpath)
 # #   source /usr/share/doc/fzf/examples/key-bindings.zsh
 # #   source /usr/share/doc/fzf/examples/completion.zsh
 # fi
-eval "$(fzf --zsh)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 # [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -280,3 +295,5 @@ eval "$(fzf --zsh)"
 # test -r /home/saito/.opam/opam-init/init.zsh && . /home/saito/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 eval "$(starship init zsh)"
+
+source ~/dotfiles/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
