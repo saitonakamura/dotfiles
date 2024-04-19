@@ -101,8 +101,8 @@ defaults delete -g ApplePressAndHoldEnabled
 ```sh
 brew install neovim
 mkdir -p ~/.config/nvim
-ln -sfn ~/dotfiles/init.lua ~/.config/nvim/init.lua
-ln -sfn ~/dotfiles/lua ~/.config/nvim/lua
+ln -sfn ~/dotfiles/nvim/init.lua ~/.config/nvim/init.lua
+ln -s ~/dotfiles/nvim/lua ~/.config/nvim/lua
 ```
 
 ### paq
