@@ -14,8 +14,8 @@ command_timeout = 1000
 # format = '@[$localipv4](bold red) '
 # disabled = false
 
-[nodejs]
-symbol = 'js '
+# [nodejs]
+# symbol = 'js '
 
 # Disable the package module, hiding it from the prompt completely
 [package]
