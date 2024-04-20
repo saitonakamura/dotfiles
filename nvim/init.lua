@@ -1,6 +1,8 @@
 vim.loader.enable()
 
 require('globals')
+require('options')
+require('autocommands')
 require('mappings')
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -16,8 +18,6 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- vim.g.mapleader = " "
--- vim.g.maplocalleader = " "
 
 require("lazy").setup({
 	-- 'tjdevries/colorbuddy.vim',
@@ -202,24 +202,7 @@ end
 -- 'f-person/auto-dark-mode.nvim',
 -- }
 
-vim.opt.number = true
---vim.opt.mouse = 'a'
-vim.opt.clipboard = "unnamedplus"
-vim.opt.breakindent = true
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.signcolumn = "yes"
-vim.opt.updatetime = 250
-vim.opt.timeoutlen = 300
-vim.opt.completeopt = "menuone,noselect"
-vim.opt.termguicolors = true
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.softtabstop = 2
-vim.opt.expandtab = true
 
-vim.keymap.set("n", "<Leader>w", ":write<CR>")
-vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 
 require("telescope").setup({
 	extensions = {
@@ -243,14 +226,6 @@ vim.keymap.set("n", "<leader>fh", telescope_builtin.help_tags, {})
 vim.keymap.set("n", "<leader>fs", telescope_builtin.treesitter, {})
 vim.keymap.set("n", "<leader>fc", telescope_builtin.commands, {})
 
-local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
-vim.api.nvim_create_autocmd("TextYankPost", {
-	callback = function()
-		vim.highlight.on_yank()
-	end,
-	group = highlight_group,
-	pattern = "*",
-})
 
 require("mason").setup()
 require("mason-lspconfig").setup({
@@ -299,9 +274,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set('n', '<leader>ar', vim.lsp.buf.rename, opts)
 		vim.keymap.set({ 'n', 'v' }, '<leader>am', vim.lsp.buf.code_action, opts)
 		vim.keymap.set('n', '<leader>gr', vim.lsp.buf.references, opts)
-		vim.keymap.set('n', '<leader>af', function()
-		  vim.lsp.buf.format { async = true }
-		end, opts)
+		-- vim.keymap.set('n', '<leader>af', function()
+		--   vim.lsp.buf.format { async = true }
+		-- end, opts)
 	end,
 })
 
