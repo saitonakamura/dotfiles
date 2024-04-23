@@ -1,8 +1,8 @@
 ## macos
 
-* set lang change to option space
-* set caps lock to esc
-* set keyboard repeat rate to fast
+- set lang change to option space
+- set caps lock to esc
+- set keyboard repeat rate to fast
 
 ## brew
 
@@ -18,12 +18,12 @@ https://1password.com/downloads/mac/
 
 ## app store stuff
 
-* ominvore
-* xcode
-* 1password for safari
-* vimari
-* magnet
-* slack
+- ominvore
+- xcode
+- 1password for safari
+- vimari
+- magnet
+- slack
 
 ## middle
 
@@ -43,8 +43,8 @@ ln -s ~/dotfiles/.config/kitty ~/.config/kitty
 
 ## ssh
 
-* copy keys
- 
+- copy keys
+
 ```sh
 brew install keychain
 ```
@@ -93,8 +93,8 @@ defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
 defaults delete -g ApplePressAndHoldEnabled
 ```
 
-* enable settings sync
-* disable context-dependent extensions
+- enable settings sync
+- disable context-dependent extensions
 
 ## neovim
 
@@ -122,8 +122,13 @@ git clone --depth=1 https://github.com/savq/paq-nvim.git \
 
 ```sh
 brew install neovide
+# TODO fix version?
 ln -sfv /opt/homebrew/Cellar/neovide/0.11.1/Neovide.app /Applications/Neovide.app
+mkdir  ~/.config/neovide
+ln -sfn ~/dotfiles/neovide/config.toml ~/.config/neovide/config.toml
 ```
+
+````
 
 ## starship
 
@@ -132,7 +137,7 @@ https://starship.rs/guide/
 ```sh
 mkdir -p ~/.config
 ln -sfn ~/dotfiles/.config/starship.toml ~/.config/starship.toml
-```
+````
 
 ## omz
 
@@ -160,7 +165,7 @@ $(brew --prefix)/opt/fzf/install
 git clone https://github.com/Aloxaf/fzf-tab ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-tab
 ```
 
-* cleanup bash stuff
+- cleanup bash stuff
 
 ## bat
 
@@ -182,7 +187,6 @@ https://github.com/sharkdp/fd#on-macos
 
 ```sh
 brew install fd
-ln -sfn ~/dotfiles/.fdignore ~/.fdignore
 ```
 
 ## code
@@ -197,7 +201,7 @@ mkdir ~/code
 curl -fsSL https://fnm.vercel.app/install | bash -s -- --skip-shell
 ```
 
-* restart shell
+- restart shell
 
 ```sh
 fnm install --lts --corepack-enabled

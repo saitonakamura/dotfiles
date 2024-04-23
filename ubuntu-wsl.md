@@ -6,13 +6,15 @@ sudo apt update && sudo apt upgrade -y
 
 ## ssh
 
-* copy
+- copy
+
 ```sh
 sudo apt install keychain -y
 chmod go-r ~/.ssh/*
 ```
 
 ## install gh
+
 https://github.com/cli/cli/blob/trunk/docs/install_linux.md#debian-ubuntu-linux-raspberry-pi-os-apt
 
 ```sh
@@ -119,7 +121,6 @@ https://github.com/sharkdp/fd#on-ubuntu
 sudo apt install fd-find -y
 mkdir -p ~/.local/bin
 ln -s /usr/bin/fdfind ~/.local/bin/fd
-ln -sfn ~/dotfiles/.fdignore ~/.fdignore
 ```
 
 ## fnm
@@ -165,3 +166,4 @@ ln -s /usr/bin/batcat ~/.local/bin/bat
 ```
 
 restart shell
+
