@@ -39,6 +39,8 @@ https://github.com/microsoft/cascadia-code#installation
 brew install kitty
 defaults write -app kitty ApplePressAndHoldEnabled -bool false
 ln -s ~/dotfiles/.config/kitty ~/.config/kitty
+ln -sfn ~/dotfiles/ke.bou.dark-mode-notify.plist ~/Library/LaunchAgents/ke.bou.dark-mode-notify.plist
+launchctl load -w ~/Library/LaunchAgents/ke.bou.dark-mode-notify.plist
 ```
 
 ## ssh
