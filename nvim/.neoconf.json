@@ -11,5 +11,12 @@
         "enabled": true
       }
     }
+  },
+  "myplugin": {
+    "autoformat": false,
+    "by_filetype": {
+      "lua": { "autoformat": true },
+      "jsonc": { "autoformat": true }
+    }
   }
 }

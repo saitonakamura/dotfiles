@@ -48,15 +48,15 @@ fi
 
 # pyenv
 # also check that it's wsl pyenv, not windows one
-if command_exists pyenv && [ -d "$HOME/.pyenv" ] ; then
-  export PYENV_ROOT="$HOME/.pyenv"
-  command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-  eval "$(pyenv init -)"
-fi
-
-if command_exists python3 ; then
-  export PATH="$(python3 -m site --user-base)/bin:$PATH"
-fi
+# if command_exists pyenv && [ -d "$HOME/.pyenv" ] ; then
+#   export PYENV_ROOT="$HOME/.pyenv"
+#   command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+#   eval "$(pyenv init -)"
+# fi
+#
+# if command_exists python3 ; then
+#   export PATH="$(python3 -m site --user-base)/bin:$PATH"
+# fi
 
 if command_exists pipenv ; then
   export PIPENV_VENV_IN_PROJECT=1

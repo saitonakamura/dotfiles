@@ -8,15 +8,13 @@ if vim.g.neovide then
   -- vim.o.guifont = { "CaskadyiaCove Nerd Font", ":h12" }
   -- vim.o.guifont = "CaskadyiaCove Nerd Font:h12"
   -- vim.keymap.set("n", "<D-s>", ":w<CR>") -- Save
-  vim.keymap.set("v", "<D-c>", '"+y') -- Copy
-  vim.keymap.set("n", "<D-v>", '"+P') -- Paste normal mode
-  vim.keymap.set("v", "<D-v>", '"+P') -- Paste visual mode
-  vim.keymap.set("c", "<D-v>", "<C-R>+") -- Paste command mode
-  vim.keymap.set("i", "<D-v>", '<ESC>l"+Pli') -- Paste insert mode
-
-  -- Allow clipboard copy paste in neovim
-  vim.api.nvim_set_keymap("", "<D-v>", "+p<CR>", { noremap = true, silent = true })
-  vim.api.nvim_set_keymap("!", "<D-v>", "<C-R>+", { noremap = true, silent = true })
-  vim.api.nvim_set_keymap("t", "<D-v>", "<C-\\><C-n>pi", { noremap = true, silent = true })
-  vim.api.nvim_set_keymap("v", "<D-v>", "<C-R>+", { noremap = true, silent = true })
+  -- https://github.com/neovide/neovide/issues/1553
+  vim.opt.title = true
+  --https://github.com/neovide/neovide/issues/2330
+  vim.defer_fn(function()
+    vim.cmd("NeovideFocus")
+  end, 25)
 end
+
+vim.g.root_spec = { "lsp", { ".git", "lua", "node_modules" }, "cwd" }
+vim.g.autoformat = false

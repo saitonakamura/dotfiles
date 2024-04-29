@@ -35,7 +35,8 @@ if [ "$theme" = 'dark' ] ; then
 else
   echo -e "\033]1337;SetColors=preset=OneHalfLight\a"
   export BAT_THEME="OneHalfLight"
-  export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --color light"
+  FZF_LIGHT='--color=bg+:#D9D9D9,bg:#E1E1E1,border:#C8C8C8,spinner:#719899,hl:#719872,fg:#616161,header:#719872,info:#727100,pointer:#E12672,marker:#E17899,fg+:#616161,preview-bg:#D9D9D9,prompt:#0099BD,hl+:#719899'
+  export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS $FZF_LIGHT"
   export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=248"
 fi
 
@@ -135,7 +136,7 @@ bindkey '\e[3~' delete-char # for some reason by default fn-delete is not workin
 
 zstyle ':completion:*' use-compctl false
 
-fpath=($fpath ~/dotfiles/zsh/completions)
+fpath=($fpath /opt/homebrew/share/zsh/site-functions ~/dotfiles/zsh/completions)
 
 source ~/dotfiles/zsh/fzf-tab/fzf-tab.plugin.zsh
 source ~/dotfiles/zsh/zsh-completions/zsh-completions.plugin.zsh
@@ -295,5 +296,8 @@ gsb() {
 # test -r /home/saito/.opam/opam-init/init.zsh && . /home/saito/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 eval "$(starship init zsh)"
+
+
+. $(brew --prefix asdf)/libexec/asdf.sh
 
 source ~/dotfiles/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
