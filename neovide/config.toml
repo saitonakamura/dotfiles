@@ -1,3 +1,3 @@
-# [font]
-# normal = ['Caskadyia Nerd Font']
-# size = 12
+[font]
+normal = ['Cascadia Code']
+size = 13

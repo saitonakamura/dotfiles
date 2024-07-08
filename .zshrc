@@ -128,32 +128,31 @@ bat_force_colors="--color=always --theme=$BAT_THEME"
 # )
 
 # source $ZSH/oh-my-zsh.sh
-# echo $fpath
+
 bindkey -e
 bindkey '^ ' autosuggest-fetch
 bindkey '\e[3~' delete-char # for some reason by default fn-delete is not working in zsh
-# bindkey
 
 zstyle ':completion:*' use-compctl false
 
 fpath=($fpath /opt/homebrew/share/zsh/site-functions ~/dotfiles/zsh/completions)
 
-source ~/dotfiles/zsh/fzf-tab/fzf-tab.plugin.zsh
 source ~/dotfiles/zsh/zsh-completions/zsh-completions.plugin.zsh
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 source ~/dotfiles/zsh/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 
-eval "$(fzf --zsh)"
-
 autoload -Uz compinit
 compinit
+
+eval "$(fzf --zsh)"
+
+source ~/dotfiles/zsh/fzf-tab/fzf-tab.plugin.zsh
 
 if command_exists fnm ; then
   eval "$(fnm env --shell zsh --use-on-cd)"
   eval "$(fnm completions --shell zsh)"
 fi
 
-# User configuration
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -192,27 +191,15 @@ _fzf_comprun() {
   esac
 }
 
-# export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# SETUP
 
 if [ -d "/mnt/c" ] ; then
   alias neovide="/mnt/c/Users/saito/.cargo/bin/neovide.exe --wsl --nofork --multigrid"
 fi
 
-if command_exists fd ; then
-else
-  alias fd=fdfind
-fi
+# if command_exists fd ; then
+# else
+#   alias fd=fdfind
+# fi
 
 # turn-into-dotfile() {
 #   cp "$1" "$1.back" &&
@@ -297,7 +284,6 @@ gsb() {
 
 eval "$(starship init zsh)"
 
-
 . $(brew --prefix asdf)/libexec/asdf.sh
 
-source ~/dotfiles/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
+# source ~/dotfiles/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
