@@ -3,9 +3,10 @@
 set -ex
 
 if [ "$DARKMODE" == "1" ]; then
-	THEME="One Half Dark"
+	THEME="Tokyo Night"
 else
-	THEME="One Half Light"
+	# THEME="Doom One Light"
+	THEME="Tokyo Night Day"
 fi
 
 kitten themes --reload-in=all $THEME

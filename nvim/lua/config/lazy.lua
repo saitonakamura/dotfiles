@@ -12,9 +12,6 @@ require("lazy").setup({
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     -- import any extras modules here
-    -- { import = "lazyvim.plugins.extras.lang.typescript" },
-    -- { import = "lazyvim.plugins.extras.lang.json" },
-    -- { import = "lazyvim.plugins.extras.ui.mini-animate" },
     { import = "lazyvim.plugins.extras.coding.mini-surround" },
 
     { import = "lazyvim.plugins.extras.formatting.prettier" },
@@ -26,10 +23,10 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.dap.core" },
 
     { import = "lazyvim.plugins.extras.ui.treesitter-context" },
-    -- { import = "lazyvim.plugins.extras.lsp.neoconf" },
 
     { import = "lazyvim.plugins.extras.coding.copilot" },
     { import = "lazyvim.plugins.extras.coding.copilot-chat" },
+
     -- import/override with your plugins
     { import = "plugins" },
   },

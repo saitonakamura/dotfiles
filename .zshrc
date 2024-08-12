@@ -28,22 +28,23 @@ if command_exists "reg.exe" ; then
 fi
 
 if [ "$theme" = 'dark' ] ; then
-  echo -e "\033]1337;SetColors=preset=OneHalfDark\a"
-  export BAT_THEME="OneHalfDark"
-  export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --color dark"
+  # echo -e "\033]1337;SetColors=preset=OneHalfDark\a"
+  # export BAT_THEME="OneHalfDark"
+  # export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --color dark"
   # export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=244"
 else
-  echo -e "\033]1337;SetColors=preset=OneHalfLight\a"
-  export BAT_THEME="OneHalfLight"
-  FZF_LIGHT='--color=bg+:#D9D9D9,bg:#E1E1E1,border:#C8C8C8,spinner:#719899,hl:#719872,fg:#616161,header:#719872,info:#727100,pointer:#E12672,marker:#E17899,fg+:#616161,preview-bg:#D9D9D9,prompt:#0099BD,hl+:#719899'
-  export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS $FZF_LIGHT"
-  export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=248"
+  # echo -e "\033]1337;SetColors=preset=OneHalfLight\a"
+  # export BAT_THEME="OneHalfLight"
+  # FZF_LIGHT='--color=bg+:#D9D9D9,bg:#E1E1E1,border:#C8C8C8,spinner:#719899,hl:#719872,fg:#616161,header:#719872,info:#727100,pointer:#E12672,marker:#E17899,fg+:#616161,preview-bg:#D9D9D9,prompt:#0099BD,hl+:#719899'
+  # export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS $FZF_LIGHT"
+  # export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=248"
 fi
 
 # Path to your oh-my-zsh installation.
 # export ZSH="$HOME/.oh-my-zsh"
 
-bat_force_colors="--color=always --theme=$BAT_THEME"
+# bat_force_colors="--color=always --theme=$BAT_THEME"
+bat_force_colors="--color=always"
 
 # Powerlevel10k instant prompt
 

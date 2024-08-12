@@ -5,9 +5,6 @@ if vim.g.neovide then
   vim.g.neovide_input_ime = false
   vim.g.neovide_input_macos_option_key_is_meta = "both"
   vim.g.neovide_theme = "auto"
-  -- vim.opt.guifont = { "CaskadyiaCove Nerd Font", ":h12" }
-  -- vim.o.guifont = "CaskadyiaCove Nerd Font:h12"
-  -- vim.keymap.set("n", "<D-s>", ":w<CR>") -- Save
   -- https://github.com/neovide/neovide/issues/1553
   vim.opt.title = true
   --https://github.com/neovide/neovide/issues/2330
@@ -25,5 +22,6 @@ else
   ]])
 end
 
+vim.o.background = "light"
 vim.g.root_spec = { "lsp", { ".git", "lua", "node_modules" }, "cwd" }
 vim.g.autoformat = false
