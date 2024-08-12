@@ -2,6 +2,17 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
+-- Function to change font size
+local function change_font_size(delta)
+  local font = vim.opt.guifont:get()[1]
+  local font_name, size = font:match("(.+):h(%d+)")
+  size = tonumber(size) + delta
+  if size < 1 then
+    size = 1
+  end
+  vim.opt.guifont = font_name .. ":h" .. size
+end
+
 -- Allow clipboard copy paste with cmd in neovide, otherwise pasting text to terminal or grep is a pain
 if vim.g.neovide then
   vim.keymap.set("v", "<D-c>", '"+y') -- Copy
@@ -14,6 +25,18 @@ if vim.g.neovide then
   vim.api.nvim_set_keymap("!", "<D-v>", "<C-R>+", { noremap = true, silent = true })
   vim.api.nvim_set_keymap("t", "<D-v>", "<C-\\><C-n>pi", { noremap = true, silent = true })
   vim.api.nvim_set_keymap("v", "<D-v>", "<C-R>+", { noremap = true, silent = true })
+
+  -- Commands to increase and decrease font size
+  vim.api.nvim_create_user_command("IncreaseFontSize", function()
+    change_font_size(1)
+  end, {})
+  vim.api.nvim_create_user_command("DecreaseFontSize", function()
+    change_font_size(-1)
+  end, {})
+
+  -- Key mappings for font size changes
+  vim.keymap.set("n", "<D-=>", ":IncreaseFontSize<CR>", { silent = true })
+  vim.keymap.set("n", "<D-->", ":DecreaseFontSize<CR>", { silent = true })
 end
 
 -- save file with cmd+s
