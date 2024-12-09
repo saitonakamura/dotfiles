@@ -3,10 +3,7 @@ return {
   --   "neovim/nvim-lspconfig",
   --   ---@class PluginLspOpts
   --   opts = {
-  --     ---@type lspconfig.options
-  --     servers = {
-  --       tsserver = {},
-  --     },
+  --     -- inlay_hints = { enabled = false },
   --   },
   -- },
   -- add more treesitter parsers
@@ -48,8 +45,6 @@ return {
         "stylua",
         "shellcheck",
         "shfmt",
-        "flake8",
-        "phpactor",
       },
     },
   },

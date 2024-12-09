@@ -71,3 +71,11 @@ fi
 
 export NEOVIDE_FORK=1
 export RIPGREP_CONFIG_PATH="$HOME/dotfiles/.ripgreprc"
+
+
+# bun completions
+[ -s "/Users/saitonakamura/.bun/_bun" ] && source "/Users/saitonakamura/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

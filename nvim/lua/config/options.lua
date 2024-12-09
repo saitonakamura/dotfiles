@@ -27,3 +27,4 @@ end
 vim.o.background = "light"
 vim.g.root_spec = { "lsp", { ".git", "lua", "node_modules" }, "cwd" }
 vim.g.autoformat = false
+vim.opt.swapfile = false
