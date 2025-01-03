@@ -135,6 +135,10 @@ bindkey '^ ' autosuggest-fetch
 bindkey '\e[3~' delete-char # for some reason by default fn-delete is not working in zsh
 
 zstyle ':completion:*' use-compctl false
+# https://damn.engineer/2022/09/28/zsh-case-insensitive
+# case insensitive path-completion
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*' menu select
 
 fpath=($fpath /opt/homebrew/share/zsh/site-functions ~/dotfiles/zsh/completions)
 
