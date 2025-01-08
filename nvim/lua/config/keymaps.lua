@@ -41,3 +41,4 @@ end
 
 -- save file with cmd+s
 vim.keymap.set({ "i", "x", "n", "s" }, "<D-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
+vim.keymap.set({ "n" }, "<leader>uB", ":Gitsigns toggle_current_line_blame<CR>", { desc = "Toggle Blame" })
