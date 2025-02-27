@@ -90,7 +90,7 @@ https://github.com/microsoft/cascadia-code#installation
 ```sh
 brew install kitty
 defaults write -app kitty ApplePressAndHoldEnabled -bool false
-ln -s ~/dotfiles/.config/kitty ~/.config/kitty
+ln -sfn ~/dotfiles/.config/kitty/kitty.conf ~/.config/kitty/kitty.conf
 ln -sfn ~/dotfiles/ke.bou.dark-mode-notify.plist ~/Library/LaunchAgents/ke.bou.dark-mode-notify.plist
 launchctl load -w ~/Library/LaunchAgents/ke.bou.dark-mode-notify.plist
 ```
@@ -208,14 +208,19 @@ fnm install --lts --corepack-enabled
 ln -sfn ~/dotfiles/.yarnrc.yml ~/.yarnrc.yml
 ```
 
-## python
+## stuff other
 
 ```sh
-brew install python
+brew install lazygit hyperfine
+brew install --cask logseq raycast karabiner-elements ukelele chromium google-chrome figma obs discord
 ```
 
-### pipenv
+## karabiner
 
-```sh
-pip3 install pipenv --user
+```shell
+mkdir ~/code/personal/
+gh repo clone saitonakamura/KE-complex_modifications ~/code/personal/KE-complex_modifications/
+cd ~/code/personal/KE-complex_modifications/
+git submodule update --init
+```
 ```
