@@ -1,8 +1,14 @@
 ## macos
 
 - set keyboard repeat rate to fast
-- allow all files `defaults write com.apple.finder AppleShowAllFiles YES`
 - remove junk (imovie, garage band)
+
+## show all files
+
+```sh
+defaults write com.apple.Finder AppleShowAllFiles true
+killall Finder
+```
 
 ## 1password
 
@@ -28,11 +34,54 @@ echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
 - slack
 - duckduck
 
+## ssh
+
+- copy keys
+- configure 1pass
+
+## git
+
+```sh
+brew install git
+ln -sfn ~/dotfiles/.gitconfig ~/.gitconfig
+```
+
+
+## gh
+
+```sh
+brew install gh
+gh auth login
+```
+
+## git sign
+
+copy `.local.gitconfig.sample` to `.local.gitconfig` and uncomment macos line
+
+## dotfiles
+
+```sh
+gh repo clone saitonakamura/dotfiles ~/dotfiles
+```
+
+
+## vscode
+
+```sh
+brew install visual-studio-code
+defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+```
+
+- enable settings sync
+- disable context-dependent extensions
+
 ## middle
 
 https://middleclick.app
 
-## cascadia code
+## fonts
+
+https://www.nerdfonts.com ?
 
 https://github.com/microsoft/cascadia-code#installation
 
@@ -46,60 +95,6 @@ ln -sfn ~/dotfiles/ke.bou.dark-mode-notify.plist ~/Library/LaunchAgents/ke.bou.d
 launchctl load -w ~/Library/LaunchAgents/ke.bou.dark-mode-notify.plist
 ```
 
-## ssh
-
-- copy keys
-
-```sh
-brew install keychain
-```
-
-## git
-
-```sh
-brew install git
-ln -sfn ~/dotfiles/.gitconfig ~/.gitconfig
-```
-
-## git sign
-
-```conf
-[commit]
-  gpgsign = true
-[tag]
-  gpgsign = true
-```
-
-## gh
-
-```sh
-brew install gh
-gh auth login
-```
-
-## dotfiles
-
-```sh
-gh repo clone saitonakamura/dotfiles ~/dotfiles
-```
-
-## show all files
-
-```sh
-defaults write com.apple.Finder AppleShowAllFiles true
-killall Finder
-```
-
-## vscode
-
-```sh
-brew install visual-studio-code
-defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
-defaults delete -g ApplePressAndHoldEnabled
-```
-
-- enable settings sync
-- disable context-dependent extensions
 
 ## neovim
 
@@ -110,8 +105,7 @@ ln -sfn ~/dotfiles/nvim/init.lua ~/.config/nvim/init.lua
 ln -sfn ~/dotfiles/nvim/stylua.toml ~/.config/nvim/stylua.toml
 ln -sfn ~/dotfiles/nvim/.neoconf.json ~/.config/nvim/.neoconf.json
 ln -s ~/dotfiles/nvim/lua ~/.config/nvim/lua
-# ln -sfn ~/dotfiles/nvim/init.lua ~/.config/nvim/init.lua
-# ln -s ~/dotfiles/nvim/lua ~/.config/nvim/lua
+# ln -sfn ~/dotfiles/nvim/init.lua ~/.config/nvim/init.lua # ln -s ~/dotfiles/nvim/lua ~/.config/nvim/lua
 ```
 
 ### paq
@@ -127,8 +121,6 @@ git clone --depth=1 https://github.com/savq/paq-nvim.git \
 
 ```sh
 brew install neovide
-# TODO fix version?
-ln -sfv /opt/homebrew/Cellar/neovide/0.11.1/Neovide.app /Applications/Neovide.app
 mkdir  ~/.config/neovide
 ln -sfn ~/dotfiles/neovide/config.toml ~/.config/neovide/config.toml
 ```
@@ -140,23 +132,21 @@ ln -sfn ~/dotfiles/neovide/config.toml ~/.config/neovide/config.toml
 https://starship.rs/guide/
 
 ```sh
+brew install starship
 mkdir -p ~/.config
 ln -sfn ~/dotfiles/.config/starship.toml ~/.config/starship.toml
 ````
 
-## omz
-
-https://github.com/ohmyzsh/ohmyzsh#basic-installation
+## zsh
 
 https://ss64.com/osx/syntax-profile.html
 
 ```sh
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 rm ~/.zshrc
+git submodule update --init 
 ln -sfn ~/dotfiles/.zshenv ~/.zshenv
+ln -sfn ~/dotfiles/.zprofile ~/.zprofile
 ln -sfn ~/dotfiles/.zshrc ~/.zshrc
-ln -sfn ~/dotfiles/.p10k.zsh ~/.p10k.zsh
 ```
 
 ## fzf
@@ -167,7 +157,6 @@ https://github.com/Aloxaf/fzf-tab#oh-my-zsh
 ```sh
 brew install fzf
 $(brew --prefix)/opt/fzf/install
-git clone https://github.com/Aloxaf/fzf-tab ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-tab
 ```
 
 - cleanup bash stuff
@@ -183,7 +172,8 @@ brew install bat
 ## stuff
 
 ```sh
-brew install jq exa ripgrep
+brew install jq ripgrep
+ln -sfn ~/dotfiles/.ripgreprc ~/.ripgreprc
 ```
 
 ## fd

@@ -276,22 +276,19 @@ gsb() {
 
 # POSTSETUP
 
-# if [[ -f ~/.fzf.zsh ]]; then
-#   source ~/.fzf.zsh
 # # TODO find out what is this?
 # # elif [[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ]]; then
 # #   source /usr/share/doc/fzf/examples/key-bindings.zsh
 # #   source /usr/share/doc/fzf/examples/completion.zsh
 # fi
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 # opam configuration
 # test -r /home/saito/.opam/opam-init/init.zsh && . /home/saito/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 eval "$(starship init zsh)"
 
-. $(brew --prefix asdf)/libexec/asdf.sh
+# . $(brew --prefix asdf)/libexec/asdf.sh
 
 # source ~/dotfiles/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
