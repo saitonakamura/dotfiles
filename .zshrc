@@ -140,6 +140,9 @@ zstyle ':completion:*' use-compctl false
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion:*' menu select
 
+setopt SHARE_HISTORY
+setopt INC_APPEND_HISTORY
+
 fpath=($fpath /opt/homebrew/share/zsh/site-functions ~/dotfiles/zsh/completions)
 
 source ~/dotfiles/zsh/zsh-completions/zsh-completions.plugin.zsh
