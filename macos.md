@@ -1,8 +1,12 @@
 ## macos
 
-- set lang change to option space
-- set caps lock to esc
 - set keyboard repeat rate to fast
+- allow all files `defaults write com.apple.finder AppleShowAllFiles YES`
+- remove junk (imovie, garage band)
+
+## 1password
+
+https://1password.com/downloads/mac/
 
 ## brew
 
@@ -10,20 +14,19 @@ https://brew.sh
 
 ```sh
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+echo >> ~/.zprofile
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
 ```
-
-## 1password
-
-https://1password.com/downloads/mac/
 
 ## app store stuff
 
-- ominvore
+- readwise
 - xcode
 - 1password for safari
 - vimari
 - magnet
 - slack
+- duckduck
 
 ## middle
 
