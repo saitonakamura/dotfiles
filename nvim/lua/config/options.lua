@@ -8,12 +8,6 @@ if vim.g.neovide then
   -- https://github.com/neovide/neovide/issues/1553
   vim.opt.title = true
   vim.o.guifont = "Cascadia Code:h14"
-  --https://github.com/neovide/neovide/issues/2330
-  -- doesn't really work
-  -- vim.defer_fn(function()
-  --   vim.cmd("NeovideFocus")
-  -- end, 25)
--- end
 else
   -- if vim.fn.has("gui_running") == 0 then
   vim.cmd([[
