@@ -90,10 +90,8 @@ https://github.com/microsoft/cascadia-code#installation
 ```sh
 brew install kitty
 defaults write -app kitty ApplePressAndHoldEnabled -bool false
-ln -sfn ~/dotfiles/.config/kitty/kitty.conf ~/.config/kitty/kitty.conf
-ln -sfn ~/dotfiles/ke.bou.dark-mode-notify.plist ~/Library/LaunchAgents/ke.bou.dark-mode-notify.plist
-launchctl load -w ~/Library/LaunchAgents/ke.bou.dark-mode-notify.plist
 ```
+add `include ~/dotfiles/.config/kitty/kitty.mine.conf` to default kitty conf
 
 
 ## neovim
