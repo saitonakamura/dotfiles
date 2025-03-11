@@ -285,6 +285,9 @@ gsb() {
 # opam configuration
 # test -r /home/saito/.opam/opam-init/init.zsh && . /home/saito/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
+# direnv
+eval "$(direnv hook zsh)"
+
 eval "$(starship init zsh)"
 
 # . $(brew --prefix asdf)/libexec/asdf.sh
