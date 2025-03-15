@@ -295,3 +295,6 @@ eval "$(starship init zsh)"
 # source ~/dotfiles/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# 1password cli
+source ~/.config/op/plugins.sh
