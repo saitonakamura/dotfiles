@@ -4,6 +4,10 @@ return {
     "folke/snacks.nvim",
     ---@type snacks.Config
     opts = {
+      ------@type snacks.image.Config
+      ---image = {
+      ---  enabled = true,
+      ---},
       -- explorer = {
       --   -- your explorer configuration comes here
       --   -- or leave it empty to use the default settings
@@ -15,8 +19,12 @@ return {
           explorer = {
             hidden = true,
           },
-          ---@type snacks.picker.files.Config
+          ---@type snacks.picker.files.config
           files = {
+            hidden = true,
+          },
+          ---@type snacks.picker.grep.config
+          grep = {
             hidden = true,
           },
         },

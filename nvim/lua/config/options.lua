@@ -20,5 +20,9 @@ end
 
 vim.o.background = "light"
 vim.g.root_spec = { "lsp", { ".git", "lua", "node_modules" }, "cwd" }
+vim.g.root_lsp_ignore = { "jsonls", "copilot" }
 vim.g.autoformat = false
 vim.opt.swapfile = false
+
+vim.opt.exrc = true
+vim.opt.secure = true -- For security reasons
