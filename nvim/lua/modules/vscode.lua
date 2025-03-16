@@ -36,7 +36,7 @@ local function file_info(path)
   local f = io.open(path, "r")
   if f then
     f:close()
-    local attrs = vim.loop.fs_stat(path)
+    local attrs = vim.uv.fs_stat(path)
     return true, attrs and attrs.mtime.sec or nil
   end
   return false, nil
@@ -138,12 +138,12 @@ function M.find_vscode_settings()
   end
 
   -- No settings file found, cache the negative result too
-  cache[cwd] = {
-    path = nil,
-    settings = nil,
-    last_modified = nil,
-    timestamp = current_time,
-  }
+  --cache[cwd] = {
+  --  path = nil,
+  --  settings = nil,
+  --last_modified = nil,
+  -- timestamp = current_time,
+  --}
 
   -- vim.notify("VS Code settings not found", vim.log.levels.WARN)
   -- No settings file found
@@ -183,7 +183,7 @@ local function set_nested_field(target, path, value)
 end
 
 -- Helper function to process VS Code settings with prefix and apply to target
-function M.process_settings_with_prefix(prefix, target)
+function M.process_settings_with_prefix(prefix, target, vscode_settings)
   local prefix_pattern = "^" .. prefix .. "%."
 
   for key, value in pairs(vscode_settings) do

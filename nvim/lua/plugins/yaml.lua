@@ -21,7 +21,7 @@ return {
       opts.servers.yamlls.settings.yaml = opts.servers.yamlls.settings.yaml or {}
 
       -- Process all yaml.* settings and apply them with proper nesting
-      vscode.process_settings_with_prefix("yaml", opts.servers.yamlls.settings.yaml)
+      vscode.process_settings_with_prefix("yaml", opts.servers.yamlls.settings.yaml, vscode_settings)
 
       local function mergeTables(table1, table2)
         local merged = {}

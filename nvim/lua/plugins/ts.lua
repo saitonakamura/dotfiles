@@ -21,7 +21,7 @@ return {
       opts.servers.vtsls.settings.typescript = opts.servers.vtsls.settings.typescript or {}
 
       -- Process all typescript.* settings and apply them with proper nesting
-      vscode.process_settings_with_prefix("typescript", opts.servers.vtsls.settings.typescript)
+      vscode.process_settings_with_prefix("typescript", opts.servers.vtsls.settings.typescript, vscode_settings)
     end,
   },
 }

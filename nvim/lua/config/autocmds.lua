@@ -23,6 +23,9 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = { "*" },
   callback = function()
     local settings = vscode.find_vscode_settings()
+    if not settings then
+      return
+    end
     -- Create a map of filetype-specific format-on-save settings
     local ft_format_map = {}
     for key, value in pairs(settings) do

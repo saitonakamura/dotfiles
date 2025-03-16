@@ -34,3 +34,16 @@ local settings = vscode.find_vscode_settings()
 if settings and settings["editor.formatOnSave"] ~= nil then
   vim.g.autoformat = settings["editor.formatOnSave"]
 end
+
+vim.filetype.add({
+  extension = {
+    ["code-snippets"] = "json",
+  },
+  filename = {
+    [".gitlab-ci.yml"] = "yaml.gitlab",
+  },
+  pattern = {
+    [".*/gitlab/.*%.yml"] = "yaml.gitlab",
+    [".*/%.vscode/.*%.json"] = "jsonc",
+  },
+})
