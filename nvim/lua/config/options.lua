@@ -26,3 +26,11 @@ vim.opt.swapfile = false
 
 vim.opt.exrc = true
 vim.opt.secure = true -- For security reasons
+
+vim.g.lazyvim_prettier_needs_config = true
+
+local vscode = require("modules.vscode")
+local settings = vscode.find_vscode_settings()
+if settings and settings["editor.formatOnSave"] ~= nil then
+  vim.g.autoformat = settings["editor.formatOnSave"]
+end
