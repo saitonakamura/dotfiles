@@ -11,6 +11,26 @@ local cache = {}
 -- Cache expiration time in seconds
 local CACHE_EXPIRY = 30
 
+-- Map of VSCode formatter IDs to conform formatter names
+M.formatter_map = {
+  ["esbenp.prettier-vscode"] = "prettier",
+  ["dbaeumer.vscode-eslint"] = "eslint_d",
+  ["vscode.json-language-features"] = "fixjson",
+  ["ms-python.python"] = "black",
+  ["ms-python.black-formatter"] = "black",
+  ["rust-lang.rust-analyzer"] = "rustfmt",
+  ["redhat.vscode-yaml"] = "yamlfmt",
+  ["golang.go"] = "gofmt",
+  ["tamasfe.even-better-toml"] = "taplo",
+  ["Vue.volar"] = "prettier",
+  ["svelte.svelte-vscode"] = "prettier",
+  ["stylelint.vscode-stylelint"] = "stylelint",
+  ["sumneko.lua"] = "stylua",
+  ["zigtools.zls"] = "zigfmt",
+  ["joshbolduc.tailwindcss-language-server"] = "prettier",
+  -- Add more mappings as needed
+}
+
 -- Helper function to check if a file exists and get its modified time
 local function file_info(path)
   local f = io.open(path, "r")
@@ -134,6 +154,15 @@ end
 function M.clear_cache()
   cache = {}
   vim.notify("VS Code settings cache cleared", vim.log.levels.INFO)
+end
+
+function M.have_yaml_stuff(vscode_settings)
+  for key, _ in pairs(vscode_settings) do
+    if key:match("^yaml%.") or key:match("^%[yaml%]") then
+      return true
+    end
+  end
+  return false
 end
 
 -- Invalidate cache when directory changes

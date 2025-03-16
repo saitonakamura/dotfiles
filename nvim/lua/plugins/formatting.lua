@@ -1,34 +1,13 @@
-local vscode = require("modules.vscode")
-
--- Map of VSCode formatter IDs to conform formatter names
-local formatter_map = {
-  ["esbenp.prettier-vscode"] = "prettier",
-  ["dbaeumer.vscode-eslint"] = "eslint_d",
-  ["vscode.json-language-features"] = "fixjson",
-  ["ms-python.python"] = "black",
-  ["ms-python.black-formatter"] = "black",
-  ["rust-lang.rust-analyzer"] = "rustfmt",
-  ["redhat.vscode-yaml"] = "yamlfmt",
-  ["golang.go"] = "gofmt",
-  ["tamasfe.even-better-toml"] = "taplo",
-  ["Vue.volar"] = "prettier",
-  ["svelte.svelte-vscode"] = "prettier",
-  ["stylelint.vscode-stylelint"] = "stylelint",
-  ["sumneko.lua"] = "stylua",
-  ["zigtools.zls"] = "zigfmt",
-  ["joshbolduc.tailwindcss-language-server"] = "prettier",
-  -- Add more mappings as needed
-}
 return {
-  -- conform
   {
     "stevearc/conform.nvim",
     optional = true,
     ---@param opts ConformOpts
     opts = function(_, opts)
+      local vscode = require("modules.vscode")
       local vscode_settings = vscode.find_vscode_settings()
 
-      if not vscode_settings  then
+      if not vscode_settings then
         return
       end
 
@@ -40,7 +19,7 @@ return {
 
           if filetype and value["editor.defaultFormatter"] then
             local vscode_formatter = value["editor.defaultFormatter"]
-            local conform_formatter = formatter_map[vscode_formatter]
+            local conform_formatter = vscode.formatter_map[vscode_formatter]
 
             if conform_formatter then
               -- Set the formatter for this filetype

@@ -14,18 +14,12 @@ return {
       local vscode_settings = vscode.find_vscode_settings()
 
       if not vscode_settings then
-        return opts
+        return
       end
 
-      local have_yaml_stuff = false
-      for key, _ in pairs(vscode_settings) do
-        if key:match("^yaml%.") or key:match("^%[yaml%]") then
-          have_yaml_stuff = true
-          break
-        end
-      end
+      local have_yaml_stuff = vscode.have_yaml_stuff(vscode_settings)
       if not have_yaml_stuff then
-        return opts
+        return
       end
 
       -- Initialize YAML server settings if not present
