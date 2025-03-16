@@ -156,13 +156,42 @@ function M.clear_cache()
   vim.notify("VS Code settings cache cleared", vim.log.levels.INFO)
 end
 
-function M.have_yaml_stuff(vscode_settings)
+function M.have_certain_lsp_settings(vscode_settings, lsp_name)
   for key, _ in pairs(vscode_settings) do
-    if key:match("^yaml%.") or key:match("^%[yaml%]") then
+    if key:match("^" .. lsp_name .. "%.") then
       return true
     end
   end
   return false
+end
+
+-- Helper function to set deeply nested fields using dot notation
+local function set_nested_field(target, path, value)
+  local parts = {}
+  for part in string.gmatch(path, "[^%.]+") do
+    table.insert(parts, part)
+  end
+
+  local current = target
+  for i = 1, #parts - 1 do
+    local key = parts[i]
+    current[key] = current[key] or {}
+    current = current[key]
+  end
+
+  current[parts[#parts]] = value
+end
+
+-- Helper function to process VS Code settings with prefix and apply to target
+function M.process_settings_with_prefix(prefix, target)
+  local prefix_pattern = "^" .. prefix .. "%."
+
+  for key, value in pairs(vscode_settings) do
+    if type(key) == "string" and key:match(prefix_pattern) then
+      local nested_key = key:gsub(prefix_pattern, "")
+      set_nested_field(target, nested_key, value)
+    end
+  end
 end
 
 -- Invalidate cache when directory changes

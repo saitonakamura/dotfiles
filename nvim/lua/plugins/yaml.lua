@@ -1,10 +1,3 @@
-local function mergeTables(table1, table2)
-  local merged = {}
-  table.move(table1, 1, #table1, 1, merged)
-  table.move(table2, 1, #table2, #merged + 1, merged)
-  return merged
-end
-
 -- LSP configuration for YAML based on VS Code settings
 return {
   {
@@ -17,8 +10,7 @@ return {
         return
       end
 
-      local have_yaml_stuff = vscode.have_yaml_stuff(vscode_settings)
-      if not have_yaml_stuff then
+      if not vscode.have_certain_lsp_settings(vscode_settings, "yaml") then
         return
       end
 
@@ -28,6 +20,17 @@ return {
       opts.servers.yamlls.settings = opts.servers.yamlls.settings or {}
       opts.servers.yamlls.settings.yaml = opts.servers.yamlls.settings.yaml or {}
 
+      -- Process all yaml.* settings and apply them with proper nesting
+      vscode.process_settings_with_prefix("yaml", opts.servers.yamlls.settings.yaml)
+
+      local function mergeTables(table1, table2)
+        local merged = {}
+        table.move(table1, 1, #table1, 1, merged)
+        table.move(table2, 1, #table2, #merged + 1, merged)
+        return merged
+      end
+
+      -- schemas are a little bit tricky
       -- Schema configurations
       if vscode_settings["yaml.schemas"] then
         opts.servers.yamlls.on_new_config = function(new_config)
@@ -47,15 +50,6 @@ return {
           end
         end
       end
-
-      for vscode_settings_key, vscode_settings_value in pairs(vscode_settings) do
-        if type(vscode_settings_key) == "string" and vscode_settings_key:match("^yaml%.") then
-          local simple_key = vscode_settings_key:gsub("yaml%.", "")
-          opts.servers.yamlls.settings.yaml[simple_key] = vscode_settings_value
-        end
-      end
-
-      return opts
     end,
   },
 }

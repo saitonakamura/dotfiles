@@ -40,23 +40,12 @@ return {
   -- add any tools you want to have installed below
   {
     "williamboman/mason.nvim",
-    opts = function(_, opts)
-      local vscode = require("modules.vscode")
-      local vscode_settings = vscode.find_vscode_settings()
-
-      opts.ensure_installed = {
+    opts = {
+      ensure_installed = {
         "stylua",
         "shellcheck",
         "shfmt",
-      }
-
-      if not vscode_settings then
-        return
-      end
-
-      if vscode.have_yaml_stuff(vscode_settings) then
-        table.insert(opts.ensure_installed, "yamlls")
-      end
-    end,
+      },
+    },
   },
 }
