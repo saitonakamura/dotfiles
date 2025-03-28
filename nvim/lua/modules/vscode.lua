@@ -119,8 +119,6 @@ function M.find_vscode_settings()
           timestamp = current_time,
         }
 
-        -- vim.notify("VS Code settings found" .. settings_path, vim.log.levels.INFO)
-
         return settings
       end
     end
@@ -145,7 +143,6 @@ function M.find_vscode_settings()
   -- timestamp = current_time,
   --}
 
-  -- vim.notify("VS Code settings not found", vim.log.levels.WARN)
   -- No settings file found
   return nil
 end

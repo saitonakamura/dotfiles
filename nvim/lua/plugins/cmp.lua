@@ -13,6 +13,13 @@ return {
             },
           },
         },
+        default = function(_ctx)
+          if vim.bo.filetype == "copilot-chat" then
+            return { "lsp", "snippets", "buffer" }
+          end
+
+          return { "lsp", "path", "snippets", "buffer" }
+        end,
       },
     },
   },

@@ -5,7 +5,7 @@ end
 
 vim.api.nvim_create_autocmd("VimEnter", {
   pattern = "*",
-  callback = function(args)
+  callback = function(_args)
     if vim.fn.argc() == 1 then
       local arg = vim.fn.argv(0)
       if hasNoDots(arg) then
@@ -44,11 +44,6 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     -- Check if we have a specific setting for this filetype
     if ft_format_map[ft] ~= nil then
       vim.b.autoformat = ft_format_map[ft]
-      if ft_format_map[ft] then
-        vim.notify("Format on save enabled for " .. ft, vim.log.levels.INFO)
-      else
-        vim.notify("Format on save disabled for " .. ft, vim.log.levels.INFO)
-      end
     else
       -- Fall back to global setting
       vim.b.autoformat = nil
@@ -56,4 +51,3 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   end,
 })
 
-vim.notify("Loaded format-on-save configuration from VS Code settings", vim.log.levels.INFO)

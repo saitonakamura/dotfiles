@@ -7,6 +7,8 @@ return {
       if next(prompts) ~= nil then
         opts.prompts = prompts
       end
+
+      opts.model = "claude-3.7-sonnet"
     end,
   },
 }

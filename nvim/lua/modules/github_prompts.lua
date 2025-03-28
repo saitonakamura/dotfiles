@@ -59,7 +59,6 @@ function M.load_prompts()
   local prompts_dir = find_prompts_dir()
 
   if not prompts_dir then
-    vim.notify("Could not find .github/prompts directory", vim.log.levels.WARN)
     return prompts
   end
 
