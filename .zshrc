@@ -298,3 +298,6 @@ eval "$(starship init zsh)"
 
 # 1password cli
 source ~/.config/op/plugins.sh
+echo 'eval "$(uv generate-shell-completion zsh)"'
+
+. "$HOME/.local/bin/env"
